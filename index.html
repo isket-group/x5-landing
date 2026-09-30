@@ -6,60 +6,63 @@
     <title>ISKET GROUP — Выход в X5 Group (Пятёрочка, Перекрёсток) и сопровождение поставщиков</title>
     <style>
         :root {
-            --primary-color: #27ae60;
-            --secondary-color: #1e272e;
-            --accent-color: #2ecc71;
-            --bg-light: #f4f6f7;
-            --text-color: #333;
+            --x5-green: #00853f;        /* Фирменный зеленый Пятёрочки */
+            --x5-dark-green: #005c2a;   /* Глубокий зеленый */
+            --perekrestok-red: #e31e24; /* Акцентный красный Перекрёстка */
+            --secondary-color: #1a1a1a;  /* Строгий темно-серый */
+            --bg-light: #f4f7f5;
+            --text-color: #222;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { color: var(--text-color); line-height: 1.6; background-color: #fff; }
         
-        header { background: var(--secondary-color); color: #fff; padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        header { background: var(--secondary-color); color: #fff; padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.15); border-bottom: 3px solid var(--x5-green); }
         .container { width: 90%; max-width: 1150px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
         .logo { display: flex; align-items: center; text-decoration: none; color: #fff; font-size: 22px; font-weight: 800; letter-spacing: 1px; }
-        .logo .box { background: var(--primary-color); color: #fff; padding: 5px 10px; border-radius: 4px; margin-right: 8px; font-size: 20px; }
-        .logo span { color: var(--accent-color); }
+        .logo .box { background: var(--x5-green); color: #fff; padding: 5px 10px; border-radius: 4px; margin-right: 8px; font-size: 20px; }
+        .logo span { color: var(--perekrestok-red); }
 
         .phone-whatsapp { font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
-        .phone-whatsapp:hover { color: var(--accent-color); }
+        .phone-whatsapp:hover { color: var(--x5-green); }
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 12px; padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase; }
 
-        .hero { background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%); color: #fff; padding: 150px 0 90px 0; text-align: center; }
+        .hero { background: linear-gradient(135deg, #111a14 0%, #1a2b20 100%); color: #fff; padding: 160px 0 100px 0; text-align: center; border-bottom: 5px solid var(--x5-green); }
         .hero h1 { font-size: 40px; margin-bottom: 20px; line-height: 1.2; }
-        .hero h1 span { color: var(--accent-color); }
+        .hero h1 span { color: var(--perekrestok-red); }
         .hero p { font-size: 19px; margin-bottom: 35px; color: #dcdde1; max-width: 850px; margin-left: auto; margin-right: auto; }
         
-        .btn { display: inline-block; background: var(--primary-color); color: #fff; padding: 15px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 5px; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); width: 100%; text-align: center; }
-        .btn:hover { background: #219653; }
+        .btn { display: inline-block; background: var(--x5-green); color: #fff; padding: 15px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 6px; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.4); width: 100%; text-align: center; }
+        .btn:hover { background: var(--x5-dark-green); }
         
         section { padding: 70px 0; }
         .bg-light { background-color: var(--bg-light); }
-        h2 { text-align: center; font-size: 32px; margin-bottom: 45px; color: var(--secondary-color); }
+        h2 { text-align: center; font-size: 32px; margin-bottom: 45px; color: var(--secondary-color); position: relative; }
+        h2::after { content: ''; display: block; width: 60px; height: 4px; background: var(--perekrestok-red); margin: 15px auto 0; border-radius: 2px; }
         
         .grid-3-solutions { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
-        .card-solution { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color); }
+        .card-solution { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--x5-green); }
         .card-solution h3 { margin-bottom: 15px; color: var(--secondary-color); font-size: 22px; }
         .card-solution p { color: #555; }
 
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-        .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-color); }
+        .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--perekrestok-red); }
         .card h3 { margin-bottom: 15px; color: var(--secondary-color); font-size: 20px; }
 
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; counter-reset: step; }
-        .step { background: #fff; padding: 35px 20px 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); position: relative; }
-        .step::before { counter-increment: step; content: counter(step); position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary-color); color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .step { background: #fff; padding: 35px 20px 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); position: relative; border-bottom: 3px solid var(--x5-green); }
+        .step::before { counter-increment: step; content: counter(step); position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--x5-green); color: #fff; width: 35px; height: 35px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
         .step h3 { margin-top: 10px; margin-bottom: 10px; font-size: 17px; color: var(--secondary-color); }
 
-        .form-section { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: #fff; text-align: center; }
+        .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: left; }
         .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 26px; }
         .form-group { margin-bottom: 15px; }
         .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
         .form-group input, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 5px rgba(0, 133, 63, 0.3); }
         
-        footer { background: var(--secondary-color); color: #aaa; text-align: center; padding: 30px 0; font-size: 14px; }
+        footer { background: var(--secondary-color); color: #aaa; text-align: center; padding: 30px 0; font-size: 14px; border-top: 3px solid var(--perekrestok-red); }
         
         @media (max-width: 768px) {
             .hero h1 { font-size: 30px; }
@@ -153,7 +156,7 @@
                 <h3>Заявка на заведение товара в X5 Group</h3>
                 <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: center;">Все заявки отправляются напрямую на нашу почту: <b>isket.group@bk.ru</b></p>
                 
-                <form action="https://formspree.io/f/mkjgeynq" method="POST">
+                <form action="https://formspree.io/f/mkjgeynq" method="POST"
                     <div class="form-group">
                         <label>Ваше имя *</label>
                         <input type="text" name="name" placeholder="Иван" required>
