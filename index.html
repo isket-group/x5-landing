@@ -22,15 +22,16 @@
         .logo .box { background: var(--primary-color); color: #fff; padding: 5px 10px; border-radius: 4px; margin-right: 8px; font-size: 20px; }
         .logo span { color: var(--accent-color); }
 
-        .phone { font-size: 18px; font-weight: bold; color: #fff; text-decoration: none; transition: color 0.3s; }
-        .phone:hover { color: var(--accent-color); }
-        
+        .phone-whatsapp { font-size: 16px; font-weight: bold; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; }
+        .phone-whatsapp:hover { color: var(--accent-color); }
+        .whatsapp-tag { background: #25d366; color: #fff; font-size: 12px; padding: 2px 6px; border-radius: 4px; font-weight: 600; text-transform: uppercase; }
+
         .hero { background: linear-gradient(135deg, #1e272e 0%, #2f3640 100%); color: #fff; padding: 150px 0 90px 0; text-align: center; }
         .hero h1 { font-size: 40px; margin-bottom: 20px; line-height: 1.2; }
         .hero h1 span { color: var(--accent-color); }
         .hero p { font-size: 19px; margin-bottom: 35px; color: #dcdde1; max-width: 850px; margin-left: auto; margin-right: auto; }
         
-        .btn { display: inline-block; background: var(--primary-color); color: #fff; padding: 15px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 5px; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); }
+        .btn { display: inline-block; background: var(--primary-color); color: #fff; padding: 15px 35px; font-size: 18px; font-weight: bold; text-decoration: none; border-radius: 5px; transition: background 0.3s; border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(39, 174, 96, 0.4); width: 100%; text-align: center; }
         .btn:hover { background: #219653; }
         
         section { padding: 70px 0; }
@@ -50,18 +51,18 @@
         .step h3 { margin-top: 10px; margin-bottom: 10px; font-size: 17px; color: var(--secondary-color); }
 
         .form-section { background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%); color: #fff; text-align: center; }
-        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: left; }
-        .form-container h3 { text-align: center; margin-bottom: 25px; color: var(--secondary-color); font-size: 26px; }
-        .form-group { margin-bottom: 20px; }
-        .form-group label { display: block; margin-bottom: 8px; font-weight: 600; }
-        .form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; }
-        .form-container .btn { width: 100%; text-align: center; }
-
+        .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 40px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); text-align: left; }
+        .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 26px; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 11px; border: 1px solid #ccc; border-radius: 5px; font-size: 15px; }
+        
         footer { background: var(--secondary-color); color: #aaa; text-align: center; padding: 30px 0; font-size: 14px; }
         
         @media (max-width: 768px) {
             .hero h1 { font-size: 30px; }
             .hero p { font-size: 16px; }
+            .container { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -70,7 +71,9 @@
     <header>
         <div class="container">
             <a href="#" class="logo"><div class="box">IS</div>ISKET <span>GROUP</span></a>
-            <a href="tel:+79175242209" class="phone">+7 (917) 524-22-09</a>
+            <a href="https://wa.me/905306610835" target="_blank" class="phone-whatsapp">
+                +90 (530) 661-08-35 <span class="whatsapp-tag">WhatsApp</span>
+            </a>
         </div>
     </header>
 
@@ -78,7 +81,7 @@
         <div class="container" style="flex-direction: column;">
             <h1>Официальный выход в <span>X5 Group</span><br>для производителей и трейдеров под ключ</h1>
             <p>Полное сопровождение поставок: от легализации статуса производителя и прохождения жестких аудитов торговой сети до первой отгрузки без штрафов.</p>
-            <a href="#contact" class="btn">Получить консультацию эксперта</a>
+            <a href="#contact" class="btn" style="width: auto;">Получить консультацию эксперта</a>
         </div>
     </section>
 
@@ -137,21 +140,40 @@
             <div class="form-container">
                 <h3>Заявка на заведение товара в X5 Group</h3>
                 <!-- Замените https://formspree.io/f/your_form_id на ваш реальный URL от Formspree для получения заявок на isket.group@bk.ru -->
-                <p style="font-size: 13px; color: #666; margin-bottom: 15px; text-align: center;">Все заявки отправляются напрямую на нашу почту: <b>isket.group@bk.ru</b></p>
+                <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: center;">Все заявки отправляются напрямую на нашу почту: <b>isket.group@bk.ru</b></p>
+                
                 <form action="https://formspree.io/f/mkjgeynq" method="POST">
                     <div class="form-group">
-                        <label>Ваше имя</label>
+                        <label>Ваше имя *</label>
                         <input type="text" name="name" placeholder="Иван" required>
                     </div>
+                    
                     <div class="form-group">
-                        <label>Номер телефона</label>
+                        <label>Номер телефона (WhatsApp) *</label>
                         <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" required>
                     </div>
+
                     <div class="form-group">
-                        <label>Ваш статус и продукция</label>
-                        <textarea name="message" rows="3" placeholder="Например: Трейдер / Овощи, Крым"></textarea>
+                        <label>Электронная почта (Email) *</label>
+                        <input type="email" name="email" placeholder="example@bk.ru" required>
                     </div>
-                    <button type="submit" class="btn">Обсудить проект</button>
+
+                    <div class="form-group">
+                        <label>Ваш статус (Трейдер / Производитель) и продукция *</label>
+                        <input type="text" name="status_and_goods" placeholder="Трейдер / Овощи, томаты" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Наименование ООО *</label>
+                        <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Юридический адрес *</label>
+                        <input type="text" name="legal_address" placeholder="г. Москва, ул. Примерная, д. 1" required>
+                    </div>
+
+                    <button type="submit" class="btn" style="margin-top: 10px;">Обсудить проект</button>
                 </form>
             </div>
         </div>
