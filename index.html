@@ -38,12 +38,14 @@
         .bg-light { background-color: var(--bg-light); }
         h2 { text-align: center; font-size: 32px; margin-bottom: 45px; color: var(--secondary-color); }
         
+        .grid-3-solutions { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        .card-solution { background: #fff; padding: 35px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color); }
+        .card-solution h3 { margin-bottom: 15px; color: var(--secondary-color); font-size: 22px; }
+        .card-solution p { color: #555; }
+
         .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
         .card { background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-color); }
         .card h3 { margin-bottom: 15px; color: var(--secondary-color); font-size: 20px; }
-        
-        .highlight-box { background: #e8f8f5; border-left: 5px solid var(--primary-color); padding: 25px; border-radius: 0 8px 8px 0; margin-bottom: 50px; }
-        .highlight-box h3 { color: var(--secondary-color); margin-bottom: 10px; font-size: 22px; }
 
         .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; counter-reset: step; }
         .step { background: #fff; padding: 35px 20px 25px 20px; border-radius: 8px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.05); position: relative; }
@@ -79,33 +81,43 @@
 
     <section class="hero">
         <div class="container" style="flex-direction: column;">
-            <h1>Официальный выход в <span>X5 Group</span><br>для производителей и трейдеров под ключ</h1>
-            <p>Полное сопровождение поставок: от легализации статуса производителя и прохождения жестких аудитов торговой сети до первой отгрузки без штрафов.</p>
+            <h1>Контракты с <span>X5 Group</span>, продажи и расширение географии под ключ</h1>
+            <p>Работаем с производителями и трейдерами. Заключаем договоры, помогаем продавать товар, масштабируем действующие поставки на новые регионы (например, с Москвы на СЗФО и северные РЦ) и решаем любые проблемы с сетью.</p>
             <a href="#contact" class="btn" style="width: auto;">Получить консультацию эксперта</a>
         </div>
     </section>
 
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
-            <h2>Работаем как с производителями, так и с трейдерами</h2>
+            <h2>Комплексные решения для вашего бизнеса</h2>
             
-            <div class="highlight-box">
-                <h3>Уникальное решение для трейдеров: Сделаем из трейдера «Производителя»</h3>
-                <p>У вас нет своего хозяйства, но есть отличный товар? Мы официально закрепляем за вами поля, склады хранения с температурным режимом, цепочки внесения удобрений и парк рефрижераторов. Полностью формируем пакет документов сельхозпроизводителя и успешно проводим внутренний аудит сети для заключения прямого контракта.</p>
+            <div class="grid-3-solutions">
+                <div class="card-solution">
+                    <h3>Для производителей</h3>
+                    <p>Сбор документации, прохождение аудитов сети и официальное заключение прямых контрактов на поставку вашей продукции в X5 Group.</p>
+                </div>
+                <div class="card-solution">
+                    <h3>Для трейдеров (Сделаем «Производителем»)</h3>
+                    <p>Закрепляем за вами поля, склады с температурным режимом, удобрения и рефрижераторы. Оформляем пакет сельхозпроизводителя и проводим аудит.</p>
+                </div>
+                <div class="card-solution">
+                    <h3>Масштабирование для действующих поставщиков</h3>
+                    <p>Если у вас уже есть контракт с ритейлом (например, поставки на Москву), поможем открыть новые территории — например, СЗФО для отгрузок на северные РЦ Санкт-Петербурга.</p>
+                </div>
             </div>
 
             <div class="grid-3">
                 <div class="card">
-                    <h3>Все регионы РФ и Новые территории</h3>
-                    <p>Заводим в сеть с привязкой по регионам (Москва/Центр, Юг, новые территории) с возможностью дальнейшего масштабного расширения географии поставок.</p>
+                    <h3>Продажи и продвижение</h3>
+                    <p>Активно помогаем продавать вашу продукцию, обеспечивая стабильный объем реализации и загрузку распределительных центров сети.</p>
                 </div>
                 <div class="card">
-                    <h3>Прохождение аудита сети</h3>
-                    <p>Готовим вашу производственную или закрепленную площадку к проверке службы безопасности и качества X5 Group без рисков отказа.</p>
+                    <h3>Решение проблем и снятие штрафов</h3>
+                    <p>Благодаря тесным связям с ритейлом оперативно урегулируем спорные вопросы по заказам, претензиям и аннулируем необоснованные штрафы.</p>
                 </div>
                 <div class="card">
-                    <h3>Защита от штрафов и возвратов</h3>
-                    <p>Настраиваем уровень сервиса (SLT), логистику и документооборот (ЭДО, Честный ЗНАК), исключая убытки и блокировки на РЦ.</p>
+                    <h3>Все регионы РФ</h3>
+                    <p>Заводим в сеть с привязкой по регионам (Центр, Юг, новые территории) с возможностью дальнейшего масштабного расширения географии поставок.</p>
                 </div>
             </div>
         </div>
@@ -139,7 +151,6 @@
         <div class="container" style="flex-direction: column;">
             <div class="form-container">
                 <h3>Заявка на заведение товара в X5 Group</h3>
-                <<form action="[https://formspree.io/f/mkjgeynq](https://formspree.io/f/mkjgeynq)" method="POST">!
                 <p style="font-size: 13px; color: #666; margin-bottom: 20px; text-align: center;">Все заявки отправляются напрямую на нашу почту: <b>isket.group@bk.ru</b></p>
                 
                 <form action="https://formspree.io/f/mkjgeynq" method="POST">
@@ -159,8 +170,8 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Ваш статус (Трейдер / Производитель) и продукция *</label>
-                        <input type="text" name="status_and_goods" placeholder="Трейдер / Овощи, томаты" required>
+                        <label>Ваш статус и задача (Производитель / Трейдер / Расширение географии) *</label>
+                        <input type="text" name="status_and_goods" placeholder="Есть контракт, хочу в СЗФО / Овощи" required>
                     </div>
 
                     <div class="form-group">
