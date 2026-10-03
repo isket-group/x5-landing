@@ -107,6 +107,11 @@
         .tracker-info h5 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
         .tracker-info p { font-size: 14px; color: #555; margin-bottom: 6px; }
 
+        /* Уведомление об успешной генерации токена */
+        .token-success-box { background: #e8f8f5; border: 2px dashed var(--x5-green); padding: 25px; border-radius: 10px; text-align: center; display: none; margin-top: 15px; }
+        .token-success-box h4 { color: var(--x5-dark-green); font-size: 18px; margin-bottom: 8px; }
+        .generated-token { font-size: 26px; font-weight: 800; color: var(--secondary-color); background: #fff; padding: 10px; border-radius: 6px; display: inline-block; margin: 10px 0; letter-spacing: 1px; border: 1px solid #a3e4d7; }
+
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 45px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; }
         .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 28px; font-weight: 800; }
@@ -302,8 +307,9 @@
             <h3>Калькулятор стоимости и заявка на договор с X5</h3>
             <p>Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость и отправить заявку в работу.</p>
             
-            <form action="https://formspree.io/f/mkjgeynq" method="POST" id="contractForm">
+            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на заключение договора (Калькулятор)')">
                 <input type="hidden" name="form_type" value="Заявка на заключение договора (Калькулятор)">
+                <input type="hidden" name="generated_token" id="tokenContract">
 
                 <div class="form-group">
                     <label>1. Наименование ООО *</label>
@@ -383,6 +389,14 @@
 
                 <button type="submit" class="btn btn-red" style="width: 100%;">Отправить заявку на заключение договора</button>
             </form>
+
+            <!-- Блок успешной генерации токена -->
+            <div id="successBox-contract" class="token-success-box">
+                <h4>🎉 Заявка успешно отправлена!</h4>
+                <p>Вашему персональному запросу присвоен уникальный номер:</p>
+                <div class="generated-token" id="tokenDisplay-contract">ISKET-0000</div>
+                <p style="font-size: 13px; color: #555;">Сохраните этот номер. Вы можете ввести его в разделе «Статус заявки», чтобы следить за ходом работы.</p>
+            </div>
         </div>
     </div>
 
@@ -394,8 +408,9 @@
             <h3>Изготовление документации производителя</h3>
             <p>Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
             
-            <form action="https://formspree.io/f/mkjgeynq" method="POST">
+            <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на изготовление документации производителя')">
                 <input type="hidden" name="form_type" value="Заявка на изготовление документации производителя">
+                <input type="hidden" name="generated_token" id="tokenDocs">
 
                 <div class="form-group">
                     <label>1. Наименование ООО *</label>
@@ -440,6 +455,13 @@
 
                 <button type="submit" class="btn" style="width: 100%;">Заказать подготовку документации</button>
             </form>
+
+            <div id="successBox-docs" class="token-success-box">
+                <h4>🎉 Заявка успешно отправлена!</h4>
+                <p>Ваш персональный номер для отслеживания:</p>
+                <div class="generated-token" id="tokenDisplay-docs">ISKET-0000</div>
+                <p style="font-size: 13px; color: #555;">Сохраните его для проверки статуса.</p>
+            </div>
         </div>
     </div>
 
@@ -451,8 +473,9 @@
             <h3>Управление проблемным заказом</h3>
             <p>Заполните параметры проблемного заказа, и наш специалист оперативно возьмет его в работу.</p>
             
-            <form action="https://formspree.io/f/mkjgeynq" method="POST">
+            <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Заявка по проблемному заказу / Штрафам')">
                 <input type="hidden" name="form_type" value="Заявка по проблемному заказу / Штрафам">
+                <input type="hidden" name="generated_token" id="tokenOrder">
 
                 <div class="form-group">
                     <label>1. № заказа *</label>
@@ -501,6 +524,12 @@
 
                 <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить заявку в работу</button>
             </form>
+
+            <div id="successBox-order" class="token-success-box">
+                <h4>🎉 Заявка принята в работу!</h4>
+                <p>Номер для отслеживания статуса урегулирования:</p>
+                <div class="generated-token" id="tokenDisplay-order">ISKET-0000</div>
+            </div>
         </div>
     </div>
 
@@ -512,8 +541,9 @@
             <h3>Приобретение готовой фирмы с контрактом X5</h3>
             <p>Укажите параметры и характеристики необходимой компании для быстрой интеграции.</p>
             
-            <form action="https://formspree.io/f/mkjgeynq" method="POST">
+            <form id="businessForm" onsubmit="handleFormSubmit(event, 'businessForm', 'Заявка на покупку готовой фирмы (M&A)')">
                 <input type="hidden" name="form_type" value="Заявка на покупку готовой фирмы (M&A)">
+                <input type="hidden" name="generated_token" id="tokenBusiness">
 
                 <div class="form-group">
                     <label>Наименование или Имя клиента *</label>
@@ -574,6 +604,12 @@
 
                 <button type="submit" class="btn" style="width: 100%; margin-top: 5px;">Запросить доступные варианты</button>
             </form>
+
+            <div id="successBox-business" class="token-success-box">
+                <h4>🎉 Запрос успешно сформирован!</h4>
+                <p>Номер вашей заявки для отслеживания:</p>
+                <div class="generated-token" id="tokenDisplay-business">ISKET-0000</div>
+            </div>
         </div>
     </div>
 
@@ -648,7 +684,47 @@
             }
         }
 
-        // Автоматическая проверка статуса через вашу Google Таблицу
+        // Автогенерация уникального токена (например, ISKET-8492) и отправка на Formspree
+        function handleFormSubmit(event, formId, formTypeName) {
+            event.preventDefault();
+            const form = document.getElementById(formId);
+            
+            // Генерируем случайный 4-значный номер
+            const randomNum = Math.floor(1000 + Math.random() * 9000);
+            const token = "ISKET-" + randomNum;
+
+            // Определяем суффикс для элементов модалки
+            let suffix = 'contract';
+            if (formId === 'docsForm') suffix = 'docs';
+            if (formId === 'orderForm') suffix = 'order';
+            if (formId === 'businessForm') suffix = 'business';
+
+            // Записываем токен в скрытое поле формы и в блок показа
+            document.getElementById('token' + suffix.charAt(0).toUpperCase() + suffix.slice(1)).value = token;
+            document.getElementById('tokenDisplay-' + suffix).innerText = token;
+
+            // Собираем данные формы
+            const formData = new FormData(form);
+
+            // Отправляем через fetch на Formspree без перезагрузки страницы
+            fetch("https://formspree.io/f/mkjgeynq", {
+                method: "POST",
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    // Скрываем форму и показываем блок с токеном
+                    form.style.display = 'none';
+                    document.getElementById('successBox-' + suffix).style.display = 'block';
+                } else {
+                    alert("Произошла ошибка при отправке. Попробуйте еще раз.");
+                }
+            }).catch(error => {
+                alert("Ошибка соединения. Проверьте интернет-соединение.");
+            });
+        }
+
+        // Автоматическая проверка статуса через Google Таблицу
         async function checkOrderStatus() {
             const token = document.getElementById('orderTokenInput').value.trim();
             const trackerBox = document.getElementById('statusTrackerBox');
