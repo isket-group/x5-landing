@@ -94,7 +94,7 @@
         .calc-result-box { background: #1c2e22; padding: 25px; border-radius: 10px; border-left: 5px solid var(--perekrestok-red); text-align: left; }
         .calc-result-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; color: #bbb; }
         .calc-result-row span:last-child { font-weight: 700; color: #fff; }
-        .calc-result-highlight { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 16px; color: #25d366; font-weight: 700; display: flex; justify-content: space-between; }
+        .calc-result-highlight { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 15px; color: #25d366; font-weight: 700; display: flex; justify-content: space-between; }
 
         .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%; }
@@ -270,33 +270,33 @@
         </div>
     </section>
 
-    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ШТРАФОВ (ЛИД-МАГНИТ) -->
+    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ШТРАФОВ -->
     <section>
         <div class="container" style="flex-direction: column;">
             <h2>Калькулятор экономии на штрафах</h2>
-            <p class="section-subtitle">Оцените, сколько денег вы ежемесячно теряете на претензиях сети и сколько мы вернем в ваш бюджет</p>
+            <p class="section-subtitle">Передвигайте ползунок, чтобы увидеть наглядный расчет стоимости штрафа и нашей экономии для вас</p>
 
             <div class="calc-section-box">
                 <div class="calc-grid">
                     <div class="calc-input-group">
-                        <label>Сумма ежемесячных поставок, по которым прилетают штрафы:</label>
+                        <label>Сумма поставки / заказа:</label>
                         <div class="calc-sum-display" id="fineOrderSumText">1 000 000 ₽</div>
-                        <input type="range" id="fineOrderSlider" min="200000" max="10000000" step="100000" value="1000000" oninput="calculateFineSavings()">
-                        <p style="font-size: 12px; color: #888; margin-top: 5px;">* Передвигайте ползунок для расчета вашей экономии</p>
+                        <input type="range" id="fineOrderSlider" min="100000" max="5000000" step="50000" value="1000000" oninput="calculateFineSavings()">
+                        <p style="font-size: 12px; color: #888; margin-top: 5px;">* Передвигайте ползунок для изменения суммы</p>
                     </div>
 
                     <div class="calc-result-box">
                         <div class="calc-result-row">
                             <span>Штраф сети (12%):</span>
-                            <span id="stdFineYearText">120 000 ₽ / мес</span>
+                            <span id="stdFineText">120 000 ₽</span>
                         </div>
                         <div class="calc-result-row">
                             <span>Штраф с нашей защитой (6%):</span>
-                            <span id="ourFineYearText">60 000 ₽ / мес</span>
+                            <span id="ourFineText">60 000 ₽</span>
                         </div>
                         <div class="calc-result-highlight">
-                            <span>Ваша экономия за год:</span>
-                            <span id="netSavingsYearText">720 000 ₽</span>
+                            <span>Возврат от нашей работы:</span>
+                            <span id="netSavingsText">Возвращаем 50% суммы штрафа</span>
                         </div>
                     </div>
                 </div>
@@ -827,27 +827,21 @@
             }
         }
 
-        // Логика расчета калькулятора штрафов
+        // Логика расчета калькулятора штрафов (исправленная под заказ и возврат 50%)
         function calculateFineSavings() {
             const orderSum = parseInt(document.getElementById('fineOrderSlider').value);
             
-            // Форматируем сумму заказов
+            // Форматируем сумму поставки
             document.getElementById('fineOrderSumText').innerText = orderSum.toLocaleString('ru-RU') + ' ₽';
             
-            // Штраф сети 12% от суммы заказа в месяц
-            const monthlyStdFine = orderSum * 0.12;
-            const annualStdFine = monthlyStdFine * 12;
+            // Стандартный штраф сети 12% от суммы поставки
+            const stdFine = orderSum * 0.12;
 
-            // Штраф с нашей защитой 6% (возврат 50%)
-            const monthlyOurFine = orderSum * 0.06;
-            const annualOurFine = monthlyOurFine * 12;
+            // Штраф с нашей защитой 6% (возвращаем половину)
+            const ourFine = orderSum * 0.06;
 
-            // Чистая экономия за год (разница между стандартным и нашим штрафом)
-            const annualSavings = annualStdFine - annualOurFine;
-
-            document.getElementById('stdFineYearText').innerText = Math.round(monthlyStdFine).toLocaleString('ru-RU') + ' ₽ / мес';
-            document.getElementById('ourFineYearText').innerText = Math.round(monthlyOurFine).toLocaleString('ru-RU') + ' ₽ / мес';
-            document.getElementById('netSavingsYearText').innerText = Math.round(annualSavings).toLocaleString('ru-RU') + ' ₽';
+            document.getElementById('stdFineText').innerText = Math.round(stdFine).toLocaleString('ru-RU') + ' ₽';
+            document.getElementById('ourFineText').innerText = Math.round(ourFine).toLocaleString('ru-RU') + ' ₽';
         }
 
         // Вызываем расчет при загрузке страницы
@@ -972,7 +966,7 @@
             }
 
             if (supplierCat === 'Недействующий поставщик') {
-                basePrice += 200000;
+                basePrice += 200,000; // оставим как было: +200000
             }
 
             if (compCat === 'Трейдер') {
