@@ -50,7 +50,7 @@
         .stat-num span { color: var(--perekrestok-red); }
         .stat-desc { font-size: 14px; color: #a0a8a3; margin-top: 5px; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.3); width: 100%; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.3); width: 100%; }
         .btn:hover { background: var(--x5-dark-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 133, 63, 0.4); }
         .btn-red { background: var(--perekrestok-red); box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3); }
         .btn-red:hover { background: #c5161c; box-shadow: 0 6px 20px rgba(227, 30, 36, 0.4); }
@@ -61,7 +61,8 @@
         h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--perekrestok-red); margin: 15px auto 45px auto; border-radius: 2px; }
         .section-subtitle { text-align: center; color: #555; font-size: 17px; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; }
 
-        .directions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        /* Идеальная симметричная сетка направлений (по 3 карточки в ряд) */
+        .directions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1180px; margin: 0 auto; }
         .direction-card { background: var(--card-bg); padding: 35px 30px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
         .direction-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); border-color: #d1d9d4; }
         
@@ -118,6 +119,9 @@
         
         footer { background: var(--secondary-color); color: #999; text-align: center; padding: 35px 0; font-size: 14px; border-top: 3px solid var(--perekrestok-red); }
         
+        @media (max-width: 992px) {
+            .directions-grid { grid-template-columns: repeat(2, 1fr); }
+        }
         @media (max-width: 768px) {
             .hero h1 { font-size: 30px; }
             .hero p { font-size: 16px; }
@@ -125,6 +129,7 @@
             .modal-container { padding: 30px 20px; }
             .stats-bar { gap: 25px; }
             .header-right { flex-direction: column; gap: 8px; }
+            .directions-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -165,12 +170,14 @@
         </div>
     </section>
 
+    <!-- Направления деятельности (Идеальная симметричная сетка 3 + 2) -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Направления нашей деятельности</h2>
             <p class="section-subtitle">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу</p>
             
             <div class="directions-grid">
+                <!-- Карточка 1 -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">📄</div>
@@ -181,6 +188,7 @@
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
 
+                <!-- Карточка 2 -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">📋</div>
@@ -191,6 +199,7 @@
                     <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать доки</button>
                 </div>
 
+                <!-- Карточка 3 -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">👥</div>
@@ -201,6 +210,7 @@
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
 
+                <!-- Карточка 4 -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">⚖️</div>
@@ -211,6 +221,7 @@
                     <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
                 </div>
 
+                <!-- Карточка 5 -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">🏢</div>
@@ -684,36 +695,30 @@
             }
         }
 
-        // Автогенерация уникального токена (например, ISKET-8492) и отправка на Formspree
+        // Автогенерация токена и отправка на Formspree
         function handleFormSubmit(event, formId, formTypeName) {
             event.preventDefault();
             const form = document.getElementById(formId);
             
-            // Генерируем случайный 4-значный номер
             const randomNum = Math.floor(1000 + Math.random() * 9000);
             const token = "ISKET-" + randomNum;
 
-            // Определяем суффикс для элементов модалки
             let suffix = 'contract';
             if (formId === 'docsForm') suffix = 'docs';
             if (formId === 'orderForm') suffix = 'order';
             if (formId === 'businessForm') suffix = 'business';
 
-            // Записываем токен в скрытое поле формы и в блок показа
             document.getElementById('token' + suffix.charAt(0).toUpperCase() + suffix.slice(1)).value = token;
             document.getElementById('tokenDisplay-' + suffix).innerText = token;
 
-            // Собираем данные формы
             const formData = new FormData(form);
 
-            // Отправляем через fetch на Formspree без перезагрузки страницы
             fetch("https://formspree.io/f/mkjgeynq", {
                 method: "POST",
                 body: formData,
                 headers: { 'Accept': 'application/json' }
             }).then(response => {
                 if (response.ok) {
-                    // Скрываем форму и показываем блок с токеном
                     form.style.display = 'none';
                     document.getElementById('successBox-' + suffix).style.display = 'block';
                 } else {
