@@ -37,7 +37,7 @@
         .phone-whatsapp:hover { color: var(--x5-green); }
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Плавающая кнопка WhatsApp в правом нижнем углу */
+        /* Плавающая кнопка WhatsApp */
         .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
         .floating-whatsapp:hover { transform: scale(1.1); background: #20ba5a; }
         .floating-tooltip { position: absolute; right: 75px; background: #fff; color: #333; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.1); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; border: 1px solid #eaeaea; }
@@ -84,6 +84,18 @@
         .case-text { font-size: 14px; color: #555; margin-bottom: 15px; }
         .case-result { background: #f4f7f5; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--x5-dark-green); }
 
+        /* Стили для Калькулятора штрафов */
+        .calc-section-box { background: #121a15; color: #fff; padding: 40px; border-radius: 14px; max-width: 1000px; margin: 0 auto; border: 1px solid rgba(0,133,63,0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+        .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: center; }
+        .calc-input-group label { display: block; margin-bottom: 10px; font-size: 15px; color: #d0d5d1; font-weight: 500; }
+        .calc-input-group input[type="range"] { width: 100%; accent-color: var(--x5-green); height: 8px; cursor: pointer; margin-bottom: 15px; }
+        .calc-sum-display { font-size: 26px; font-weight: 800; color: #fff; background: rgba(255,255,255,0.05); padding: 10px 15px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); display: inline-block; }
+        
+        .calc-result-box { background: #1c2e22; padding: 25px; border-radius: 10px; border-left: 5px solid var(--perekrestok-red); text-align: left; }
+        .calc-result-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; color: #bbb; }
+        .calc-result-row span:last-child { font-weight: 700; color: #fff; }
+        .calc-result-highlight { margin-top: 15px; padding-top: 15px; border-top: 1px solid rgba(255,255,255,0.1); font-size: 16px; color: #25d366; font-weight: 700; display: flex; justify-content: space-between; }
+
         .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%; }
         .faq-card h4 { font-size: 17px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
@@ -124,7 +136,7 @@
         
         @media (max-width: 992px) {
             .directions-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
-            .cases-grid, .faq-grid { grid-template-columns: 1fr; }
+            .cases-grid, .faq-grid, .calc-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
             body { font-size: 14px; }
@@ -147,6 +159,7 @@
             
             .directions-grid, .cases-grid, .faq-grid { grid-template-columns: 1fr; gap: 20px; width: 100%; }
             .direction-card, .case-card, .faq-card { padding: 22px 18px; width: 100%; }
+            .calc-section-box { padding: 20px 15px; }
             
             .modal-container { padding: 25px 15px; max-height: 95vh; width: 95%; }
             .form-container { padding: 25px 15px; width: 100%; }
@@ -257,8 +270,46 @@
         </div>
     </section>
 
-    <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
+    <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ШТРАФОВ (ЛИД-МАГНИТ) -->
     <section>
+        <div class="container" style="flex-direction: column;">
+            <h2>Калькулятор экономии на штрафах</h2>
+            <p class="section-subtitle">Оцените, сколько денег вы ежемесячно теряете на претензиях сети и сколько мы вернем в ваш бюджет</p>
+
+            <div class="calc-section-box">
+                <div class="calc-grid">
+                    <div class="calc-input-group">
+                        <label>Сумма ежемесячных поставок, по которым прилетают штрафы:</label>
+                        <div class="calc-sum-display" id="fineOrderSumText">1 000 000 ₽</div>
+                        <input type="range" id="fineOrderSlider" min="200000" max="10000000" step="100000" value="1000000" oninput="calculateFineSavings()">
+                        <p style="font-size: 12px; color: #888; margin-top: 5px;">* Передвигайте ползунок для расчета вашей экономии</p>
+                    </div>
+
+                    <div class="calc-result-box">
+                        <div class="calc-result-row">
+                            <span>Штраф сети (12%):</span>
+                            <span id="stdFineYearText">120 000 ₽ / мес</span>
+                        </div>
+                        <div class="calc-result-row">
+                            <span>Штраф с нашей защитой (6%):</span>
+                            <span id="ourFineYearText">60 000 ₽ / мес</span>
+                        </div>
+                        <div class="calc-result-highlight">
+                            <span>Ваша экономия за год:</span>
+                            <span id="netSavingsYearText">720 000 ₽</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn btn-red" style="max-width: 400px; margin: 0 auto;" onclick="openModal('modal-fine-calc')">Запустить аннулирование штрафов</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
+    <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Решенные сложные задачи</h2>
             <p class="section-subtitle">Примеры работы с нестандартными ограничениями торговых сетей (конфиденциальность соблюдена)</p>
@@ -282,7 +333,7 @@
     </section>
 
     <!-- БЛОК FAQ -->
-    <section class="bg-light">
+    <section>
         <div class="container" style="flex-direction: column;">
             <h2>Часто задаваемые вопросы и гарантии</h2>
             <p class="section-subtitle">Все, что нужно знать о сроках, оплате и безопасности работы</p>
@@ -423,13 +474,58 @@
                 <button type="submit" class="btn btn-red" style="width: 100%;">Отправить заявку на заключение договора</button>
             </form>
 
-            <!-- Блок успешной генерации токена с быстрой связью в WhatsApp -->
+            <!-- Блок успешной генерации токена -->
             <div id="successBox-contract" class="token-success-box">
                 <h4>🎉 Заявка успешно отправлена!</h4>
                 <p>Вашему персональному запросу присвоен уникальный номер:</p>
                 <div class="generated-token" id="tokenDisplay-contract">ISKET-0000</div>
                 <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Сохраните этот номер для отслеживания в личном кабинете.</p>
                 <a id="whatsappLink-contract" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp с этим номером</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ЗАЯВКА ИЗ КАЛЬКУЛЯТОРА ШТРАФОВ -->
+    <div id="modal-fine-calc" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-fine-calc')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px;">Юридический отдел</span>
+            <h3>Заявка на аннулирование штрафов</h3>
+            <p>Заполните данные, и наш юрист свяжется с вами для аудита претензий сети.</p>
+            
+            <form id="fineForm" onsubmit="handleFormSubmit(event, 'fineForm', 'Заявка по калькулятору штрафов')">
+                <input type="hidden" name="form_type" value="Заявка по калькулятору штрафов">
+                <input type="hidden" name="generated_token" id="tokenFine">
+
+                <div class="form-group">
+                    <label>1. Наименование ООО *</label>
+                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Торговая сеть *</label>
+                    <select name="retail_network" required>
+                        <option value="" disabled selected>Выберите сеть</option>
+                        <option value="Пятерочка">Пятёрочка</option>
+                        <option value="Перекресток">Перекрёсток</option>
+                        <option value="Чижик">Чижик</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить заявку на аудит</button>
+            </form>
+
+            <div id="successBox-fine" class="token-success-box">
+                <h4>🎉 Заявка принята в работу!</h4>
+                <p>Номер вашей заявки для отслеживания:</p>
+                <div class="generated-token" id="tokenDisplay-fine">ISKET-0000</div>
+                <br>
+                <a id="whatsappLink-fine" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp по штрафам</a>
             </div>
         </div>
     </div>
@@ -731,7 +827,35 @@
             }
         }
 
-        // Автогенерация токена и мгновенная ссылка в WhatsApp с этим номером
+        // Логика расчета калькулятора штрафов
+        function calculateFineSavings() {
+            const orderSum = parseInt(document.getElementById('fineOrderSlider').value);
+            
+            // Форматируем сумму заказов
+            document.getElementById('fineOrderSumText').innerText = orderSum.toLocaleString('ru-RU') + ' ₽';
+            
+            // Штраф сети 12% от суммы заказа в месяц
+            const monthlyStdFine = orderSum * 0.12;
+            const annualStdFine = monthlyStdFine * 12;
+
+            // Штраф с нашей защитой 6% (возврат 50%)
+            const monthlyOurFine = orderSum * 0.06;
+            const annualOurFine = monthlyOurFine * 12;
+
+            // Чистая экономия за год (разница между стандартным и нашим штрафом)
+            const annualSavings = annualStdFine - annualOurFine;
+
+            document.getElementById('stdFineYearText').innerText = Math.round(monthlyStdFine).toLocaleString('ru-RU') + ' ₽ / мес';
+            document.getElementById('ourFineYearText').innerText = Math.round(monthlyOurFine).toLocaleString('ru-RU') + ' ₽ / мес';
+            document.getElementById('netSavingsYearText').innerText = Math.round(annualSavings).toLocaleString('ru-RU') + ' ₽';
+        }
+
+        // Вызываем расчет при загрузке страницы
+        window.onload = function() {
+            calculateFineSavings();
+        };
+
+        // Автогенерация токена и отправка на Formspree
         function handleFormSubmit(event, formId, formTypeName) {
             event.preventDefault();
             const form = document.getElementById(formId);
@@ -743,11 +867,11 @@
             if (formId === 'docsForm') suffix = 'docs';
             if (formId === 'orderForm') suffix = 'order';
             if (formId === 'businessForm') suffix = 'business';
+            if (formId === 'fineForm') suffix = 'fine';
 
             document.getElementById('token' + suffix.charAt(0).toUpperCase() + suffix.slice(1)).value = token;
             document.getElementById('tokenDisplay-' + suffix).innerText = token;
 
-            // Формируем прямую ссылку в WhatsApp с готовым текстом обращения
             const whatsappMsg = encodeURIComponent(`Здравствуйте! Я оставил заявку на сайте ISKET GROUP. Мой номер заявки: ${token} (${formTypeName}). Хочу обсудить детали.`);
             document.getElementById('whatsappLink-' + suffix).href = `https://wa.me/905306610835?text=${whatsappMsg}`;
 
