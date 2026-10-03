@@ -33,13 +33,12 @@
         .phone-whatsapp:hover { color: var(--x5-green); }
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Первый экран (Hero) в стиле экосистем ритейла */
         .hero { background: linear-gradient(145deg, #121a15 0%, #1c2e22 100%); color: #fff; padding: 170px 0 100px 0; text-align: center; border-bottom: 6px solid var(--x5-green); position: relative; overflow: hidden; }
         .hero h1 { font-size: 42px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; }
         .hero h1 span { color: var(--perekrestok-red); }
         .hero p { font-size: 18px; font-weight: 400; margin-bottom: 35px; color: #d0d5d1; max-width: 860px; margin-left: auto; margin-right: auto; }
         
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.3); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 32px; font-size: 16px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.3); width: 100%; }
         .btn:hover { background: var(--x5-dark-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 133, 63, 0.4); }
         .btn-red { background: var(--perekrestok-red); box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3); }
         .btn-red:hover { background: #c5161c; box-shadow: 0 6px 20px rgba(227, 30, 36, 0.4); }
@@ -50,7 +49,7 @@
         h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--perekrestok-red); margin: 15px auto 45px auto; border-radius: 2px; }
         .section-subtitle { text-align: center; color: #555; font-size: 17px; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; }
 
-        /* Сетка направлений холдинга с иконками */
+        /* Сетка направлений холдинга */
         .directions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
         .direction-card { background: var(--card-bg); padding: 35px 30px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
         .direction-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); border-color: #d1d9d4; }
@@ -63,22 +62,22 @@
 
         /* Стили модальных окон (Popup) */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,22,17,0.7); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-container { background: #fff; width: 100%; max-width: 720px; padding: 45px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; }
+        .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 40px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; text-align: left; }
         .modal-close { position: absolute; top: 20px; right: 20px; background: #f2f2f2; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; color: #444; transition: background 0.2s; }
         .modal-close:hover { background: var(--perekrestok-red); color: #fff; }
-        .modal-container h3 { font-size: 26px; font-weight: 800; color: var(--secondary-color); margin-bottom: 15px; }
-        .modal-container p { color: #555; font-size: 16px; margin-bottom: 15px; }
-        .modal-container ul { margin-left: 20px; color: #444; margin-bottom: 30px; }
-        .modal-container li { margin-bottom: 10px; font-size: 15px; }
+        .modal-container h3 { font-size: 24px; font-weight: 800; color: var(--secondary-color); margin-bottom: 10px; }
+        .modal-container p { color: #555; font-size: 15px; margin-bottom: 20px; }
 
-        /* Форма заявки */
+        /* Поля формы внутри модалки заказа */
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #333; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.15); }
+
+        /* Общая секция заявки внизу */
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 45px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; }
         .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 28px; font-weight: 800; }
-        .form-group { margin-bottom: 18px; }
-        .form-group label { display: block; margin-bottom: 7px; font-weight: 600; font-size: 14px; color: #444; }
-        .form-group input, .form-group textarea { width: 100%; padding: 13px 15px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.15); }
         
         footer { background: var(--secondary-color); color: #999; text-align: center; padding: 35px 0; font-size: 14px; border-top: 3px solid var(--perekrestok-red); }
         
@@ -113,7 +112,7 @@
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Направления нашей деятельности</h2>
-            <p class="section-subtitle">Выберите интересующее направление и нажмите «Подробнее», чтобы ознакомиться с условиями</p>
+            <p class="section-subtitle">Выберите интересующее направление и отправьте заявку или оперативный запрос</p>
             
             <div class="directions-grid">
                 <div class="direction-card">
@@ -136,6 +135,7 @@
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
 
+                <!-- Карточка Штрафы и Заказы с интеграцией формы заявки на заказ -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">⚖️</div>
@@ -143,7 +143,7 @@
                         <h3>Штрафы, заказы и споры с сетью</h3>
                         <p>Аннулирование необоснованных штрафов, оперативное урегулирование вопросов по заказам и полное сопровождение спорных ситуаций.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-legal')">Подробнее</button>
+                    <button class="btn btn-red" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
                 </div>
 
                 <div class="direction-card">
@@ -159,9 +159,69 @@
         </div>
     </section>
 
-    <!-- МОДАЛЬНЫЕ ОКНА (ВСПЛЫВАЮЩИЕ ОКНА) ДЛЯ КАЖДОГО НАПРАВЛЕНИЯ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ НА ПРОБЛЕМНЫЙ ЗАКАЗ (Юридический отдел) -->
+    <div id="modal-order-request" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px;">Оперативная заявка</span>
+            <h3>Управление проблемным заказом</h3>
+            <p>Заполните параметры проблемного заказа, и наш специалист оперативно возьмет его в работу.</p>
+            
+            <form action="https://formspree.io/f/mkjgeynq" method="POST">
+                <!-- Скрытое поле для фиксации темы заявки при отправке на почту -->
+                <input type="hidden" name="form_type" value="Заявка по проблемному заказу / Штрафам">
 
-    <!-- Модалка 1 -->
+                <div class="form-group">
+                    <label>1. № заказа *</label>
+                    <input type="text" name="order_number" placeholder="Например: 12345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Дата заказа *</label>
+                    <input type="date" name="order_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Тип операции с заказом *</label>
+                    <select name="order_operation" required>
+                        <option value="" disabled selected>Выберите операцию из списка</option>
+                        <option value="Снятие заказа без приемки">1 - Снятие заказа без приемки</option>
+                        <option value="Перенос заказа">2 - Перенос заказа</option>
+                        <option value="Согласование перепоставки">3 - Согласование перепоставки</option>
+                        <option value="Снятие заказа после приемки">4* - Снятие заказа после приемки</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. SAP № Компании *</label>
+                    <input type="text" name="sap_company_number" placeholder="Например: 0001234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label>5. Торговая сеть *</label>
+                    <select name="retail_network" required>
+                        <option value="" disabled selected>Выберите сеть</option>
+                        <option value="Перекресток">Перекрёсток</option>
+                        <option value="Пятерочка">Пятёрочка</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>6. Ваши контактные данные (Телефон / WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>7. Комментарии</label>
+                    <textarea name="comments" rows="3" placeholder="Укажите детали проблемы, причины или артикулы товара..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить заявку в работу</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка: Договоры -->
     <div id="modal-contracts" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
@@ -177,7 +237,7 @@
         </div>
     </div>
 
-    <!-- Модалка 2 -->
+    <!-- Модалка: Персонал -->
     <div id="modal-staff" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
@@ -193,23 +253,7 @@
         </div>
     </div>
 
-    <!-- Модалка 3 -->
-    <div id="modal-legal" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-legal')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;">Юридический отдел</span>
-            <h3>Решение вопросов по штрафам, заказам и спорам</h3>
-            <p>Розничные сети автоматизируют штрафные санкции и претензионную работу, что часто приводит к необоснованным убыткам поставщиков. Наш юридический отдел круглосуточно защищает ваши интересы:</p>
-            <ul>
-                <li>Аннулирование штрафов за логистические сбои и расхождения в приемке.</li>
-                <li>Оперативное аннулирование или корректировка проблемных заказов.</li>
-                <li>Полное согласование всех спорных вопросов по поставкам на распределительные центры (РЦ).</li>
-            </ul>
-            <a href="#contact" class="btn btn-red" onclick="closeModal('modal-legal')">Отменить штраф / решить спор</a>
-        </div>
-    </div>
-
-    <!-- Модалка 4 -->
+    <!-- Модалка: Готовый бизнес -->
     <div id="modal-business" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
@@ -225,7 +269,7 @@
         </div>
     </div>
 
-    <!-- Секция заявки -->
+    <!-- Общая секция заявки на главной -->
     <section class="form-section" id="contact">
         <div class="container" style="flex-direction: column;">
             <div class="form-container">
@@ -233,6 +277,7 @@
                 <p style="font-size: 13px; color: #666; margin-bottom: 25px; text-align: center;">Заявки поступают напрямую руководству: <b>isket.group@bk.ru</b></p>
                 
                 <form action="https://formspree.io/f/mkjgeynq" method="POST">
+                    <input type="hidden" name="form_type" value="Общая заявка с сайта">
                     <div class="form-group">
                         <label>Ваше имя *</label>
                         <input type="text" name="name" placeholder="Иван" required>
@@ -250,7 +295,7 @@
 
                     <div class="form-group">
                         <label>Какое направление вас интересует? *</label>
-                        <input type="text" name="selected_direction" placeholder="Например: Договоры / Персонал / Штрафы / Покупка фирмы" required>
+                        <input type="text" name="selected_direction" placeholder="Например: Договоры / Персонал / Покупка фирмы" required>
                     </div>
 
                     <div class="form-group">
@@ -266,7 +311,7 @@
 
     <footer>
         <div class="container" style="justify-content: center; flex-direction: column;">
-            <p>&copy; 2022 ISKET GROUP. Многопрофильный холдинг по сопровождению поставщиков в федеральные сети.</p>
+            <p>&copy; 2026 ISKET GROUP. Многопрофильный холдинг по сопровождению поставщиков в федеральные сети.</p>
         </div>
     </footer>
 
