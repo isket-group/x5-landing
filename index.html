@@ -75,7 +75,7 @@
         .case-text { font-size: 15px; color: #555; margin-bottom: 15px; }
         .case-result { background: #f4f7f5; padding: 15px; border-radius: 8px; font-size: 14px; font-weight: 600; color: var(--x5-dark-green); }
 
-        /* Стили для FAQ (Вопрос-ответ) */
+        /* Стили для FAQ */
         .faq-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 25px; max-width: 1000px; margin: 0 auto; }
         .faq-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); }
         .faq-card h4 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
@@ -130,7 +130,6 @@
             <p>Эксклюзивное сопровождение поставщиков и торговых компаний: прямое юридическое и операционное взаимодействие с X5 Group, предоставление квалифицированного персонала, готовый бизнес с контрактами и решение нестандартных задач.</p>
             <a href="#contact" class="btn btn-red" style="width: auto;">Связаться с руководством холдинга</a>
 
-            <!-- Блок цифр доверия -->
             <div class="stats-bar">
                 <div class="stat-item">
                     <div class="stat-num">65<span>+</span></div>
@@ -148,7 +147,6 @@
         </div>
     </section>
 
-    <!-- Ключевые направления деятельности -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Направления нашей деятельности</h2>
@@ -177,7 +175,7 @@
 
                 <div class="direction-card">
                     <div>
-                        <div class="card-icon">⚖️</div>
+                        <div class="card-icon">⚖️️</div>
                         <span class="direction-badge">Юридический отдел</span>
                         <h3>Штрафы, заказы и споры с сетью</h3>
                         <p>Аннулирование необоснованных штрафов, оперативное урегулирование вопросов по заказам и полное сопровождение спорных ситуаций.</p>
@@ -198,7 +196,7 @@
         </div>
     </section>
 
-    <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ (Закрытый контур) -->
+    <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
     <section>
         <div class="container" style="flex-direction: column;">
             <h2>Решенные сложные задачи</h2>
@@ -222,7 +220,7 @@
         </div>
     </section>
 
-    <!-- БЛОК FAQ (Ответы на главные вопросы) -->
+    <!-- БЛОК FAQ -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Часто задаваемые вопросы и гарантии</h2>
@@ -267,10 +265,10 @@
 
                 <div class="form-group">
                     <label>2. Категория поставщика *</label>
-                    <select name="supplier_category" required>
+                    <select name="supplier_category" id="supplierCategory" onchange="calculatePrice()" required>
                         <option value="" disabled selected>Выберите категорию</option>
                         <option value="Действующий поставщик">2.1 Действующий поставщик</option>
-                        <option value="Недействующий поставщик">2.2 Недействующий поставщик</option>
+                        <option value="Недействующий поставщик">2.2 Недействующий поставщик (+200 000 ₽)</option>
                     </select>
                 </div>
 
@@ -417,7 +415,7 @@
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
-            <h3>Продажа готовых фирм с действующими контрактами X5</h3>
+            <h3>Продажа фирм с действующими контрактами X5</h3>
             <p>Чистые ООО с историей поставок, настроенным ЭДО/EDI и активными контрактами в ритейле.</p>
             <a href="#contact" class="btn" onclick="closeModal('modal-business')">Узнать о доступных фирмах</a>
         </div>
@@ -465,7 +463,7 @@
 
     <footer>
         <div class="container" style="justify-content: center; flex-direction: column;">
-            <p>&copy; 2026 ISKET GROUP. Многопрофильный холдинг по сопровождению поставщиков в федеральные сети.</p>
+            <p>&copy; 2020 ISKET GROUP. Многопрофильный холдинг по сопровождению поставщиков в федеральные сети.</p>
         </div>
     </footer>
 
@@ -503,11 +501,13 @@
 
         function calculatePrice() {
             const retail = document.getElementById('retailTarget').value;
+            const supplierCat = document.getElementById('supplierCategory').value;
             const compCat = document.getElementById('companyCategory').value;
             const age = document.getElementById('companyAge').value;
             
             let basePrice = 0;
 
+            // База по сети
             if (retail === 'ДСК Пятерочка') {
                 basePrice = 750000;
             } else if (retail === 'ТСХ Перекресток') {
@@ -518,6 +518,12 @@
                 basePrice = 1650000;
             }
 
+            // Доплата за недействующего поставщика (+200 000)
+            if (supplierCat === 'Недействующий поставщик') {
+                basePrice += 200000;
+            }
+
+            // Доплата за документацию производителя (+250 000)
             if (compCat === 'Трейдер') {
                 const goalTrader = document.getElementById('goalTraderSelect').value;
                 if (goalTrader === 'Производитель') {
@@ -530,6 +536,7 @@
                 }
             }
 
+            // Доплата за возраст компании менее 1 года (+100 000)
             if (age === 'Менее 1 года') {
                 basePrice += 100000;
             }
