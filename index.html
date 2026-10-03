@@ -29,6 +29,10 @@
         .logo .box { background: var(--x5-green); color: #fff; padding: 6px 11px; border-radius: 6px; margin-right: 10px; font-size: 20px; box-shadow: 0 2px 8px rgba(0,133,63,0.3); }
         .logo span { color: var(--perekrestok-red); }
 
+        .header-right { display: flex; align-items: center; gap: 20px; }
+        .status-btn { background: transparent; border: 2px solid var(--x5-green); color: #fff; padding: 8px 16px; border-radius: 6px; font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s; }
+        .status-btn:hover { background: var(--x5-green); }
+
         .phone-whatsapp { font-size: 15px; font-weight: 600; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 8px; transition: color 0.3s; }
         .phone-whatsapp:hover { color: var(--x5-green); }
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 11px; padding: 3px 8px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -98,6 +102,16 @@
         .price-title { font-size: 14px; color: #555; font-weight: 600; margin-bottom: 5px; }
         .price-value { font-size: 24px; color: var(--x5-dark-green); font-weight: 800; }
 
+        /* Трекер статусов в личном кабинете */
+        .status-tracker { margin-top: 20px; background: #f9fbfb; padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); display: none; }
+        .tracker-step { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; position: relative; }
+        .tracker-step:last-child { margin-bottom: 0; }
+        .tracker-dot { width: 24px; height: 24px; border-radius: 50%; background: #ccc; color: #fff; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .tracker-step.active .tracker-dot { background: var(--x5-green); box-shadow: 0 0 0 4px rgba(0,133,63,0.15); }
+        .tracker-step.completed .tracker-dot { background: var(--secondary-color); }
+        .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--secondary-color); }
+        .tracker-info p { font-size: 13px; color: #666; }
+
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 45px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; }
         .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 28px; font-weight: 800; }
@@ -110,6 +124,7 @@
             .container { flex-direction: column; gap: 12px; }
             .modal-container { padding: 30px 20px; }
             .stats-bar { gap: 25px; }
+            .header-right { flex-direction: column; gap: 8px; }
         }
     </style>
 </head>
@@ -118,9 +133,12 @@
     <header>
         <div class="container">
             <a href="#" class="logo"><div class="box">IS</div>ISKET <span>GROUP</span></a>
-            <a href="https://wa.me/905306610835" target="_blank" class="phone-whatsapp">
-                +90 (530) 661-08-35 <span class="whatsapp-tag">WhatsApp</span>
-            </a>
+            <div class="header-right">
+                <button class="status-btn" onclick="openModal('modal-cabinet')">🔍 Статус заявки</button>
+                <a href="https://wa.me/905306610835" target="_blank" class="phone-whatsapp">
+                    +90 (530) 661-08-35 <span class="whatsapp-tag">WhatsApp</span>
+                </a>
+            </div>
         </div>
     </header>
 
@@ -257,6 +275,60 @@
         </div>
     </section>
 
+    <!-- МОДАЛЬНОЕ ОКНО: ЛИЧНЫЙ КАБИНЕТ / СТАТУС ЗАЯВКИ -->
+    <div id="modal-cabinet" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-cabinet')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px;">Личный кабинет поставщика</span>
+            <h3>Проверка статуса заявки</h3>
+            <p>Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.</p>
+            
+            <div class="form-group">
+                <label>Номер заявки (например: ISKET-7749) *</label>
+                <input type="text" id="orderTokenInput" placeholder="Введите номер...">
+            </div>
+
+            <button class="btn" onclick="checkOrderStatus()" style="width: 100%; margin-bottom: 15px;">Проверить статус</button>
+
+            <!-- Трекер прогресса -->
+            <div id="statusTrackerBox" class="status-tracker">
+                <h4 id="trackerTitle" style="margin-bottom: 12px; font-size: 16px; color: var(--secondary-color);">Статус по вашей заявке:</h4>
+                
+                <div class="tracker-step completed" id="step1">
+                    <div class="tracker-dot">✓</div>
+                    <div class="tracker-info">
+                        <h5>1. Заявка зарегистрирована</h5>
+                        <p>Документы приняты в работу профильным отделом.</p>
+                    </div>
+                </div>
+
+                <div class="tracker-step active" id="step2">
+                    <div class="tracker-dot">2</div>
+                    <div class="tracker-info">
+                        <h5>2. Согласование с агрономом / СБ</h5>
+                        <p>Идет проверка регламентов и подготовка базы.</p>
+                    </div>
+                </div>
+
+                <div class="tracker-step" id="step3">
+                    <div class="tracker-dot">3</div>
+                    <div class="tracker-info">
+                        <h5>3. Создание SAP-кода</h5>
+                        <p>Настройка электронного документооборота и портала.</p>
+                    </div>
+                </div>
+
+                <div class="tracker-step" id="step4">
+                    <div class="tracker-dot">4</div>
+                    <div class="tracker-info">
+                        <h5>4. Торги активированы</h5>
+                        <p>Доступ к закупкам сети открыт, отгрузки запущены.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- МОДАЛЬНОЕ ОКНО: КАЛЬКУЛЯТОР ДОГОВОРОВ -->
     <div id="modal-contracts" class="modal-overlay">
         <div class="modal-container">
@@ -349,7 +421,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ИЗГОТОВЛЕНИЕ ДОКУМЕНТАЦИИ ПРОИЗВОДИТЕЛЯ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ИЗГОТОВЛЕНИЕ ДОКУМЕНТАЦИИ -->
     <div id="modal-docs" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
@@ -357,7 +429,7 @@
             <h3>Изготовление документации производителя</h3>
             <p>Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
             
-            <form action="https://formspree.io/f/mkjgeynq" method="POST" id="docsForm">
+            <form action="https://formspree.io/f/mkjgeynq" method="POST">
                 <input type="hidden" name="form_type" value="Заявка на изготовление документации производителя">
 
                 <div class="form-group">
@@ -395,7 +467,6 @@
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
-                <!-- Фиксированная итоговая стоимость 250 000 ₽ -->
                 <div class="price-box">
                     <div class="price-title">Итоговая стоимость услуг:</div>
                     <div class="price-value">250 000 ₽</div>
@@ -468,7 +539,7 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ПОКУПКА ГОТОВОЙ ФИРМЫ (M&A) С НОВОЙ СТРУКТУРОЙ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ПОКУПКА ГОТОВОЙ ФИРМЫ (M&A) -->
     <div id="modal-business" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
@@ -609,6 +680,29 @@
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
+            }
+        }
+
+        // Логика проверки статуса заявки в личном кабинете
+        function checkOrderStatus() {
+            const token = document.getElementById('orderTokenInput').value.trim();
+            const trackerBox = document.getElementById('statusTrackerBox');
+            
+            if (token === "") {
+                alert("Пожалуйста, введите номер заявки!");
+                return;
+            }
+
+            // Демо-проверка (в будущем здесь можно подключить сверку с Google Таблицей)
+            trackerBox.style.display = 'block';
+            
+            // Пример: если ввели секретный тестовый ключ, покажем 3 этап
+            if (token.toUpperCase() === 'ISKET-555') {
+                document.getElementById('trackerTitle').innerText = "Статус заявки [ISKET-555]: В работе (Шаг 3)";
+                document.getElementById('step2').className = "tracker-step completed";
+                document.getElementById('step3').className = "tracker-step active";
+            } else {
+                document.getElementById('trackerTitle').innerText = "Статус заявки [" + token.toUpperCase() + "]: На проверке";
             }
         }
 
