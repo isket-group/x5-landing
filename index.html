@@ -165,6 +165,16 @@
 
                 <div class="direction-card">
                     <div>
+                        <div class="card-icon">📋</div>
+                        <span class="direction-badge">Экспертный отдел</span>
+                        <h3>Изготовление документации производителя</h3>
+                        <p>Разработка полного юридического и технического пакета документов для прохождения аудита службы безопасности и агрономов X5.</p>
+                    </div>
+                    <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать доки</button>
+                </div>
+
+                <div class="direction-card">
+                    <div>
                         <div class="card-icon">👥</div>
                         <span class="direction-badge">Департамент кадров</span>
                         <h3>Предоставление сотрудников на работу</h3>
@@ -183,7 +193,6 @@
                     <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
                 </div>
 
-                <!-- Карточка Готовый бизнес (M&A) с новой формой выбора фирм -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">🏢</div>
@@ -340,6 +349,64 @@
         </div>
     </div>
 
+    <!-- МОДАЛЬНОЕ ОКНО: ИЗГОТОВЛЕНИЕ ДОКУМЕНТАЦИИ ПРОИЗВОДИТЕЛЯ -->
+    <div id="modal-docs" class="modal-overlay">
+        <div class="modal-container" style="border-top-color: var(--x5-green);">
+            <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 12px;">Экспертный отдел</span>
+            <h3>Изготовление документации производителя</h3>
+            <p>Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
+            
+            <form action="https://formspree.io/f/mkjgeynq" method="POST" id="docsForm">
+                <input type="hidden" name="form_type" value="Заявка на изготовление документации производителя">
+
+                <div class="form-group">
+                    <label>1. Наименование ООО *</label>
+                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Статус поставщика *</label>
+                    <select name="supplier_status" required>
+                        <option value="" disabled selected>Выберите статус</option>
+                        <option value="Действующий поставщик">Действующий поставщик</option>
+                        <option value="Недействующий поставщик">Недействующий поставщик</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Год создания компании *</label>
+                    <input type="number" name="creation_year" placeholder="Например: 2022" min="1990" max="2026" required>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Для какой сети готовятся документы? *</label>
+                    <select name="target_network" required>
+                        <option value="" disabled selected>Выберите сеть</option>
+                        <option value="ДСК Пятерочка">ДСК Пятёрочка</option>
+                        <option value="ТСХ Перекресток">ТСХ Перекрёсток</option>
+                        <option value="ТСЧ Чижик">ТСЧ Чижик</option>
+                        <option value="Все сети X5 Group">Все сети X5 Group</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>5. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <!-- Фиксированная итоговая стоимость 250 000 ₽ -->
+                <div class="price-box">
+                    <div class="price-title">Итоговая стоимость услуг:</div>
+                    <div class="price-value">250 000 ₽</div>
+                    <input type="hidden" name="service_price" value="250 000 ₽">
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;">Заказать подготовку документации</button>
+            </form>
+        </div>
+    </div>
+
     <!-- МОДАЛЬНОЕ ОКНО: ЗАЯВКА НА ПРОБЛЕМНЫЙ ЗАКАЗ -->
     <div id="modal-order-request" class="modal-overlay">
         <div class="modal-container">
@@ -401,47 +468,71 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ПОКУПКА ГОТОВОЙ ФИРМЫ (M&A / ГОТОВЫЙ БИЗНЕС) -->
+    <!-- МОДАЛЬНОЕ ОКНО: ПОКУПКА ГОТОВОЙ ФИРМЫ (M&A) С НОВОЙ СТРУКТУРОЙ -->
     <div id="modal-business" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
             <h3>Приобретение готовой фирмы с контрактом X5</h3>
-            <p>Выберите категорию юридического лица и параметры закупки для быстрой интеграции в ритейл.</p>
+            <p>Укажите параметры и характеристики необходимой компании для быстрой интеграции.</p>
             
             <form action="https://formspree.io/f/mkjgeynq" method="POST">
                 <input type="hidden" name="form_type" value="Заявка на покупку готовой фирмы (M&A)">
 
                 <div class="form-group">
-                    <label>1. Ваше имя или название компании *</label>
+                    <label>Наименование или Имя клиента *</label>
                     <input type="text" name="client_name" placeholder="Иван / ООО «Партнер»" required>
                 </div>
 
                 <div class="form-group">
-                    <label>2. Выберите категорию готовой фирмы *</label>
-                    <select name="business_category" required>
-                        <option value="" disabled selected>Выберите вариант из списка</option>
-                        <optgroup label="1. Нулевое ООО без оборотов с договором X5">
-                            <option value="1.1 Нулевое ООО - Пятерочка Производитель">1.1 Пятёрочка — Производитель</option>
-                            <option value="1.2 Нулевое ООО - Пятерочка Трейдер">1.2 Пятёрочка — Трейдер</option>
-                            <option value="1.3 Нулевое ООО - Перекресток Производитель">1.3 Перекрёсток — Производитель</option>
-                            <option value="1.4 Нулевое ООО - Чижик Производитель">1.4 Чижик — Производитель</option>
-                        </optgroup>
-                        <optgroup label="2. ООО с оборотами и с действующим договором X5">
-                            <option value="2.1 ООО с оборотами - Торги ДСК ЦФО">2.1 Торги с выходом на ДСК ЦФО</option>
-                            <option value="2.2 ООО с оборотами - Торги ДСК СЗФО">2.2 Торги с выходом на ДСК СЗФО</option>
-                            <option value="2.3 ООО с оборотами - Торги ТСХ Мск">2.3 Торги с выходом на ТСХ Мск</option>
-                        </optgroup>
+                    <label>1. Категория компании *</label>
+                    <select name="company_category" required>
+                        <option value="" disabled selected>Выберите категорию</option>
+                        <option value="Производитель">1.1 Производитель</option>
+                        <option value="Трейдер">1.2 Трейдер</option>
+                        <option value="Импортер">1.3 Импортер</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>3. Контактный телефон (WhatsApp) *</label>
+                    <label>2. Торговая сеть *</label>
+                    <select name="retail_network" required>
+                        <option value="" disabled selected>Выберите сеть</option>
+                        <option value="ДСК">2.1 ДСК (Пятёрочка)</option>
+                        <option value="ТСХ">2.2 ТСХ (Перекрёсток)</option>
+                        <option value="ТСЧ">2.3 ТСЧ (Чижик)</option>
+                        <option value="АРВИАЙ (Тех Импорт)">2.4 АРВИАЙ (Тех Импорт)</option>
+                        <option value="АРВИАЙ (Импорт)">2.5 АРВИАЙ (Импорт)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Юридическое лицо (ООО) *</label>
+                    <select name="legal_entity_type" required>
+                        <option value="" disabled selected>Выберите тип ООО</option>
+                        <option value="С оборотами">3.1 С оборотами</option>
+                        <option value="Нулевая">3.2 Нулевая</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Регион работы *</label>
+                    <select name="operating_region" required>
+                        <option value="" disabled selected>Выберите регион</option>
+                        <option value="ЦФО">4.1 ЦФО (Центральный федеральный округ)</option>
+                        <option value="СЗФО">4.2 СЗФО (Северо-Западный федеральный округ)</option>
+                        <option value="Юг">4.3 Юг</option>
+                        <option value="Волга">4.4 Волга</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Контактный телефон (WhatsApp) *</label>
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
                 <div class="form-group">
-                    <label>4. Комментарии и пожелания</label>
+                    <label>Комментарии и пожелания</label>
                     <textarea name="comments" rows="3" placeholder="Укажите специфику продукции или дополнительные требования..."></textarea>
                 </div>
 
@@ -457,7 +548,7 @@
             <span class="direction-badge" style="margin-bottom: 12px;">Департамент кадров</span>
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
             <p>Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в сети X5 Group.</p>
-            <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Связаться с нами</a>
+            <a href="#contact" class="btn" onclick="openModal('modal-staff')">Связаться с нами</a>
         </div>
     </div>
 
@@ -487,7 +578,7 @@
 
                     <div class="form-group">
                         <label>Какое направление вас интересует? *</label>
-                        <input type="text" name="selected_direction" placeholder="Например: Договоры / Персонал / Покупка фирмы" required>
+                        <input type="text" name="selected_direction" placeholder="Например: Договоры / Документация / Покупка фирмы" required>
                     </div>
 
                     <div class="form-group">
