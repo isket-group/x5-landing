@@ -49,7 +49,6 @@
         h2::after { content: ''; display: block; width: 50px; height: 4px; background: var(--perekrestok-red); margin: 15px auto 45px auto; border-radius: 2px; }
         .section-subtitle { text-align: center; color: #555; font-size: 17px; margin-bottom: 50px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; }
 
-        /* Сетка направлений холдинга */
         .directions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
         .direction-card { background: var(--card-bg); padding: 35px 30px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
         .direction-card:hover { transform: translateY(-6px); box-shadow: 0 12px 35px rgba(0,0,0,0.08); border-color: #d1d9d4; }
@@ -60,21 +59,24 @@
         .direction-card p { color: #666; font-size: 15px; margin-bottom: 25px; font-weight: 400; }
         .direction-badge { display: inline-block; background: #e8f8f5; color: var(--x5-green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
 
-        /* Стили модальных окон (Popup) */
+        /* Модальные окна */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,22,17,0.7); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 20px; }
-        .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 40px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; text-align: left; }
+        .modal-container { background: #fff; width: 100%; max-width: 680px; padding: 40px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; text-align: left; }
         .modal-close { position: absolute; top: 20px; right: 20px; background: #f2f2f2; border: none; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer; color: #444; transition: background 0.2s; }
         .modal-close:hover { background: var(--perekrestok-red); color: #fff; }
         .modal-container h3 { font-size: 24px; font-weight: 800; color: var(--secondary-color); margin-bottom: 10px; }
         .modal-container p { color: #555; font-size: 15px; margin-bottom: 20px; }
 
-        /* Поля формы внутри модалки заказа */
         .form-group { margin-bottom: 16px; }
         .form-group label { display: block; margin-bottom: 6px; font-weight: 600; font-size: 14px; color: #333; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 12px 14px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 15px; font-family: 'Inter', sans-serif; transition: border-color 0.2s, box-shadow 0.2s; background: #fff; }
         .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.15); }
 
-        /* Общая секция заявки внизу */
+        /* Блок с расчетом цены */
+        .price-box { background: #e8f8f5; border: 1px solid #a3e4d7; padding: 20px; border-radius: 10px; margin-bottom: 20px; text-align: center; }
+        .price-title { font-size: 14px; color: #555; font-weight: 600; margin-bottom: 5px; }
+        .price-value { font-size: 24px; color: var(--x5-dark-green); font-weight: 800; }
+
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 45px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; }
         .form-container h3 { text-align: center; margin-bottom: 10px; color: var(--secondary-color); font-size: 28px; font-weight: 800; }
@@ -112,9 +114,10 @@
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Направления нашей деятельности</h2>
-            <p class="section-subtitle">Выберите интересующее направление и отправьте заявку или оперативный запрос</p>
+            <p class="section-subtitle">Выберите интересующее направление и рассчитайте стоимость или отправьте заявку</p>
             
             <div class="directions-grid">
+                <!-- Карточка Контракты с калькулятором -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">📄</div>
@@ -122,7 +125,7 @@
                         <h3>Заключение договоров с X5 Group</h3>
                         <p>Полный цикл аккредитации производителей и трейдеров: подготовка баз, прохождение аудитов сети, получение SAP-кода и старт отгрузок за 2–3 месяца.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-contracts')">Подробнее</button>
+                    <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
 
                 <div class="direction-card">
@@ -135,7 +138,6 @@
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
 
-                <!-- Карточка Штрафы и Заказы с интеграцией формы заявки на заказ -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">⚖️</div>
@@ -143,7 +145,7 @@
                         <h3>Штрафы, заказы и споры с сетью</h3>
                         <p>Аннулирование необоснованных штрафов, оперативное урегулирование вопросов по заказам и полное сопровождение спорных ситуаций.</p>
                     </div>
-                    <button class="btn btn-red" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
+                    <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
                 </div>
 
                 <div class="direction-card">
@@ -159,7 +161,99 @@
         </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ НА ПРОБЛЕМНЫЙ ЗАКАЗ (Юридический отдел) -->
+    <!-- МОДАЛЬНОЕ ОКНО: ФОРМА КАЛЬКУЛЯТОРА И ЗАЯВКИ НА ДОГОВОР -->
+    <div id="modal-contracts" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px;">Департамент контрактов</span>
+            <h3>Калькулятор стоимости и заявка на договор с X5</h3>
+            <p>Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость и отправить заявку в работу.</p>
+            
+            <form action="https://formspree.io/f/mkjgeynq" method="POST" id="contractForm">
+                <input type="hidden" name="form_type" value="Заявка на заключение договора (Калькулятор)">
+
+                <div class="form-group">
+                    <label>1. Наименование ООО *</label>
+                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Категория поставщика *</label>
+                    <select name="supplier_category" required>
+                        <option value="" disabled selected>Выберите категорию</option>
+                        <option value="Действующий поставщик">2.1 Действующий поставщик</option>
+                        <option value="Недействующий поставщик">2.2 Недействующий поставщик</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Категория компании *</label>
+                    <select name="company_category" id="companyCategory" onchange="toggleGoalOptions()" required>
+                        <option value="" disabled selected>Выберите статус</option>
+                        <option value="Трейдер">3.1 Трейдер</option>
+                        <option value="Производитель">3.2 Производитель</option>
+                        <option value="Импортер">3.3 Импортер</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Хочу договор с X5 с выходом в торги в: *</label>
+                    <select name="retail_target" id="retailTarget" onchange="calculatePrice()" required>
+                        <option value="" disabled selected>Выберите сеть</option>
+                        <option value="ТСХ Перекресток">4.1 ТСХ Перекрёсток (от 600 000 ₽)</option>
+                        <option value="ДСК Пятерочка">4.2 ДСК Пятёрочка (от 750 000 ₽)</option>
+                        <option value="ТСЧ Чижик">4.3 ТСЧ Чижик (от 500 000 ₽)</option>
+                        <option value="Все три сети">4.4 Все три сети (комплексно)</option>
+                    </select>
+                </div>
+
+                <!-- Динамический блок 5 для Трейдера -->
+                <div class="form-group" id="goalTraderBlock" style="display: none;">
+                    <label>5. Я трейдер и хочу выйти в торги как: *</label>
+                    <select name="goal_trader" id="goalTraderSelect" onchange="calculatePrice()">
+                        <option value="Производитель">5.1 Производитель (+250 000 ₽ за изготовление документации)</option>
+                        <option value="Трейдер">5.2 Трейдер</option>
+                        <option value="Импортер">5.3 Импортер</option>
+                    </select>
+                </div>
+
+                <!-- Динамический блок 5* для Производителя / Импортера -->
+                <div class="form-group" id="goalProdBlock" style="display: none;">
+                    <label>5*. Я производитель / импортер и хочу выйти в торги как: *</label>
+                    <select name="goal_producer" id="goalProdSelect" onchange="calculatePrice()">
+                        <option value="Производитель">5.1 Производитель (без доплат за документацию)</option>
+                        <option value="Импортер">5.2 Импортер</option>
+                        <option value="Трейдер">5.3 Трейдер (+250 000 ₽, если требуется пакет документов)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Возраст компании (ООО) *</label>
+                    <select name="company_age" id="companyAge" onchange="calculatePrice()" required>
+                        <option value="" disabled selected>Выберите возраст юрлица</option>
+                        <option value="Более 1 года">Более 1 года</option>
+                        <option value="Менее 1 года">Менее 1 года (+100 000 ₽ к стоимости)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <!-- Блок вывода ориентировочной стоимости -->
+                <div class="price-box">
+                    <div class="price-title">Ориентировочная стоимость услуг:</div>
+                    <div class="price-value" id="priceDisplay">0 ₽</div>
+                    <input type="hidden" name="calculated_price" id="hiddenPrice" value="0">
+                </div>
+
+                <button type="submit" class="btn btn-red" style="width: 100%;">Отправить заявку на заключение договора</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ФОРМА ЗАЯВКИ НА ПРОБЛЕМНЫЙ ЗАКАЗ -->
     <div id="modal-order-request" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
@@ -168,7 +262,6 @@
             <p>Заполните параметры проблемного заказа, и наш специалист оперативно возьмет его в работу.</p>
             
             <form action="https://formspree.io/f/mkjgeynq" method="POST">
-                <!-- Скрытое поле для фиксации темы заявки при отправке на почту -->
                 <input type="hidden" name="form_type" value="Заявка по проблемному заказу / Штрафам">
 
                 <div class="form-group">
@@ -221,55 +314,28 @@
         </div>
     </div>
 
-    <!-- Модалка: Договоры -->
-    <div id="modal-contracts" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;">Департамент контрактов</span>
-            <h3>Заключение прямых договоров с X5 Group</h3>
-            <p>Мы берем на себя всю бюрократию при выходе на полки «Пятёрочки» и «Перекрёстка». Для производителей формируем идеальный пакет документов под требования аудиторов. Для трейдеров решаем задачу «под ключ», официально закрепляя за ними поля, склады с температурным режимом и логистику.</p>
-            <ul>
-                <li>Аудит готовности предприятия и продукции.</li>
-                <li>Согласование спецификаций и коммерческих условий.</li>
-                <li>Получение SAP-кода, открытие тендерного портала и запуск поставок на РЦ.</li>
-            </ul>
-            <a href="#contact" class="btn btn-red" onclick="closeModal('modal-contracts')">Оставить заявку по этому направлению</a>
-        </div>
-    </div>
-
-    <!-- Модалка: Персонал -->
+    <!-- Остальные модалки -->
     <div id="modal-staff" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">Департамент кадров</span>
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
-            <p>Для стабильной работы с федеральными сетями требуются специализированные кадры, которые знают жесткие регламенты приемки и документооборота ритейла. Мы предоставляем проверенный персонал:</p>
-            <ul>
-                <li>Предоставление квалифицированных сотрудников на складские и торговые объекты.</li>
-                <li>Найм профессиональных менеджеров по продажам (KAM) в X5 Group.</li>
-                <li>Аутстаффинг персонала для оперативного решения задач по отгрузкам и мерчандайзингу.</li>
-            </ul>
-            <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Запросить персонал / менеджера</a>
+            <p>Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в сети X5 Group.</p>
+            <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Связаться с нами</a>
         </div>
     </div>
 
-    <!-- Модалка: Готовый бизнес -->
     <div id="modal-business" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
             <h3>Продажа готовых фирм с действующими контрактами X5</h3>
-            <p>Хотите начать отгрузки в сеть завтра, не дожидаясь многомесячных согласований? Мы предлагаем эксклюзивную услугу по передаче готовых действующих бизнесов:</p>
-            <ul>
-                <li>Чистые юридические лица (ООО) с безупречной финансовой историей.</li>
-                <li>Уже действующие и активные контракты на поставку в X5 Group.</li>
-                <li>Полностью настроенный электронный документооборот (ЭДО), EDI и репутация в сети.</li>
-            </ul>
+            <p>Чистые ООО с историей поставок, настроенным ЭДО/EDI и активными контрактами в ритейле.</p>
             <a href="#contact" class="btn" onclick="closeModal('modal-business')">Узнать о доступных фирмах</a>
         </div>
     </div>
 
-    <!-- Общая секция заявки на главной -->
+    <!-- Общая секция заявки -->
     <section class="form-section" id="contact">
         <div class="container" style="flex-direction: column;">
             <div class="form-container">
@@ -315,7 +381,7 @@
         </div>
     </footer>
 
-    <!-- Скрипт для работы модальных окон -->
+    <!-- Скрипты для модалок и калькулятора -->
     <script>
         function openModal(modalId) {
             document.getElementById(modalId).style.display = 'flex';
@@ -327,6 +393,69 @@
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
             }
+        }
+
+        // Логика переключения 5 пункта в зависимости от выбора категории компании
+        function toggleGoalOptions() {
+            const compCat = document.getElementById('companyCategory').value;
+            const traderBlock = document.getElementById('goalTraderBlock');
+            const prodBlock = document.getElementById('goalProdBlock');
+
+            if (compCat === 'Трейдер') {
+                traderBlock.style.display = 'block';
+                prodBlock.style.display = 'none';
+            } else if (compCat === 'Производитель' || compCat === 'Импортер') {
+                traderBlock.style.display = 'none';
+                prodBlock.style.display = 'block';
+            } else {
+                traderBlock.style.display = 'none';
+                prodBlock.style.display = 'none';
+            }
+            calculatePrice();
+        }
+
+        // Расчет ориентировочной стоимости
+        function calculatePrice() {
+            const retail = document.getElementById('retailTarget').value;
+            const compCat = document.getElementById('companyCategory').value;
+            const age = document.getElementById('companyAge').value;
+            
+            let basePrice = 0;
+
+            // База по сети
+            if (retail === 'ДСК Пятерочка') {
+                basePrice = 750000;
+            } else if (retail === 'ТСХ Перекресток') {
+                basePrice = 600000;
+            } else if (retail === 'ТСЧ Чижик') {
+                basePrice = 500000;
+            } else if (retail === 'Все три сети') {
+                basePrice = 1650000; // Комплексная база для трех сетей
+            }
+
+            // Доплата за документацию производителя (+250 000)
+            if (compCat === 'Трейдер') {
+                const goalTrader = document.getElementById('goalTraderSelect').value;
+                if (goalTrader === 'Производитель') {
+                    basePrice += 250000;
+                }
+            } else if (compCat === 'Производитель' || compCat === 'Импортер') {
+                const goalProd = document.getElementById('goalProdSelect').value;
+                if (goalProd === 'Трейдер') {
+                    // Если производитель хочет зайти как трейдер и требует доп. документы
+                    basePrice += 250000;
+                }
+            }
+
+            // Доплата за возраст компании менее 1 года (+100 000)
+            if (age === 'Менее 1 года') {
+                basePrice += 100000;
+            }
+
+            // Вывод результата
+            const formattedPrice = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
+            document.getElementById('priceDisplay').innerText = formattedPrice;
+            document.getElementById('hiddenPrice').value = formattedPrice;
         }
     </script>
 
