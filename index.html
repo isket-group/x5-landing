@@ -175,7 +175,7 @@
 
                 <div class="direction-card">
                     <div>
-                        <div class="card-icon">⚖️️</div>
+                        <div class="card-icon">⚖️</div>
                         <span class="direction-badge">Юридический отдел</span>
                         <h3>Штрафы, заказы и споры с сетью</h3>
                         <p>Аннулирование необоснованных штрафов, оперативное урегулирование вопросов по заказам и полное сопровождение спорных ситуаций.</p>
@@ -183,6 +183,7 @@
                     <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
                 </div>
 
+                <!-- Карточка Готовый бизнес (M&A) с новой формой выбора фирм -->
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">🏢</div>
@@ -190,7 +191,7 @@
                         <h3>Продажа фирм с готовым контрактом X5</h3>
                         <p>Приобретение готовых юридических лиц (ООО) с историей поставок, настроенным ЭДО/EDI и действующими активными контрактами в ритейле.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-business')">Подробнее</button>
+                    <button class="btn" onclick="openModal('modal-business')">Выбрать готовую фирму</button>
                 </div>
             </div>
         </div>
@@ -400,7 +401,56 @@
         </div>
     </div>
 
-    <!-- Модалки Персонал и Готовый бизнес -->
+    <!-- МОДАЛЬНОЕ ОКНО: ПОКУПКА ГОТОВОЙ ФИРМЫ (M&A / ГОТОВЫЙ БИЗНЕС) -->
+    <div id="modal-business" class="modal-overlay">
+        <div class="modal-container" style="border-top-color: var(--x5-green);">
+            <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
+            <h3>Приобретение готовой фирмы с контрактом X5</h3>
+            <p>Выберите категорию юридического лица и параметры закупки для быстрой интеграции в ритейл.</p>
+            
+            <form action="https://formspree.io/f/mkjgeynq" method="POST">
+                <input type="hidden" name="form_type" value="Заявка на покупку готовой фирмы (M&A)">
+
+                <div class="form-group">
+                    <label>1. Ваше имя или название компании *</label>
+                    <input type="text" name="client_name" placeholder="Иван / ООО «Партнер»" required>
+                </div>
+
+                <div class="form-group">
+                    <label>2. Выберите категорию готовой фирмы *</label>
+                    <select name="business_category" required>
+                        <option value="" disabled selected>Выберите вариант из списка</option>
+                        <optgroup label="1. Нулевое ООО без оборотов с договором X5">
+                            <option value="1.1 Нулевое ООО - Пятерочка Производитель">1.1 Пятёрочка — Производитель</option>
+                            <option value="1.2 Нулевое ООО - Пятерочка Трейдер">1.2 Пятёрочка — Трейдер</option>
+                            <option value="1.3 Нулевое ООО - Перекресток Производитель">1.3 Перекрёсток — Производитель</option>
+                            <option value="1.4 Нулевое ООО - Чижик Производитель">1.4 Чижик — Производитель</option>
+                        </optgroup>
+                        <optgroup label="2. ООО с оборотами и с действующим договором X5">
+                            <option value="2.1 ООО с оборотами - Торги ДСК ЦФО">2.1 Торги с выходом на ДСК ЦФО</option>
+                            <option value="2.2 ООО с оборотами - Торги ДСК СЗФО">2.2 Торги с выходом на ДСК СЗФО</option>
+                            <option value="2.3 ООО с оборотами - Торги ТСХ Мск">2.3 Торги с выходом на ТСХ Мск</option>
+                        </optgroup>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>3. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Комментарии и пожелания</label>
+                    <textarea name="comments" rows="3" placeholder="Укажите специфику продукции или дополнительные требования..."></textarea>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 5px;">Запросить доступные варианты</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модалка Персонал -->
     <div id="modal-staff" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
@@ -408,16 +458,6 @@
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
             <p>Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в сети X5 Group.</p>
             <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Связаться с нами</a>
-        </div>
-    </div>
-
-    <div id="modal-business" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--x5-green);">
-            <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
-            <h3>Продажа фирм с действующими контрактами X5</h3>
-            <p>Чистые ООО с историей поставок, настроенным ЭДО/EDI и активными контрактами в ритейле.</p>
-            <a href="#contact" class="btn" onclick="closeModal('modal-business')">Узнать о доступных фирмах</a>
         </div>
     </div>
 
@@ -507,7 +547,6 @@
             
             let basePrice = 0;
 
-            // База по сети
             if (retail === 'ДСК Пятерочка') {
                 basePrice = 750000;
             } else if (retail === 'ТСХ Перекресток') {
@@ -518,12 +557,10 @@
                 basePrice = 1650000;
             }
 
-            // Доплата за недействующего поставщика (+200 000)
             if (supplierCat === 'Недействующий поставщик') {
                 basePrice += 200000;
             }
 
-            // Доплата за документацию производителя (+250 000)
             if (compCat === 'Трейдер') {
                 const goalTrader = document.getElementById('goalTraderSelect').value;
                 if (goalTrader === 'Производитель') {
@@ -536,7 +573,6 @@
                 }
             }
 
-            // Доплата за возраст компании менее 1 года (+100 000)
             if (age === 'Менее 1 года') {
                 basePrice += 100000;
             }
