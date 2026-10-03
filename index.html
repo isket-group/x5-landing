@@ -104,13 +104,8 @@
 
         /* Трекер статусов в личном кабинете */
         .status-tracker { margin-top: 20px; background: #f9fbfb; padding: 20px; border-radius: 10px; border: 1px solid var(--border-color); display: none; }
-        .tracker-step { display: flex; align-items: flex-start; gap: 15px; margin-bottom: 15px; position: relative; }
-        .tracker-step:last-child { margin-bottom: 0; }
-        .tracker-dot { width: 24px; height: 24px; border-radius: 50%; background: #ccc; color: #fff; font-size: 12px; font-weight: bold; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
-        .tracker-step.active .tracker-dot { background: var(--x5-green); box-shadow: 0 0 0 4px rgba(0,133,63,0.15); }
-        .tracker-step.completed .tracker-dot { background: var(--secondary-color); }
-        .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--secondary-color); }
-        .tracker-info p { font-size: 13px; color: #666; }
+        .tracker-info h5 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .tracker-info p { font-size: 14px; color: #555; margin-bottom: 6px; }
 
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
         .form-container { max-width: 650px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 45px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; }
@@ -284,46 +279,16 @@
             <p>Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.</p>
             
             <div class="form-group">
-                <label>Номер заявки (например: ISKET-7749) *</label>
+                <label>Номер заявки (например: ISKET-555) *</label>
                 <input type="text" id="orderTokenInput" placeholder="Введите номер...">
             </div>
 
             <button class="btn" onclick="checkOrderStatus()" style="width: 100%; margin-bottom: 15px;">Проверить статус</button>
 
-            <!-- Трекер прогресса -->
+            <!-- Трекер прогресса (загружается из Google Таблицы) -->
             <div id="statusTrackerBox" class="status-tracker">
-                <h4 id="trackerTitle" style="margin-bottom: 12px; font-size: 16px; color: var(--secondary-color);">Статус по вашей заявке:</h4>
-                
-                <div class="tracker-step completed" id="step1">
-                    <div class="tracker-dot">✓</div>
-                    <div class="tracker-info">
-                        <h5>1. Заявка зарегистрирована</h5>
-                        <p>Документы приняты в работу профильным отделом.</p>
-                    </div>
-                </div>
-
-                <div class="tracker-step active" id="step2">
-                    <div class="tracker-dot">2</div>
-                    <div class="tracker-info">
-                        <h5>2. Согласование с агрономом / СБ</h5>
-                        <p>Идет проверка регламентов и подготовка базы.</p>
-                    </div>
-                </div>
-
-                <div class="tracker-step" id="step3">
-                    <div class="tracker-dot">3</div>
-                    <div class="tracker-info">
-                        <h5>3. Создание SAP-кода</h5>
-                        <p>Настройка электронного документооборота и портала.</p>
-                    </div>
-                </div>
-
-                <div class="tracker-step" id="step4">
-                    <div class="tracker-dot">4</div>
-                    <div class="tracker-info">
-                        <h5>4. Торги активированы</h5>
-                        <p>Доступ к закупкам сети открыт, отгрузки запущены.</p>
-                    </div>
+                <div class="tracker-info" id="trackerContent">
+                    <h5>Загрузка данных...</h5>
                 </div>
             </div>
         </div>
@@ -683,26 +648,45 @@
             }
         }
 
-        // Логика проверки статуса заявки в личном кабинете
-        function checkOrderStatus() {
+        // Автоматическая проверка статуса через вашу Google Таблицу
+        async function checkOrderStatus() {
             const token = document.getElementById('orderTokenInput').value.trim();
             const trackerBox = document.getElementById('statusTrackerBox');
+            const trackerContent = document.getElementById('trackerContent');
             
             if (token === "") {
                 alert("Пожалуйста, введите номер заявки!");
                 return;
             }
 
-            // Демо-проверка (в будущем здесь можно подключить сверку с Google Таблицей)
             trackerBox.style.display = 'block';
-            
-            // Пример: если ввели секретный тестовый ключ, покажем 3 этап
-            if (token.toUpperCase() === 'ISKET-555') {
-                document.getElementById('trackerTitle').innerText = "Статус заявки [ISKET-555]: В работе (Шаг 3)";
-                document.getElementById('step2').className = "tracker-step completed";
-                document.getElementById('step3').className = "tracker-step active";
-            } else {
-                document.getElementById('trackerTitle').innerText = "Статус заявки [" + token.toUpperCase() + "]: На проверке";
+            trackerContent.innerHTML = "<h5>Поиск данных в системе...</h5>";
+
+            const scriptURL = "https://script.google.com/macros/s/AKfycbxL064DjzLeuX5KKFK7hdkIj4PeiQ7I6ULwtnWI5axOOucPnsVIvGkJdA4Pfx1XxZCOJw/exec";
+
+            try {
+                const response = await fetch(scriptURL + "?token=" + encodeURIComponent(token));
+                const data = await response.json();
+
+                if (data.status === "found") {
+                    trackerContent.innerHTML = `
+                        <h5>Заявка найдена: ${data.token}</h5>
+                        <p><b>Компания:</b> ${data.clientName}</p>
+                        <p><b>Услуга:</b> ${data.service}</p>
+                        <p><b>Дата создания:</b> ${data.date}</p>
+                        <p style="margin-top: 10px; padding: 10px; background: #e8f8f5; border-radius: 6px; color: var(--x5-dark-green);"><b>Текущий статус:</b> ${data.currentStep}</p>
+                    `;
+                } else {
+                    trackerContent.innerHTML = `
+                        <h5>Заявка не найдена</h5>
+                        <p style="color: #e31e24;">Номер «${token}» не зарегистрирован в базе или указан с ошибкой. Проверьте правильность ввода.</p>
+                    `;
+                }
+            } catch (error) {
+                trackerContent.innerHTML = `
+                    <h5>Ошибка соединения</h5>
+                    <p style="color: #e31e24;">Не удалось связаться с сервером баз данных. Попробуйте позже.</p>
+                `;
             }
         }
 
