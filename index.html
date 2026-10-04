@@ -434,10 +434,12 @@
                     <label>4. Направление сопровождения: *</label>
                     <select name="retail_target" id="retailTarget" onchange="calculatePrice()" required>
                         <option value="" disabled selected>Выберите сеть</option>
-                        <option value="ТСХ Перекресток">4.1 ТСХ Перекрёсток (от 600 000 ₽)</option>
-                        <option value="ДСК Пятерочка">4.2 ДСК Пятёрочка (от 750 000 ₽)</option>
-                        <option value="ТСЧ Чижик">4.3 ТСЧ Чижик (от 500 000 ₽)</option>
-                        <option value="Все три сети">4.4 Все три сети (комплексно)</option>
+                        <option value="Тандер">4.1 Тандер (от 500 000 ₽)</option>
+                        <option value="Тандер Импорт">4.2 Тандер Импорт (от 350 000 ₽)</option>
+                        <option value="ТСХ Перекресток">4.3 ТСХ Перекрёсток (от 600 000 ₽)</option>
+                        <option value="ДСК Пятерочка">4.4 ДСК Пятёрочка (от 750 000 ₽)</option>
+                        <option value="ТСЧ Чижик">4.5 ТСЧ Чижик (от 500 000 ₽)</option>
+                        <option value="Все три сети">4.6 Все три сети (комплексно)</option>
                     </select>
                 </div>
 
@@ -822,7 +824,11 @@
             
             let basePrice = 0;
 
-            if (retail === 'ДСК Пятерочка') {
+            if (retail === 'Тандер') {
+                basePrice = 500000;
+            } else if (retail === 'Тандер Импорт') {
+                basePrice = 350000;
+            } else if (retail === 'ДСК Пятерочка') {
                 basePrice = 750000;
             } else if (retail === 'ТСХ Перекресток') {
                 basePrice = 600000;
