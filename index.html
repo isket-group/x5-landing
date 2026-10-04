@@ -248,7 +248,7 @@
                     <div>
                         <div class="card-icon">🏢</div>
                         <span class="direction-badge">M&A / Готовый бизнес</span>
-                        <h3>Продажа фирм с готовым контрактом X5</h3>
+                        <h3>Готовые юридические лица с действующими контрактами X5</h3>
                         <p>Подбор и переоформление готовых юридических лиц (ООО) с историей поставок, настроенным ЭДО/EDI и действующими активными контрактами в ритейле.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-business')">Выбрать готовую фирму</button>
@@ -576,11 +576,11 @@
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-business')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">M&A / Готовый бизнес</span>
-            <h3>Приобретение готовой фирмы с контрактом X5</h3>
+            <h3>Готовые юридические лица с действующими контрактами X5</h3>
             <p>Укажите параметры и характеристики необходимой компании для быстрой интеграции.</p>
             
-            <form id="businessForm" onsubmit="handleFormSubmit(event, 'businessForm', 'Заявка на покупку готовой фирмы (M&A)')">
-                <input type="hidden" name="form_type" value="Заявка на покупку готовой фирмы (M&A)">
+            <form id="businessForm" onsubmit="handleFormSubmit(event, 'businessForm', 'Заявка по готовым юрлицам (M&A)')">
+                <input type="hidden" name="form_type" value="Заявка по готовым юрлицам (M&A)">
                 <input type="hidden" name="generated_token" id="tokenBusiness">
 
                 <div class="form-group">
@@ -696,7 +696,7 @@
                             <option value="Подготовка документации производителя">Подготовка документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
                             <option value="Оспаривание штрафов и споры с сетью">Оспаривание штрафов и споры с сетью</option>
-                            <option value="M&A / Покупка готовой фирмы">M&A / Покупка готовой фирмы</option>
+                            <option value="M&A / Готовые юрлица с контрактами">M&A / Готовые юрлица с контрактами</option>
                             <option value="Другой вопрос / Консультация">Другой вопрос / Консультация</option>
                         </select>
                     </div>
