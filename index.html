@@ -62,6 +62,9 @@
         .btn-red { background: var(--accent-red); box-shadow: 0 4px 15px rgba(227,30,36,0.2); }
         .btn-red:hover { background: #c5161c; box-shadow: 0 6px 20px rgba(227,30,36,0.3); }
         
+        /* Стили для заблокированной некликабельной кнопки «Скоро» */
+        .btn-disabled { background: #e2e8e4; color: #788a7f; cursor: not-allowed; box-shadow: none; pointer-events: none; }
+
         section { padding: 75px 0; width: 100%; }
         .bg-light { background-color: #ffffff; }
         h2 { text-align: center; font-size: 30px; font-weight: 800; margin-bottom: 12px; color: #0f3822; letter-spacing: -0.5px; padding: 0 10px; }
@@ -78,10 +81,9 @@
         .direction-card p { color: #526359; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
         .direction-badge { display: inline-block; background: #eaf5ef; color: var(--eco-primary); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        /* Элегантные бейджи для Магнита */
-        .badge-soon { position: absolute; top: 25px; right: 25px; display: flex; gap: 8px; align-items: center; }
+        /* Бейдж Новинка для Магнита */
+        .badge-soon { position: absolute; top: 25px; right: 25px; }
         .tag-new { background: #fffbe6; color: #b45309; border: 1px solid #fef3c7; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
-        .tag-status { background: #eaf5ef; color: var(--eco-primary); border: 1px solid #c2e2d0; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
 
         /* Блок Этапы работы (Roadmap) */
         .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; width: 100%; }
@@ -236,11 +238,10 @@
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
 
-                <!-- Карточка 2: Магнит (Тандер) — Новинка • от 300 000 ₽ • Скоро (Открывает форму ожидания) -->
+                <!-- Карточка 2: Магнит (Тандер) — Кнопка Скоро заблокирована -->
                 <div class="direction-card">
                     <div class="badge-soon">
-                        <span class="tag-new">Новинка • от 300 000 ₽</span>
-                        <span class="tag-status">Скоро</span>
+                        <span class="tag-new">Новинка • Договоры с сетями от АО "Тандер" от 300 000 ₽</span>
                     </div>
                     <div>
                         <div class="card-icon">🛒</div>
@@ -248,7 +249,7 @@
                         <h3>Сопровождение аккредитации с Магнит (АО «Тандер»)</h3>
                         <p>Экспертная подготовка и сопровождение поставщиков при заведении договоров в торговую сеть Магнит (Тандер / Тандер Импорт).</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-magnit-soon')">Забронировать место / Предзаказ</button>
+                    <button class="btn btn-disabled">Скоро</button>
                 </div>
 
                 <!-- Карточка 3: Документы производителя -->
@@ -523,50 +524,6 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ФОРМА ОЖИДАНИЯ / ПРЕДЗАКАЗ МАГНИТ (СКОРО) -->
-    <div id="modal-magnit-soon" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--eco-primary);">
-            <button class="modal-close" onclick="closeModal('modal-magnit-soon')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;">Новое направление • Скоро в системе</span>
-            <h3>Раннее бронирование сопровождения по Магниту (Тандер)</h3>
-            <p>Направление находится на этапе финальной настройки. Оставьте ваши контакты, чтобы забронировать место и получить приоритетный доступ со скидкой от 300 000 ₽.</p>
-            
-            <form id="magnitSoonForm" onsubmit="handleFormSubmit(event, 'magnitSoonForm', 'Предзаказ на Магнит (Тандер) - Скоро')">
-                <input type="hidden" name="form_type" value="Предзаказ на Магнит (Тандер) - Скоро">
-                <input type="hidden" name="generated_token" id="tokenMagnitSoon">
-
-                <div class="form-group">
-                    <label>1. Наименование ООО *</label>
-                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
-                </div>
-
-                <div class="form-group">
-                    <label>2. Основная категория вашей продукции *</label>
-                    <input type="text" name="product_category" placeholder="Например: Бакалея, Молочная продукция..." required>
-                </div>
-
-                <div class="form-group">
-                    <label>3. Контактный телефон (WhatsApp) *</label>
-                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
-                </div>
-
-                <div class="form-compliance-note">
-                    ℹ️ Запуск направления состоится в ближайшее время. Наш менеджер свяжется с вами для персонального бронирования.
-                </div>
-
-                <button type="submit" class="btn" style="width: 100%;">Забронировать место в очереди</button>
-            </form>
-
-            <div id="successBox-magnitSoon" class="token-success-box">
-                <h4>🎉 Вы в списке приоритетного доступа!</h4>
-                <p>Вашей предварительной заявке присвоен номер:</p>
-                <div class="generated-token" id="tokenDisplay-magnitSoon">ISKET-0000</div>
-                <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Мы свяжемся с вами сразу после открытия направления.</p>
-                <a id="whatsappLink-magnitSoon" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp по предзаказу</a>
-            </div>
-        </div>
-    </div>
-
     <!-- МОДАЛЬНОЕ ОКНО: ПОДГОТОВКА ДОКУМЕНТАЦИИ -->
     <div id="modal-docs" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--eco-primary);">
@@ -744,7 +701,6 @@
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление из списка</option>
                             <option value="Сопровождение договоров с X5 Group">Сопровождение договоров с X5 Group</option>
-                            <option value="Предзаказ на Магнит (Скоро)">Предзаказ на Магнит (Скоро)</option>
                             <option value="Подготовка документации производителя">Подготовка документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
                             <option value="Претензионная работа и споры с сетью">Претензионная работа и споры с сетью</option>
@@ -794,7 +750,6 @@
             let suffix = 'contract';
             if (formId === 'docsForm') suffix = 'docs';
             if (formId === 'orderForm') suffix = 'order';
-            if (formId === 'magnitSoonForm') suffix = 'magnitSoon';
 
             document.getElementById('token' + suffix.charAt(0).toUpperCase() + suffix.slice(1)).value = token;
             document.getElementById('tokenDisplay-' + suffix).innerText = token;
