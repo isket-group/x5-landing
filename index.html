@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ISKET GROUP — Экспертное сопровождение поставщиков и решения для X5 Group</title>
+    <title>ISKET GROUP — Многопрофильный холдинг: сопровождение поставщиков и решения для X5 Group</title>
     <!-- Подключаем современный фирменный шрифт Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,21 +12,21 @@
         :root {
             --x5-green: #00853f;
             --x5-dark-green: #00632f;
-            --perekrestok-red: #d92d20;
-            --secondary-color: #181d24;
-            --bg-light: #f8faf9;
-            --text-color: #2b333b;
+            --perekrestok-red: #e31e24;
+            --secondary-color: #1a1a1a;
+            --bg-light: #f7f9f8;
+            --text-color: #2b2b2b;
             --card-bg: #ffffff;
-            --border-color: #e5e9e6;
+            --border-color: #eaeaea;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { color: var(--text-color); line-height: 1.6; background-color: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
         
-        header { background: var(--secondary-color); color: #fff; padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 3px solid var(--x5-green); }
+        header { background: var(--secondary-color); color: #fff; padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-bottom: 3px solid var(--x5-green); }
         .container { width: 90%; max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
         .logo { display: flex; align-items: center; text-decoration: none; color: #fff; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
-        .logo .box { background: var(--x5-green); color: #fff; padding: 5px 9px; border-radius: 6px; margin-right: 8px; font-size: 18px; box-shadow: 0 2px 8px rgba(0,133,63,0.2); }
+        .logo .box { background: var(--x5-green); color: #fff; padding: 5px 9px; border-radius: 6px; margin-right: 8px; font-size: 18px; box-shadow: 0 2px 8px rgba(0,133,63,0.3); }
         .logo span { color: var(--perekrestok-red); }
 
         .header-right { display: flex; align-items: center; gap: 15px; }
@@ -38,104 +38,101 @@
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Плавающая кнопка WhatsApp */
-        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
+        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
         .floating-whatsapp:hover { transform: scale(1.1); background: #20ba5a; }
-        .floating-tooltip { position: absolute; right: 75px; background: #fff; color: #333; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.08); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; border: 1px solid var(--border-color); }
+        .floating-tooltip { position: absolute; right: 75px; background: #fff; color: #333; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.1); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; border: 1px solid #eaeaea; }
         .floating-whatsapp:hover .floating-tooltip { opacity: 1; }
 
         /* Первый экран (Hero) */
-        .hero { background: linear-gradient(145deg, #131a16 0%, #1e2e23 100%); color: #fff; padding: 160px 0 80px 0; text-align: center; border-bottom: 6px solid var(--x5-green); position: relative; }
-        .hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; }
-        .hero h1 span { color: #ff4d4f; }
-        .hero p { font-size: 16px; font-weight: 400; margin-bottom: 30px; color: #d3dcd6; max-width: 820px; margin-left: auto; margin-right: auto; padding: 0 10px; }
+        .hero { background: linear-gradient(145deg, #121a15 0%, #1c2e22 100%); color: #fff; padding: 160px 0 80px 0; text-align: center; border-bottom: 6px solid var(--x5-green); position: relative; }
+        .hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; }
+        .hero h1 span { color: var(--perekrestok-red); }
+        .hero p { font-size: 17px; font-weight: 400; margin-bottom: 30px; color: #d0d5d1; max-width: 860px; margin-left: auto; margin-right: auto; padding: 0 10px; }
         
         /* Блок статистики */
         .stats-bar { display: flex; justify-content: center; gap: 40px; margin-top: 35px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
         .stat-item { text-align: center; }
         .stat-num { font-size: 28px; font-weight: 800; color: #fff; }
-        .stat-num span { color: #ff4d4f; }
-        .stat-desc { font-size: 13px; color: #a4b3aa; margin-top: 4px; }
+        .stat-num span { color: var(--perekrestok-red); }
+        .stat-desc { font-size: 13px; color: #a0a8a3; margin-top: 4px; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.25); width: 100%; }
-        .btn:hover { background: var(--x5-dark-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 133, 63, 0.35); }
-        .btn-red { background: var(--perekrestok-red); box-shadow: 0 4px 15px rgba(217, 45, 32, 0.25); }
-        .btn-red:hover { background: #b82217; box-shadow: 0 6px 20px rgba(217, 45, 32, 0.35); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.3); width: 100%; }
+        .btn:hover { background: var(--x5-dark-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 133, 63, 0.4); }
+        .btn-red { background: var(--perekrestok-red); box-shadow: 0 4px 15px rgba(227, 30, 36, 0.3); }
+        .btn-red:hover { background: #c5161c; box-shadow: 0 6px 20px rgba(227, 30, 36, 0.4); }
         
         section { padding: 70px 0; width: 100%; }
         .bg-light { background-color: var(--bg-light); }
-        h2 { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; color: var(--secondary-color); letter-spacing: -0.5px; padding: 0 10px; }
+        h2 { text-align: center; font-size: 30px; font-weight: 800; margin-bottom: 12px; color: var(--secondary-color); letter-spacing: -0.5px; padding: 0 10px; }
         h2::after { content: ''; display: block; width: 45px; height: 4px; background: var(--perekrestok-red); margin: 12px auto 35px auto; border-radius: 2px; }
-        .section-subtitle { text-align: center; color: #616e7c; font-size: 15px; margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
+        .section-subtitle { text-align: center; color: #555; font-size: 16px; margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
 
         .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto; width: 100%; }
-        .direction-card { background: var(--card-bg); padding: 30px 25px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; }
-        .direction-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .direction-card { background: var(--card-bg); padding: 30px 25px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; }
+        .direction-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
-        .card-icon { width: 45px; height: 45px; background: #eef7f2; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+        .card-icon { width: 45px; height: 45px; background: #e8f8f5; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
         
-        .direction-card h3 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; line-height: 1.3; }
-        .direction-card p { color: #52606d; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
-        .direction-badge { display: inline-block; background: #eef7f2; color: var(--x5-green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .direction-card h3 { font-size: 19px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; line-height: 1.3; }
+        .direction-card p { color: #666; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
+        .direction-badge { display: inline-block; background: #e8f8f5; color: var(--x5-green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Блок Этапы работы (Roadmap) */
         .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .roadmap-card { background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: left; }
         .roadmap-num { font-size: 32px; font-weight: 800; color: var(--x5-green); margin-bottom: 10px; opacity: 0.8; }
         .roadmap-card h4 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
-        .roadmap-card p { font-size: 13px; color: #52606d; }
+        .roadmap-card p { font-size: 13px; color: #666; }
 
-        /* Блок "Почему выбирают нас" (Манифест) */
+        /* Блок "Почему выбирают ISKET GROUP" (Манифест) */
         .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .benefit-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; }
-        .benefit-icon { font-size: 26px; margin-bottom: 15px; }
-        .benefit-card h4 { font-size: 17px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
-        .benefit-card p { font-size: 14px; color: #52606d; }
+        .benefit-icon { font-size: 28px; margin-bottom: 15px; }
+        .benefit-card h4 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; color: #666; }
 
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .case-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; border-left: 5px solid var(--x5-green); width: 100%; }
-        .case-card h3 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
+        .case-card h3 { font-size: 19px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
         .case-tag { font-size: 11px; font-weight: 700; color: var(--perekrestok-red); text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .case-text { font-size: 14px; color: #52606d; margin-bottom: 15px; }
-        .case-result { background: #f0f7f3; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--x5-dark-green); }
+        .case-text { font-size: 14px; color: #555; margin-bottom: 15px; }
+        .case-result { background: #f4f7f5; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--x5-dark-green); }
 
         .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%; }
-        .faq-card h4 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
-        .faq-card p { font-size: 14px; color: #52606d; }
+        .faq-card h4 { font-size: 17px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .faq-card p { font-size: 14px; color: #666; }
 
         /* Модальные окна */
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,22,17,0.7); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
         .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 30px 25px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; text-align: left; }
         .modal-close { position: absolute; top: 15px; right: 15px; background: #f2f2f2; border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: #444; }
         .modal-close:hover { background: var(--perekrestok-red); color: #fff; }
-        .modal-container h3 { font-size: 20px; font-weight: 800; color: var(--secondary-color); margin-bottom: 6px; }
-        .modal-container p { color: #52606d; font-size: 13px; margin-bottom: 16px; }
+        .modal-container h3 { font-size: 22px; font-weight: 800; color: var(--secondary-color); margin-bottom: 8px; }
+        .modal-container p { color: #555; font-size: 14px; margin-bottom: 18px; }
 
         .form-group { margin-bottom: 14px; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #333; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 13px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; background: #fff; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.12); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.15); }
 
-        /* Юридическая сноска внизу формы для СБ и клиентов */
-        .form-compliance-note { font-size: 11px; color: #8492a6; line-height: 1.4; margin-bottom: 15px; padding: 8px 10px; background: #f8faf9; border-radius: 6px; border: 1px solid var(--border-color); }
-
-        .price-box { background: #f0f7f3; border: 1px solid #cce8d7; padding: 16px; border-radius: 10px; margin-bottom: 16px; text-align: center; }
-        .price-title { font-size: 13px; color: #52606d; font-weight: 600; margin-bottom: 4px; }
+        .price-box { background: #e8f8f5; border: 1px solid #a3e4d7; padding: 16px; border-radius: 10px; margin-bottom: 18px; text-align: center; }
+        .price-title { font-size: 13px; color: #555; font-weight: 600; margin-bottom: 4px; }
         .price-value { font-size: 22px; color: var(--x5-dark-green); font-weight: 800; }
 
         .status-tracker { margin-top: 15px; background: #f9fbfb; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color); display: none; }
         .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--secondary-color); margin-bottom: 6px; }
-        .tracker-info p { font-size: 13px; color: #52606d; margin-bottom: 4px; }
+        .tracker-info p { font-size: 13px; color: #555; margin-bottom: 4px; }
 
-        .token-success-box { background: #f0f7f3; border: 2px dashed var(--x5-green); padding: 20px; border-radius: 10px; text-align: center; display: none; margin-top: 12px; }
+        .token-success-box { background: #e8f8f5; border: 2px dashed var(--x5-green); padding: 20px; border-radius: 10px; text-align: center; display: none; margin-top: 12px; }
         .token-success-box h4 { color: var(--x5-dark-green); font-size: 17px; margin-bottom: 6px; }
-        .generated-token { font-size: 24px; font-weight: 800; color: var(--secondary-color); background: #fff; padding: 8px; border-radius: 6px; display: inline-block; margin: 8px 0; border: 1px solid #cce8d7; }
+        .generated-token { font-size: 24px; font-weight: 800; color: var(--secondary-color); background: #fff; padding: 8px; border-radius: 6px; display: inline-block; margin: 8px 0; border: 1px solid #a3e4d7; }
         .whatsapp-prompt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 10px; transition: background 0.2s; }
         .whatsapp-prompt-btn:hover { background: #20ba5a; }
 
         .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
-        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 35px 25px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); text-align: left; width: 100%; }
-        .form-container h3 { text-align: center; margin-bottom: 8px; color: var(--secondary-color); font-size: 22px; font-weight: 800; }
+        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 35px 25px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; width: 100%; }
+        .form-container h3 { text-align: center; margin-bottom: 8px; color: var(--secondary-color); font-size: 24px; font-weight: 800; }
         
         footer { background: var(--secondary-color); color: #999; text-align: center; padding: 30px 0; font-size: 13px; border-top: 3px solid var(--perekrestok-red); width: 100%; }
         
@@ -154,7 +151,7 @@
             .phone-whatsapp { font-size: 13px; flex: 1; justify-content: center; }
             
             .hero { padding: 140px 0 60px 0; }
-            .hero h1 { font-size: 26px; }
+            .hero h1 { font-size: 28px; }
             .hero p { font-size: 15px; }
             .stats-bar { gap: 20px; }
             .stat-num { font-size: 24px; }
@@ -177,7 +174,7 @@
     <!-- Плавающая кнопка WhatsApp -->
     <a href="https://wa.me/905306610835" target="_blank" class="floating-whatsapp">
         💬
-        <span class="floating-tooltip">Эксперт на связи! Написать</span>
+        <span class="floating-tooltip">Эксперт X5 на связи! Написать</span>
     </a>
 
     <header>
@@ -194,9 +191,9 @@
 
     <section class="hero">
         <div class="container" style="flex-direction: column;">
-            <h1>ISKET GROUP — Сопровождение поставщиков</h1>
-            <p>Экспертная помощь в аккредитации, подготовке нормативной документации, кадровом аутстаффинге и решении операционных споров с торговой сетью X5 Group.</p>
-            <a href="#contact" class="btn btn-red" style="width: auto;">Связаться с нами</a>
+            <h1>Многопрофильный холдинг <span>ISKET GROUP</span></h1>
+            <p>Пакетное сопровождение и технологическая подготовка поставщиков к аккредитации в федеральных сетях: экспертная поддержка, стандартизация документации, кадровый аутстаффинг и претензионно-исковая работа.</p>
+            <a href="#contact" class="btn btn-red" style="width: auto;">Связаться с руководством холдинга</a>
 
             <div class="stats-bar">
                 <div class="stat-item">
@@ -218,8 +215,8 @@
     <!-- Направления деятельности -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
-            <h2>Направления нашей работы</h2>
-            <p class="section-subtitle">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в обработку</p>
+            <h2>Направления нашей деятельности</h2>
+            <p class="section-subtitle">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу</p>
             
             <div class="directions-grid">
                 <div class="direction-card">
@@ -227,7 +224,7 @@
                         <div class="card-icon">📄</div>
                         <span class="direction-badge">Департамент контрактов</span>
                         <h3>Сопровождение аккредитации с X5 Group</h3>
-                        <p>Консультационная поддержка при подготовке поставщиков к работе с федеральной сетью: аудит данных, подготовка к комплаенс-проверкам и старт поставок.</p>
+                        <p>Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
                     </div>
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
@@ -236,10 +233,10 @@
                     <div>
                         <div class="card-icon">📋</div>
                         <span class="direction-badge">Экспертный отдел</span>
-                        <h3>Подготовка документов для статуса производителя</h3>
-                        <p>Разработка полного комплекта нормативных документов для успешного прохождения проверок службы безопасности и агрономов.</p>
+                        <h3>Подготовка документации для статуса производителя</h3>
+                        <p>Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать</button>
+                    <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать доки</button>
                 </div>
 
                 <div class="direction-card">
@@ -247,7 +244,7 @@
                         <div class="card-icon">👥</div>
                         <span class="direction-badge">Департамент кадров</span>
                         <h3>Предоставление сотрудников на работу</h3>
-                        <p>Подбор профильных специалистов, мерчандайзеров, логистов и менеджеров по работе с торговыми сетями (КАМ).</p>
+                        <p>Аутстаффинг и подбор профильных специалистов, мерчандайзеров, логистов и менеджеров по продажам с опытом работы с торговыми сетями.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
@@ -257,7 +254,7 @@
                         <div class="card-icon">⚖️</div>
                         <span class="direction-badge">Юридический отдел</span>
                         <h3>Претензионная работа и споры с сетью</h3>
-                        <p>Составление претензий, актов разногласий и официальных писем. Урегулирование спорных вопросов по уровню сервиса и штрафам.</p>
+                        <p>Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по SLA и штрафам.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на аудит</button>
                 </div>
@@ -268,55 +265,55 @@
     <!-- БЛОК: ЭТАПЫ РАБОТЫ (ROADMAP) -->
     <section>
         <div class="container" style="flex-direction: column;">
-            <h2>Этапы взаимодействия</h2>
-            <p class="section-subtitle">Прозрачный и понятный порядок работы по официальному договору</p>
+            <h2>Этапы взаимодействия с холдингом</h2>
+            <p class="section-subtitle">Прозрачный и регламентированный процесс работы по официальному договору</p>
 
             <div class="roadmap-grid">
                 <div class="roadmap-card">
                     <div class="roadmap-num">01</div>
                     <h4>Аудит и заявка</h4>
-                    <p>Изучаем исходные данные компании, текущий статус и специфику вашей продукции.</p>
+                    <p>Анализируем текущий статус вашей компании в SAP, исходную документацию и специфику продукции.</p>
                 </div>
                 <div class="roadmap-card">
                     <div class="roadmap-num">02</div>
                     <h4>Подготовка пакета</h4>
-                    <p>Формируем необходимую документацию, устраняя любые комплаенс-риски.</p>
+                    <p>Разрабатываем юридические и технические регламенты, устраняющие комплаенс-риски сети.</p>
                 </div>
                 <div class="roadmap-card">
                     <div class="roadmap-num">03</div>
-                    <h4>Сопровождение</h4>
-                    <p>Курируем процесс аккредитации, ведем деловую переписку и акты разногласий.</p>
+                    <h4>Правовое сопровождение</h4>
+                    <p>Сопровождаем процедуру аккредитации, ведем претензионную работу и согласование спецификаций.</p>
                 </div>
                 <div class="roadmap-card">
                     <div class="roadmap-num">04</div>
-                    <h4>Результат</h4>
-                    <p>Успешный старт отгрузок и стабильное операционное взаимодействие с ритейлом.</p>
+                    <h4>Старт и поддержка</h4>
+                    <p>Обеспечиваем стабильную операционную деятельность и бесперебойный документооборот.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ НАС (МАНИФЕСТ) -->
+    <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ ISKET GROUP (МАНИФЕСТ) -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
-            <h2>Наши принципы работы</h2>
-            <p class="section-subtitle">Надежность, предсказуемость и строгое соблюдение регламентов</p>
+            <h2>Почему производители выбирают нас</h2>
+            <p class="section-subtitle">Наши принципы гарантируют стабильность, безопасность и предсказуемость результата</p>
 
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">🎯</div>
-                    <h4>Знание регламентов</h4>
-                    <p>Опираемся на реальные требования торговых сетей, стандарты качества и внутренние правила.</p>
+                    <h4>Регламенты ритейла</h4>
+                    <p>Фокус на безупречное соблюдение стандартов качества и внутренних регламентов федеральных торговых сетей.</p>
                 </div>
                 <div class="benefit-card">
-                    <div class="benefit-icon">⚖</div>
-                    <h4>Правовое поле</h4>
-                    <p>Работаем строго по официальному договору оказания услуг с прозрачным документооборотом.</p>
+                    <div class="benefit-icon">⚖️</div>
+                    <h4>Чистое правовое поле</h4>
+                    <p>Работа исключительно на основе официальных договоров оказания услуг и прозрачного документооборота.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">⚙️</div>
-                    <h4>Практический опыт</h4>
-                    <p>Более 6 лет помогаем поставщикам наводить порядок в документах и логистических процессах.</p>
+                    <h4>Глубокая экспертиза</h4>
+                    <p>Доскональное знание внутренних бизнес-процессов, логистических матриц и SAP-структур ритейла.</p>
                 </div>
             </div>
         </div>
@@ -325,22 +322,22 @@
     <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
     <section>
         <div class="container" style="flex-direction: column;">
-            <h2>Примеры решенных задач</h2>
-            <p class="section-subtitle">Практические примеры урегулирования споров (конфиденциальность соблюдена)</p>
+            <h2>Решенные сложные задачи</h2>
+            <p class="section-subtitle">Примеры работы с претензиями и регламентами торговых сетей (конфиденциальность соблюдена)</p>
 
             <div class="cases-grid">
                 <div class="case-card">
                     <span class="case-tag">Кейс №1 • Претензионная работа по SL</span>
-                    <h3>Снятие штрафов по уровню сервиса</h3>
-                    <p class="case-text"><b>Задача:</b> Поставщик столкнулся с начислением штрафа за недопоставку из-за задержки транспорта на приемке в РЦ.</p>
-                    <div class="case-result">✓ Решение: Подготовили акт разногласий и закрывающие документы с трек-номерами машин. Претензия удовлетворена, штраф аннулирован.</div>
+                    <h3>Оспаривание штрафов по уровню сервиса</h3>
+                    <p class="case-text"><b>Задача:</b> Поставщик овощей столкнулся с автоматическим начислением штрафов за недопоставку из-за сбоя слотов приемки в распределительном центре.</p>
+                    <div class="case-result">✓ Решение: Подготовили юридически выверенный акт разногласий и пакет подтверждающих документов со всеми трек-номерами машин. Претензия была удовлетворена категорийным менеджером.</div>
                 </div>
 
                 <div class="case-card">
                     <span class="case-tag">Кейс №2 • Согласование спецификаций</span>
-                    <h3>Урегулирование логистических вопросов</h3>
-                    <p class="case-text"><b>Задача:</b> Требовалось оперативно скорректировать объем партии в системе без штрафных санкций за срыв отгрузки.</p>
-                    <div class="case-result">✓ Решение: Составили официальное обращение в рамках регламента и согласовали изменения без финансовых потерь.</div>
+                    <h3>Оперативное урегулирование логистических споров</h3>
+                    <p class="case-text"><b>Задача:</b> Требовалось срочно скорректировать объем партии и согласовать перепоставку в рамках действующего регламента без штрафных санкций.</p>
+                    <div class="case-result">✓ Решение: Составили официальное обращение, провели переговоры с логистическим департаментом и зафиксировали изменения без финансовых потерь для партнера.</div>
                 </div>
             </div>
         </div>
@@ -349,52 +346,49 @@
     <!-- БЛОК FAQ -->
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
-            <h2>Часто задаваемые вопросы</h2>
-            <p class="section-subtitle">Ответы на ключевые вопросы о сотрудничестве, сроках и оплате</p>
+            <h2>Часто задаваемые вопросы и гарантии</h2>
+            <p class="section-subtitle">Все, что нужно знать о сроках, оплате и безопасности работы</p>
 
             <div class="faq-grid">
                 <div class="faq-card">
                     <h4>💳 Как устроена оплата услуг?</h4>
-                    <p>Расчеты производятся поэтапно на основании официального договора оказания услуг. Никаких скрытых платежей или рискованных схем.</p>
+                    <p>Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких оплат за результат внутри закрытых систем сетей не практикуется.</p>
                 </div>
                 <div class="faq-card">
-                    <h4>⏳ Какие сроки подготовки?</h4>
-                    <p>Разработка документов занимает от 1 недели, подготовка претензий и аудитов — от 2 до 5 рабочих дней.</p>
+                    <h4>⏳ Какие сроки выполнения задач?</h4>
+                    <p>Сроки зависят от типа задачи: подготовка документации занимает от 1 недели, юридический аудит и составление претензий — от 2 до 5 дней, комплексное сопровождение — по графику договора.</p>
                 </div>
                 <div class="faq-card">
-                    <h4>🛡 Какие гарантии вы даете?</h4>
-                    <p>Гарантируем безупречное качество юридической проработки документов и полную конфиденциальность.</p>
+                    <h4>🛡 Какие гарантии вы предоставляете?</h4>
+                    <p>Мы гарантируем высочайшее качество юридической и технической подготовки документов, строгую конфиденциальность и работу исключительно в правовом поле РФ.</p>
                 </div>
                 <div class="faq-card">
-                    <h4>🔒 Безопасно ли это для компании?</h4>
-                    <p>Абсолютно. Мы оказываем легальные консалтинговые и юридические услуги по приведению документации в соответствие с требованиями сетей.</p>
+                    <h4>🔒 Безопасно ли это для нашего бизнеса?</h4>
+                    <p>Абсолютно. Вся наша деятельность представляет собой классический B2B-консалтинг, помогающий поставщикам приводить свою документацию в полное соответствие с требованиями сетей.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО: СТАТУС ЗАЯВКИ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ЛИЧНЫЙ КАБИНЕТ / СТАТУС ЗАЯВКИ -->
     <div id="modal-cabinet" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-cabinet')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;">Личный кабинет</span>
+            <span class="direction-badge" style="margin-bottom: 10px;">Личный кабинет поставщика</span>
             <h3>Проверка статуса заявки</h3>
-            <p>Введите ваш номер заявки (токен), чтобы узнать текущий этап выполнения.</p>
+            <p>Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.</p>
             
             <div class="form-group">
                 <label>Номер заявки (например: ISKET-555) *</label>
                 <input type="text" id="orderTokenInput" placeholder="Введите номер...">
             </div>
 
-            <div class="form-compliance-note">
-                ℹ️ Данные запрашиваются исключительно для сверки с внутренним реестром обращений.
-            </div>
-
             <button class="btn" onclick="checkOrderStatus()" style="width: 100%; margin-bottom: 15px;">Проверить статус</button>
 
+            <!-- Трекер прогресса (загружается из Google Таблицы) -->
             <div id="statusTrackerBox" class="status-tracker">
                 <div class="tracker-info" id="trackerContent">
-                    <h5>Поиск данных...</h5>
+                    <h5>Загрузка данных...</h5>
                 </div>
             </div>
         </div>
@@ -405,8 +399,8 @@
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Департамент контрактов</span>
-            <h3>Заявка на сопровождение аккредитации</h3>
-            <p>Заполните параметры компании для расчета стоимости консалтинговых услуг.</p>
+            <h3>Калькулятор стоимости и заявка на сопровождение</h3>
+            <p>Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость консалтинговых услуг.</p>
             
             <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение аккредитации')">
                 <input type="hidden" name="form_type" value="Заявка на сопровождение аккредитации">
@@ -427,7 +421,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>3. Статус компании *</label>
+                    <label>3. Категория компании *</label>
                     <select name="company_category" id="companyCategory" onchange="toggleGoalOptions()" required>
                         <option value="" disabled selected>Выберите статус</option>
                         <option value="Трейдер">3.1 Трейдер</option>
@@ -449,7 +443,7 @@
 
                 <!-- Динамический блок 5 для Трейдера -->
                 <div class="form-group" id="goalTraderBlock" style="display: none;">
-                    <label>5. Планирую работу как: *</label>
+                    <label>5. Я трейдер и планирую работу как: *</label>
                     <select name="goal_trader" id="goalTraderSelect" onchange="calculatePrice()">
                         <option value="Производитель">5.1 Производитель (+250 000 ₽ за подготовку документации)</option>
                         <option value="Трейдер">5.2 Трейдер</option>
@@ -459,11 +453,11 @@
 
                 <!-- Динамический блок 5* для Производителя / Импортера -->
                 <div class="form-group" id="goalProdBlock" style="display: none;">
-                    <label>5*. Планирую работу как: *</label>
+                    <label>5*. Я производитель / импортер и планирую работу как: *</label>
                     <select name="goal_producer" id="goalProdSelect" onchange="calculatePrice()">
-                        <option value="Производитель">5.1 Производитель (без доплат)</option>
+                        <option value="Производитель">5.1 Производитель (без доплат за документацию)</option>
                         <option value="Импортер">5.2 Импортер</option>
-                        <option value="Трейдер">5.3 Трейдер (+250 000 ₽ за пакет документов)</option>
+                        <option value="Трейдер">5.3 Трейдер (+250 000 ₽, если требуется пакет документов)</option>
                     </select>
                 </div>
 
@@ -472,21 +466,18 @@
                     <select name="company_age" id="companyAge" onchange="calculatePrice()" required>
                         <option value="" disabled selected>Выберите возраст юрлица</option>
                         <option value="Более 1 года">Более 1 года</option>
-                        <option value="Менее 1 года">Менее 1 года (+100 000 ₽)</option>
+                        <option value="Менее 1 года">Менее 1 года (+100 000 ₽ к стоимости)</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label>Телефон для связи (WhatsApp) *</label>
+                    <label>Контактный телефон (WhatsApp) *</label>
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
-                <div class="form-compliance-note">
-                    🔒 <b>Зачем нужны данные?</b> Информация запрашивается исключительно для первичного анализа компании, проверки профиля в SAP и расчета стоимости консалтинговых услуг по договору.
-                </div>
-
+                <!-- Блок вывода ориентировочной стоимости -->
                 <div class="price-box">
-                    <div class="price-title">Ориентировочная стоимость услуг:</div>
+                    <div class="price-title">Ориентировочная стоимость консалтинговых услуг:</div>
                     <div class="price-value" id="priceDisplay">0 ₽</div>
                     <input type="hidden" name="calculated_price" id="hiddenPrice" value="0">
                 </div>
@@ -494,12 +485,13 @@
                 <button type="submit" class="btn btn-red" style="width: 100%;">Отправить заявку на консультацию</button>
             </form>
 
+            <!-- Блок успешной генерации токена -->
             <div id="successBox-contract" class="token-success-box">
                 <h4>🎉 Заявка успешно отправлена!</h4>
-                <p>Вашему запросу присвоен номер для отслеживания:</p>
+                <p>Вашему персональному запросу присвоен уникальный номер:</p>
                 <div class="generated-token" id="tokenDisplay-contract">ISKET-0000</div>
-                <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Сохраните его для проверки статуса в личном кабинете.</p>
-                <a id="whatsappLink-contract" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp по заявке</a>
+                <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Сохраните этот номер для отслеживания в личном кабинете.</p>
+                <a id="whatsappLink-contract" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp с этим номером</a>
             </div>
         </div>
     </div>
@@ -509,8 +501,8 @@
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">Экспертный отдел</span>
-            <h3>Подготовка документации производителя</h3>
-            <p>Заполните параметры для формирования пакета документов под требования торговой сети.</p>
+            <h3>Подготовка документации для подтверждения статуса производителя</h3>
+            <p>Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
             
             <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на подготовку документации производителя')">
                 <input type="hidden" name="form_type" value="Заявка на подготовку документации производителя">
@@ -547,12 +539,8 @@
                 </div>
 
                 <div class="form-group">
-                    <label>5. Телефон для связи (WhatsApp) *</label>
+                    <label>5. Контактный телефон (WhatsApp) *</label>
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
-                </div>
-
-                <div class="form-compliance-note">
-                    🔒 <b>Зачем нужны данные?</b> Данные требуются для составления технического задания и юридической структуризации пакета документов по стандартам сети.
                 </div>
 
                 <div class="price-box">
@@ -561,12 +549,12 @@
                     <input type="hidden" name="service_price" value="250 000 ₽">
                 </div>
 
-                <button type="submit" class="btn" style="width: 100%;">Заказать подготовку документов</button>
+                <button type="submit" class="btn" style="width: 100%;">Заказать подготовку документации</button>
             </form>
 
             <div id="successBox-docs" class="token-success-box">
                 <h4>🎉 Заявка успешно отправлена!</h4>
-                <p>Номер вашей заявки для отслеживания:</p>
+                <p>Ваш персональный номер для отслеживания:</p>
                 <div class="generated-token" id="tokenDisplay-docs">ISKET-0000</div>
                 <p style="font-size: 13px; color: #555; margin-bottom: 10px;">Сохраните его для проверки статуса.</p>
                 <a id="whatsappLink-docs" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp с этим номером</a>
@@ -580,7 +568,7 @@
             <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Юридический отдел</span>
             <h3>Претензионная работа и споры с сетью</h3>
-            <p>Укажите параметры проблемного заказа для подготовки официального акта разногласий.</p>
+            <p>Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.</p>
             
             <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Споры с сетью')">
                 <input type="hidden" name="form_type" value="Претензионная работа / Споры с сетью">
@@ -597,7 +585,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>3. Тип процедуры *</label>
+                    <label>3. Тип операции / процедуры *</label>
                     <select name="order_operation" required>
                         <option value="" disabled selected>Выберите тип процедуры из списка</option>
                         <option value="Оспаривание штрафов по SL/SLT и недопоставкам">Оспаривание штрафов по SL/SLT и недопоставкам</option>
@@ -623,17 +611,13 @@
                 </div>
 
                 <div class="form-group">
-                    <label>6. Телефон для связи (WhatsApp) *</label>
+                    <label>6. Ваши контактные данные (Телефон / WhatsApp) *</label>
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
                 <div class="form-group">
                     <label>7. Суть вопроса / Детали спора</label>
                     <textarea name="comments" rows="3" placeholder="Укажите причины разногласий, номера актов или артикулы товара..."></textarea>
-                </div>
-
-                <div class="form-compliance-note">
-                    🔒 <b>Зачем нужны данные?</b> Номера заказов и SAP-номера необходимы юристам исключительно для сверки с актами расхождений и составления правовой претензии.
                 </div>
 
                 <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить обращение в работу</button>
@@ -664,7 +648,7 @@
     <section class="form-section" id="contact">
         <div class="container" style="flex-direction: column;">
             <div class="form-container">
-                <h3>Заявка в компанию ISKET GROUP</h3>
+                <h3>Заявка в холдинг ISKET GROUP</h3>
                 <p style="font-size: 13px; color: #666; margin-bottom: 25px; text-align: center;">Заявки поступают напрямую руководству: <b>isket.group@bk.ru</b></p>
                 
                 <form action="https://formspree.io/f/mkjgeynq" method="POST">
@@ -675,7 +659,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label>Телефон для связи (WhatsApp) *</label>
+                        <label>Номер телефона (WhatsApp) *</label>
                         <input type="tel" name="phone" placeholder="+7 (999) 000-00-00" required>
                     </div>
 
@@ -701,11 +685,7 @@
                         <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
                     </div>
 
-                    <div class="form-compliance-note">
-                        🔒 Данные используются только для связи с вами и подготовки коммерческого предложения.
-                    </div>
-
-                    <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 10px;">Отправить запрос в компанию</button>
+                    <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 10px;">Отправить запрос в холдинг</button>
                 </form>
             </div>
         </div>
@@ -713,7 +693,7 @@
 
     <footer>
         <div class="container" style="justify-content: center; flex-direction: column;">
-            <p>&copy; 2020 ISKET GROUP. Профессиональная команда по сопровождению поставщиков в федеральные торговые сети.</p>
+            <p>&copy; 2020 ISKET GROUP. Многопрофильный холдинг по сопровождению поставщиков в федеральные сети.</p>
         </div>
     </footer>
 
