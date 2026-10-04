@@ -572,7 +572,17 @@
                 </div>
 
                 <div class="form-group">
-                    <label>3. Направление сопровождения (Магнит Групп): *</label>
+                    <label>3. Статус компании *</label>
+                    <select name="company_category" id="companyCategoryMagnit" onchange="calculateMagnitPrice()" required>
+                        <option value="" disabled selected>Выберите статус</option>
+                        <option value="Трейдер">3.1 Трейдер</option>
+                        <option value="Производитель">3.2 Производитель</option>
+                        <option value="Импортер">3.3 Импортер</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>4. Направление сопровождения (Магнит Групп): *</label>
                     <select name="retail_target_magnit" id="retailTargetMagnit" onchange="calculateMagnitPrice()" required>
                         <option value="" disabled selected>Выберите сеть</option>
                         <option value="Импорт Магнит">4.1 Импорт Магнит (350 000 ₽)</option>
@@ -580,6 +590,15 @@
                         <option value="Дикси">4.3 Дикси (500 000 ₽)</option>
                         <option value="Локал Магнит">4.4 Локал Магнит (500 000 ₽)</option>
                         <option value="Азбука Вкуса">4.5 Азбука Вкуса (600 000 ₽)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Возраст компании (ООО) *</label>
+                    <select name="company_age" id="companyAgeMagnit" onchange="calculateMagnitPrice()" required>
+                        <option value="" disabled selected>Выберите возраст юрлица</option>
+                        <option value="Более 1 года">Более 1 года</option>
+                        <option value="Менее 1 года">Менее 1 года (+100 000 ₽)</option>
                     </select>
                 </div>
 
@@ -758,7 +777,7 @@
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление</option>
                             <option value="Договор с X5 Group">Договор с X5 Group</option>
-                            <option value="Договор с Магнит Групп (АО Тандер)">Договор с Магнит Групп (Новинка)</option>
+                            <option value="Договор с Магнит Групп">Договор с Магнит Групп (Новинка)</option>
                             <option value="Подготовка документов производителя">Подготовка документов производителя</option>
                             <option value="Вопросы по заказам и штрафам">Вопросы по заказам и штрафам</option>
                             <option value="Другой вопрос / Консультация">Другой вопрос / Консультация</option>
@@ -848,6 +867,8 @@
         function calculateMagnitPrice() {
             const retail = document.getElementById('retailTargetMagnit').value;
             const supplierCat = document.getElementById('supplierCategoryMagnit').value;
+            const compCat = document.getElementById('companyCategoryMagnit').value;
+            const age = document.getElementById('companyAgeMagnit').value;
             
             let basePrice = 0;
 
@@ -865,6 +886,10 @@
 
             if (supplierCat === 'Недействующий поставщик') {
                 basePrice += 150000;
+            }
+
+            if (age === 'Менее 1 года') {
+                basePrice += 100000;
             }
 
             const formattedPrice = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
