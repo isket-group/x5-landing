@@ -250,11 +250,11 @@
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">⚖️</div>
-                        <span class="direction-badge">Юридический отдел</span>
-                        <h3>Штрафы, заказы и споры с сетью</h3>
-                        <p>Аннулирование необоснованных штрафов, оперативное урегулирование вопросов по заказам и полное сопровождение спорных ситуаций.</p>
+                        <span class="direction-badge">Юридический и логистический отдел</span>
+                        <h3>Оспаривание штрафов и споры с сетью</h3>
+                        <p>Профессиональное составление претензий, актов разногласий и писем категорийным менеджерам. Аннулирование необоснованных штрафов по SLA.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на заказ</button>
+                    <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на аудит</button>
                 </div>
 
                 <div class="direction-card">
@@ -312,21 +312,21 @@
     <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Решенные сложные задачи</h2>
-            <p class="section-subtitle">Примеры работы с нестандартными ограничениями торговых сетей (конфиденциальность соблюдена)</p>
+            <p class="section-subtitle">Примеры работы с претензиями и регламентами торговых сетей (конфиденциальность соблюдена)</p>
 
             <div class="cases-grid">
                 <div class="case-card">
-                    <span class="case-tag">Кейс №1 • Обход жестких лимитов SL</span>
-                    <h3>Заход в региональные торги без риска штрафов</h3>
-                    <p class="case-text"><b>Задача:</b> Действующий поставщик корнеплодов в «Перекрёсток» (СПб) получил жесткое требование от «Пятёрочки СЗФО»: показать уровень Service Level (SL) не ниже 95% за 2 месяца. При критически малых объемах это грозило катастрофическими возвратами и просадкой метрик.</p>
-                    <div class="case-result">✓ Решение: Подготовили экспертный пакет документов о статусе производителя, согласовали через внутренние каналы связи. Агроном подтвердил статус за 3–4 недели, и поставщика успешно добавили в региональные торги Пятёрочки без рискованных отгрузок в Перекрёсток.</div>
+                    <span class="case-tag">Кейс №1 • Претензионная работа по SL</span>
+                    <h3>Снятие необоснованных штрафов по уровню сервиса</h3>
+                    <p class="case-text"><b>Задача:</b> Поставщик овощей столкнулся с автоматическим начислением штрафов за недопоставку из-за сбоя слотов приемки в РЦ сети.</p>
+                    <div class="case-result">✓ Решение: Подготовили юридически выверенный акт разногласий и пакет закрывающих документов со всеми трек-номерами машин. Претензия была удовлетворена категорийным менеджером в полном объеме, штраф аннулирован.</div>
                 </div>
 
                 <div class="case-card">
-                    <span class="case-tag">Кейс №2 • Трейдер в статус «Производителя»</span>
-                    <h3>Запуск компании без собственного производства «под ключ»</h3>
-                    <p class="case-text"><b>Задача:</b> Компания-трейдер не имела собственных активов и полей, но располагала пулом надежных производителей. Требовалось зайти в торги ДСК «Пятёрочка».</p>
-                    <div class="case-result">✓ Решение: Разработали полный комплект регламентов и документов производителя. Благодаря внутренним протоколам и выезду профильного агронома на предприятие (за 5 недель), статус был успешно подтвержден. Подписан прямой договор поставки.</div>
+                    <span class="case-tag">Кейс №2 • Согласование перепоставки</span>
+                    <h3>Оперативное урегулирование вопросов по заказу</h3>
+                    <p class="case-text"><b>Задача:</b> Требовалось срочно пересогласовать объем партии и скорректировать спецификацию в SAP без попадания под штрафные санкции за срыв отгрузки.</p>
+                    <div class="case-result">✓ Решение: Составили официальное обращение в рамках регламента поставки, провели переговоры с логистическим отделом сети и зафиксировали изменение заказа без финансовых потерь для партнера.</div>
                 </div>
             </div>
         </div>
@@ -353,7 +353,7 @@
                 </div>
                 <div class="faq-card">
                     <h4>🔒 Безопасно ли это для нашего бизнеса?</h4>
-                    <p>Абсолютно. Вся работа ведется в закрытом контуре. Сеть видит безупречный комплект документов, а ваши действующие цепочки защищены от любых рисков и проверок.</p>
+                    <p>Абсолютно. Вся работа ведется в правовом поле на основе действующих договоров поставки и регламентов ритейла, защищая ваши интересы от любых рисков.</p>
                 </div>
             </div>
         </div>
@@ -491,7 +491,7 @@
             <button class="modal-close" onclick="closeModal('modal-fine-calc')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Юридический отдел</span>
             <h3>Заявка на аннулирование штрафов</h3>
-            <p>Заполните данные, и наш юрист свяжется с вами для аудита претензий сети.</p>
+            <p>Заполните данные, и наш юрист свяжется с вами для правового аудита претензий сети.</p>
             
             <form id="fineForm" onsubmit="handleFormSubmit(event, 'fineForm', 'Заявка по калькулятору штрафов')">
                 <input type="hidden" name="form_type" value="Заявка по калькулятору штрафов">
@@ -596,16 +596,16 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ЗАЯВКА НА ПРОБЛЕМНЫЙ ЗАКАЗ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ЗАЯВКА НА ПРЕТЕНЗИОННУЮ РАБОТУ / ЗАКАЗ -->
     <div id="modal-order-request" class="modal-overlay">
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;">Оперативная заявка</span>
-            <h3>Управление проблемным заказом</h3>
-            <p>Заполните параметры проблемного заказа, и наш специалист оперативно возьмет его в работу.</p>
+            <span class="direction-badge" style="margin-bottom: 10px;">Претензионный отдел</span>
+            <h3>Претензионная работа и корректировка заказов</h3>
+            <p>Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.</p>
             
-            <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Заявка по проблемному заказу / Штрафам')">
-                <input type="hidden" name="form_type" value="Заявка по проблемному заказу / Штрафам">
+            <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Заказ')">
+                <input type="hidden" name="form_type" value="Претензионная работа / Заказ">
                 <input type="hidden" name="generated_token" id="tokenOrder">
 
                 <div class="form-group">
@@ -622,10 +622,10 @@
                     <label>3. Тип операции с заказом *</label>
                     <select name="order_operation" required>
                         <option value="" disabled selected>Выберите операцию из списка</option>
-                        <option value="Снятие заказа без приемки">1 - Снятие заказа без приемки</option>
-                        <option value="Перенос заказа">2 - Перенос заказа</option>
-                        <option value="Согласование перепоставки">3 - Согласование перепоставки</option>
-                        <option value="Снятие заказа после приемки">4* - Снятие заказа после приемки</option>
+                        <option value="Оспаривание штрафа по SLA">Оспаривание штрафа по SLA</option>
+                        <option value="Корректировка объема партии">Корректировка объема партии</option>
+                        <option value="Согласование перепоставки">Согласование перепоставки</option>
+                        <option value="Урегулирование акта разногласий">Урегулирование акта разногласий</option>
                     </select>
                 </div>
 
@@ -649,19 +649,19 @@
                 </div>
 
                 <div class="form-group">
-                    <label>7. Комментарии</label>
-                    <textarea name="comments" rows="3" placeholder="Укажите детали проблемы, причины или артикулы товара..."></textarea>
+                    <label>7. Суть вопроса / Детали спора</label>
+                    <textarea name="comments" rows="3" placeholder="Укажите причины разногласий, номера актов или артикулы товара..."></textarea>
                 </div>
 
-                <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить заявку в работу</button>
+                <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;">Отправить обращение в работу</button>
             </form>
 
             <div id="successBox-order" class="token-success-box">
-                <h4>🎉 Заявка принята в работу!</h4>
-                <p>Номер для отслеживания статуса урегулирования:</p>
+                <h4>🎉 Обращение принято в работу!</h4>
+                <p>Номер для отслеживания статуса претензии:</p>
                 <div class="generated-token" id="tokenDisplay-order">ISKET-0000</div>
                 <br>
-                <a id="whatsappLink-order" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp по заказу</a>
+                <a id="whatsappLink-order" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn">💬 Написать в WhatsApp по обращению</a>
             </div>
         </div>
     </div>
@@ -790,7 +790,7 @@
                             <option value="Заключение договоров с X5 Group">Заключение договоров с X5 Group</option>
                             <option value="Изготовление документации производителя">Изготовление документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
-                            <option value="Штрафы, заказы и споры с сетью">Штрафы, заказы и споры с сетью</option>
+                            <option value="Оспаривание штрафов и споры с сетью">Оспаривание штрафов и споры с сетью</option>
                             <option value="M&A / Покупка готовой фирмы">M&A / Покупка готовой фирмы</option>
                             <option value="Другой вопрос / Консультация">Другой вопрос / Консультация</option>
                         </select>
@@ -827,24 +827,19 @@
             }
         }
 
-        // Логика расчета калькулятора штрафов (исправленная под заказ и возврат 50%)
+        // Логика расчета калькулятора штрафов
         function calculateFineSavings() {
             const orderSum = parseInt(document.getElementById('fineOrderSlider').value);
             
-            // Форматируем сумму поставки
             document.getElementById('fineOrderSumText').innerText = orderSum.toLocaleString('ru-RU') + ' ₽';
             
-            // Стандартный штраф сети 12% от суммы поставки
             const stdFine = orderSum * 0.12;
-
-            // Штраф с нашей защитой 6% (возвращаем половину)
             const ourFine = orderSum * 0.06;
 
             document.getElementById('stdFineText').innerText = Math.round(stdFine).toLocaleString('ru-RU') + ' ₽';
             document.getElementById('ourFineText').innerText = Math.round(ourFine).toLocaleString('ru-RU') + ' ₽';
         }
 
-        // Вызываем расчет при загрузке страницы
         window.onload = function() {
             calculateFineSavings();
         };
@@ -966,7 +961,7 @@
             }
 
             if (supplierCat === 'Недействующий поставщик') {
-                basePrice += 200,000; // оставим как было: +200000
+                basePrice += 200000;
             }
 
             if (compCat === 'Трейдер') {
@@ -985,9 +980,9 @@
                 basePrice += 100000;
             }
 
-            const formattedPrice = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
-            document.getElementById('priceDisplay').innerText = formattedPrice;
-            document.getElementById('hiddenPrice').value = formattedPrice;
+            const formattedPosition = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
+            document.getElementById('priceDisplay').innerText = formattedPosition;
+            document.getElementById('hiddenPrice').value = formattedPosition;
         }
     </script>
 
