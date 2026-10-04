@@ -67,7 +67,7 @@
         h2::after { content: ''; display: block; width: 45px; height: 4px; background: var(--perekrestok-red); margin: 12px auto 35px auto; border-radius: 2px; }
         .section-subtitle { text-align: center; color: #555; font-size: 16px; margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
 
-        .directions-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
+        .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto; width: 100%; }
         .direction-card { background: var(--card-bg); padding: 30px 25px; border-radius: 12px; box-shadow: 0 6px 25px rgba(0,0,0,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; }
         .direction-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.08); }
         
@@ -76,6 +76,20 @@
         .direction-card h3 { font-size: 19px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; line-height: 1.3; }
         .direction-card p { color: #666; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
         .direction-badge { display: inline-block; background: #e8f8f5; color: var(--x5-green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Блок Этапы работы (Roadmap) */
+        .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; width: 100%; }
+        .roadmap-card { background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: left; }
+        .roadmap-num { font-size: 32px; font-weight: 800; color: var(--x5-green); margin-bottom: 10px; opacity: 0.8; }
+        .roadmap-card h4 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .roadmap-card p { font-size: 13px; color: #666; }
+
+        /* Блок "Почему выбирают ISKET GROUP" (Манифест) */
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
+        .benefit-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; }
+        .benefit-icon { font-size: 28px; margin-bottom: 15px; }
+        .benefit-card h4 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
+        .benefit-card p { font-size: 14px; color: #666; }
 
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
         .case-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; border-left: 5px solid var(--x5-green); width: 100%; }
@@ -123,7 +137,8 @@
         footer { background: var(--secondary-color); color: #999; text-align: center; padding: 30px 0; font-size: 13px; border-top: 3px solid var(--perekrestok-red); width: 100%; }
         
         @media (max-width: 992px) {
-            .directions-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .directions-grid { grid-template-columns: 1fr; max-width: 500px; }
+            .roadmap-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); }
             .cases-grid, .faq-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 768px) {
@@ -145,8 +160,8 @@
             h2 { font-size: 24px; }
             .section-subtitle { font-size: 14px; margin-bottom: 30px; }
             
-            .directions-grid, .cases-grid, .faq-grid { grid-template-columns: 1fr; gap: 20px; width: 100%; }
-            .direction-card, .case-card, .faq-card { padding: 22px 18px; width: 100%; }
+            .roadmap-grid, .benefits-grid { grid-template-columns: 1fr; }
+            .direction-card, .case-card, .faq-card, .benefit-card { padding: 22px 18px; width: 100%; }
             
             .modal-container { padding: 25px 15px; max-height: 95vh; width: 95%; }
             .form-container { padding: 25px 15px; width: 100%; }
@@ -177,7 +192,7 @@
     <section class="hero">
         <div class="container" style="flex-direction: column;">
             <h1>Многопрофильный холдинг <span>ISKET GROUP</span></h1>
-            <p>Профессиональный консалтинг и операционное сопровождение поставщиков: экспертное взаимодействие с X5 Group, подготовка комплектов документации, кадровый аутстаффинг и претензионно-исковая поддержка.</p>
+            <p>Пакетное сопровождение и технологическая подготовка поставщиков к аккредитации в федеральных сетях: экспертная поддержка, стандартизация документации, кадровый аутстаффинг и претензионно-исковая работа.</p>
             <a href="#contact" class="btn btn-red" style="width: auto;">Связаться с руководством холдинга</a>
 
             <div class="stats-bar">
@@ -203,13 +218,13 @@
             <h2>Направления нашей деятельности</h2>
             <p class="section-subtitle">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу</p>
             
-            <div class="directions-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 800px; margin: 0 auto;">
+            <div class="directions-grid">
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">📄</div>
                         <span class="direction-badge">Департамент контрактов</span>
-                        <h3>Сопровождение договоров с X5 Group</h3>
-                        <p>Полный цикл консультационной поддержки при аккредитации производителей и трейдеров: подготовка баз, прохождение внутренних аудитов и старт отгрузок.</p>
+                        <h3>Сопровождение аккредитации с X5 Group</h3>
+                        <p>Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
                     </div>
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
@@ -219,7 +234,7 @@
                         <div class="card-icon">📋</div>
                         <span class="direction-badge">Экспертный отдел</span>
                         <h3>Подготовка документации для статуса производителя</h3>
-                        <p>Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов.</p>
+                        <p>Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать доки</button>
                 </div>
@@ -242,6 +257,63 @@
                         <p>Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по SLA и штрафам.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-order-request')">Подать заявку на аудит</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: ЭТАПЫ РАБОТЫ (ROADMAP) -->
+    <section>
+        <div class="container" style="flex-direction: column;">
+            <h2>Этапы взаимодействия с холдингом</h2>
+            <p class="section-subtitle">Прозрачный и регламентированный процесс работы по официальному договору</p>
+
+            <div class="roadmap-grid">
+                <div class="roadmap-card">
+                    <div class="roadmap-num">01</div>
+                    <h4>Аудит и заявка</h4>
+                    <p>Анализируем текущий статус вашей компании в SAP, исходную документацию и специфику продукции.</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-num">02</div>
+                    <h4>Подготовка пакета</h4>
+                    <p>Разрабатываем юридические и технические регламенты, устраняющие комплаенс-риски сети.</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-num">03</div>
+                    <h4>Правовое сопровождение</h4>
+                    <p>Сопровождаем процедуру аккредитации, ведем претензионную работу и согласование спецификаций.</p>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-num">04</div>
+                    <h4>Старт и поддержка</h4>
+                    <p>Обеспечиваем стабильную операционную деятельность и бесперебойный документооборот.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ ISKET GROUP (МАНИФЕСТ) -->
+    <section class="bg-light">
+        <div class="container" style="flex-direction: column;">
+            <h2>Почему производители выбирают нас</h2>
+            <p class="section-subtitle">Наши принципы гарантируют стабильность, безопасность и предсказуемость результата</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">🎯</div>
+                    <h4>Регламенты ритейла</h4>
+                    <p>Фокус на безупречное соблюдение стандартов качества и внутренних регламентов федеральных торговых сетей.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚖️</div>
+                    <h4>Чистое правовое поле</h4>
+                    <p>Работа исключительно на основе официальных договоров оказания услуг и прозрачного документооборота.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="benefit-icon">⚙️</div>
+                    <h4>Глубокая экспертиза</h4>
+                    <p>Доскональное знание внутренних бизнес-процессов, логистических матриц и SAP-структур ритейла.</p>
                 </div>
             </div>
         </div>
@@ -280,14 +352,14 @@
             <div class="faq-grid">
                 <div class="faq-card">
                     <h4>💳 Как устроена оплата услуг?</h4>
-                    <p>Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких оплат «за результат внутри систем сети» не практикуется.</p>
+                    <p>Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких оплат за результат внутри закрытых систем сетей не практикуется.</p>
                 </div>
                 <div class="faq-card">
                     <h4>⏳ Какие сроки выполнения задач?</h4>
                     <p>Сроки зависят от типа задачи: подготовка документации занимает от 1 недели, юридический аудит и составление претензий — от 2 до 5 дней, комплексное сопровождение — по графику договора.</p>
                 </div>
                 <div class="faq-card">
-                    <h4>🛡️ Какие гарантии вы предоставляете?</h4>
+                    <h4>🛡 Какие гарантии вы предоставляете?</h4>
                     <p>Мы гарантируем высочайшее качество юридической и технической подготовки документов, строгую конфиденциальность и работу исключительно в правовом поле РФ.</p>
                 </div>
                 <div class="faq-card">
@@ -330,8 +402,8 @@
             <h3>Калькулятор стоимости и заявка на сопровождение</h3>
             <p>Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость консалтинговых услуг.</p>
             
-            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение договора')">
-                <input type="hidden" name="form_type" value="Заявка на сопровождение договора">
+            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение аккредитации')">
+                <input type="hidden" name="form_type" value="Заявка на сопровождение аккредитации">
                 <input type="hidden" name="generated_token" id="tokenContract">
 
                 <div class="form-group">
@@ -405,7 +477,7 @@
 
                 <!-- Блок вывода ориентировочной стоимости -->
                 <div class="price-box">
-                    <div class="price-title">Ориентировочная стоимость услуг:</div>
+                    <div class="price-title">Ориентировочная стоимость консалтинговых услуг:</div>
                     <div class="price-value" id="priceDisplay">0 ₽</div>
                     <input type="hidden" name="calculated_price" id="hiddenPrice" value="0">
                 </div>
@@ -639,7 +711,7 @@
             }
         }
 
-        // Автогенерация токена и отправка на Formspree
+        // Автогенерация токена и отправка форм (Formspree + Telegram через CallMeBot)
         function handleFormSubmit(event, formId, formTypeName) {
             event.preventDefault();
             const form = document.getElementById(formId);
@@ -659,6 +731,7 @@
 
             const formData = new FormData(form);
 
+            // 1. Отправка в Formspree (на почту isket.group@bk.ru)
             fetch("https://formspree.io/f/mkjgeynq", {
                 method: "POST",
                 body: formData,
@@ -667,6 +740,12 @@
                 if (response.ok) {
                     form.style.display = 'none';
                     document.getElementById('successBox-' + suffix).style.display = 'block';
+
+                    // 2. Отправка мгновенного уведомления в ваш Telegram через CallMeBot
+                    const tgUser = "@isket_group";
+                    let msgText = encodeURIComponent(`🔔 Новая заявка ISKET GROUP!\n📌 Услуга: ${formTypeName}\n🎟 Токен: ${token}`);
+                    fetch(`https://api.callmebot.com/text.php?user=${tgUser}&text=${msgText}`);
+
                 } else {
                     alert("Произошла ошибка при отправке. Попробуйте еще раз.");
                 }
