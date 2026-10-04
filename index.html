@@ -226,8 +226,8 @@
                     <div>
                         <div class="card-icon">📄</div>
                         <span class="direction-badge">Департамент контрактов</span>
-                        <h3>Сопровождение аккредитации с X5 Group</h3>
-                        <p>Консультационная поддержка при подготовке поставщиков к работе с федеральной сетью: аудит данных, подготовка к комплаенс-проверкам и старт поставок.</p>
+                        <h3>Сопровождение аккредитации и договоров с X5 Group</h3>
+                        <p>Консультационная поддержка при подготовке к аккредитации и заключению договоров поставки с X5 Group: аудит данных, проверка регламентов и старт поставок.</p>
                     </div>
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
@@ -405,11 +405,11 @@
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Департамент контрактов</span>
-            <h3>Заявка на сопровождение аккредитации</h3>
+            <h3>Заявка на сопровождение аккредитации и договоров с X5 Group</h3>
             <p>Заполните параметры компании для расчета стоимости консалтинговых услуг.</p>
             
-            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение аккредитации')">
-                <input type="hidden" name="form_type" value="Заявка на сопровождение аккредитации">
+            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение аккредитации с X5')">
+                <input type="hidden" name="form_type" value="Заявка на сопровождение аккредитации с X5">
                 <input type="hidden" name="generated_token" id="tokenContract">
 
                 <div class="form-group">
@@ -688,7 +688,7 @@
                         <label>Какое направление вас интересует? *</label>
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление из списка</option>
-                            <option value="Сопровождение договоров с X5 Group">Сопровождение договоров с X5 Group</option>
+                            <option value="Сопровождение аккредитации с X5 Group">Сопровождение аккредитации с X5 Group</option>
                             <option value="Подготовка документации производителя">Подготовка документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
                             <option value="Претензионная работа и споры с сетью">Претензионная работа и споры с сетью</option>
