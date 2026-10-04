@@ -231,7 +231,7 @@
                     <div>
                         <div class="card-icon">📋</div>
                         <span class="direction-badge">Экспертный отдел</span>
-                        <h3>Изготовление документации производителя</h3>
+                        <h3>Подготовка документации для подтверждения статуса производителя</h3>
                         <p>Разработка полного юридического и технического пакета документов для прохождения аудита службы безопасности и агрономов X5.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-docs')">Рассчитать и заказать доки</button>
@@ -434,7 +434,7 @@
                 <div class="form-group" id="goalTraderBlock" style="display: none;">
                     <label>5. Я трейдер и хочу выйти в торги как: *</label>
                     <select name="goal_trader" id="goalTraderSelect" onchange="calculatePrice()">
-                        <option value="Производитель">5.1 Производитель (+250 000 ₽ за изготовление документации)</option>
+                        <option value="Производитель">5.1 Производитель (+250 000 ₽ за подготовку документации)</option>
                         <option value="Трейдер">5.2 Трейдер</option>
                         <option value="Импортер">5.3 Импортер</option>
                     </select>
@@ -530,16 +530,16 @@
         </div>
     </div>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ИЗГОТОВЛЕНИЕ ДОКУМЕНТАЦИИ -->
+    <!-- МОДАЛЬНОЕ ОКНО: ПОДГОТОВКА ДОКУМЕНТАЦИИ -->
     <div id="modal-docs" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--x5-green);">
             <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">Экспертный отдел</span>
-            <h3>Изготовление документации производителя</h3>
+            <h3>Подготовка документации для подтверждения статуса производителя</h3>
             <p>Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
             
-            <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на изготовление документации производителя')">
-                <input type="hidden" name="form_type" value="Заявка на изготовление документации производителя">
+            <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на подготовку документации производителя')">
+                <input type="hidden" name="form_type" value="Заявка на подготовку документации производителя">
                 <input type="hidden" name="generated_token" id="tokenDocs">
 
                 <div class="form-group">
@@ -788,7 +788,7 @@
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление из списка</option>
                             <option value="Заключение договоров с X5 Group">Заключение договоров с X5 Group</option>
-                            <option value="Изготовление документации производителя">Изготовление документации производителя</option>
+                            <option value="Подготовка документации производителя">Подготовка документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
                             <option value="Оспаривание штрафов и споры с сетью">Оспаривание штрафов и споры с сетью</option>
                             <option value="M&A / Покупка готовой фирмы">M&A / Покупка готовой фирмы</option>
@@ -980,9 +980,9 @@
                 basePrice += 100000;
             }
 
-            const formattedPosition = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
-            document.getElementById('priceDisplay').innerText = formattedPosition;
-            document.getElementById('hiddenPrice').value = formattedPosition;
+            const formattedPrice = basePrice > 0 ? basePrice.toLocaleString('ru-RU') + ' ₽' : '0 ₽';
+            document.getElementById('priceDisplay').innerText = formattedPrice;
+            document.getElementById('hiddenPrice').value = formattedPrice;
         }
     </script>
 
