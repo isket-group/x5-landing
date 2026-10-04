@@ -10,134 +10,135 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --x5-green: #00853f;
-            --x5-dark-green: #00632f;
-            --perekrestok-red: #d92d20;
-            --secondary-color: #181d24;
-            --bg-light: #f8faf9;
-            --text-color: #2b333b;
-            --card-bg: #ffffff;
-            --border-color: #e5e9e6;
+            --eco-dark: #0a2318;       /* Глубокий зеленый шапки/подвала (в стиле ВкусВилл/Перекресток) */
+            --eco-primary: #007a3d;    /* Насыщенный фирменный зеленый */
+            --eco-hover: #006030;      /* Темнее для наведения */
+            --accent-red: #d92d20;     /* Акцентный красный */
+            --bg-page: #f4f7f5;        /* Мягкий эко-фон */
+            --text-main: #1f2924;      /* Темный читаемый текст */
+            --card-bg: #ffffff;        /* Белый фон карточек */
+            --border-color: #e2e8e4;   /* Аккуратные рамки */
         }
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { color: var(--text-color); line-height: 1.6; background-color: #fff; -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
+        body { color: var(--text-main); line-height: 1.6; background-color: var(--bg-page); -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
         
-        header { background: var(--secondary-color); color: #fff; padding: 15px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.06); border-bottom: 3px solid var(--x5-green); }
+        /* Упорядоченная современная шапка */
+        header { background: var(--eco-dark); color: #fff; padding: 18px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(10,35,24,0.08); border-bottom: 3px solid var(--eco-primary); }
         .container { width: 90%; max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
         
         .logo { display: flex; align-items: center; text-decoration: none; color: #fff; font-size: 20px; font-weight: 800; letter-spacing: 0.5px; }
-        .logo .box { background: var(--x5-green); color: #fff; padding: 5px 9px; border-radius: 6px; margin-right: 8px; font-size: 18px; box-shadow: 0 2px 8px rgba(0,133,63,0.2); }
-        .logo span { color: var(--perekrestok-red); }
+        .logo .box { background: var(--eco-primary); color: #fff; padding: 5px 10px; border-radius: 6px; margin-right: 8px; font-size: 18px; box-shadow: 0 2px 8px rgba(0,122,61,0.3); }
+        .logo span { color: #ff6b6b; }
 
-        .header-right { display: flex; align-items: center; gap: 15px; }
-        .status-btn { background: transparent; border: 2px solid var(--x5-green); color: #fff; padding: 6px 12px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-        .status-btn:hover { background: var(--x5-green); }
+        .header-right { display: flex; align-items: center; gap: 18px; }
+        .status-btn { background: rgba(255,255,255,0.08); border: 1.5px solid rgba(255,255,255,0.2); color: #fff; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .status-btn:hover { background: var(--eco-primary); border-color: var(--eco-primary); }
 
         .phone-whatsapp { font-size: 14px; font-weight: 600; color: #fff; text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; white-space: nowrap; }
-        .phone-whatsapp:hover { color: var(--x5-green); }
+        .phone-whatsapp:hover { color: #86efac; }
         .whatsapp-tag { background: #25d366; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Плавающая кнопка WhatsApp */
-        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.3); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
+        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
         .floating-whatsapp:hover { transform: scale(1.1); background: #20ba5a; }
         .floating-tooltip { position: absolute; right: 75px; background: #fff; color: #333; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.08); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; border: 1px solid var(--border-color); }
         .floating-whatsapp:hover .floating-tooltip { opacity: 1; }
 
         /* Первый экран (Hero) */
-        .hero { background: linear-gradient(145deg, #131a16 0%, #1e2e23 100%); color: #fff; padding: 160px 0 80px 0; text-align: center; border-bottom: 6px solid var(--x5-green); position: relative; }
-        .hero h1 { font-size: 36px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; }
-        .hero h1 span { color: #ff4d4f; }
-        .hero p { font-size: 16px; font-weight: 400; margin-bottom: 30px; color: #d3dcd6; max-width: 820px; margin-left: auto; margin-right: auto; padding: 0 10px; }
+        .hero { background: linear-gradient(160deg, #0a2318 0%, #113626 100%); color: #fff; padding: 170px 0 90px 0; text-align: center; border-bottom: 6px solid var(--eco-primary); position: relative; }
+        .hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; }
+        .hero h1 span { color: #ff6b6b; }
+        .hero p { font-size: 16px; font-weight: 400; margin-bottom: 35px; color: #d3dcd6; max-width: 820px; margin-left: auto; margin-right: auto; padding: 0 10px; }
         
         /* Блок статистики */
-        .stats-bar { display: flex; justify-content: center; gap: 40px; margin-top: 35px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
+        .stats-bar { display: flex; justify-content: center; gap: 50px; margin-top: 40px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; }
         .stat-item { text-align: center; }
         .stat-num { font-size: 28px; font-weight: 800; color: #fff; }
-        .stat-num span { color: #ff4d4f; }
+        .stat-num span { color: #ff6b6b; }
         .stat-desc { font-size: 13px; color: #a4b3aa; margin-top: 4px; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--x5-green); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0, 133, 63, 0.25); width: 100%; }
-        .btn:hover { background: var(--x5-dark-green); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0, 133, 63, 0.35); }
-        .btn-red { background: var(--perekrestok-red); box-shadow: 0 4px 15px rgba(217, 45, 32, 0.25); }
-        .btn-red:hover { background: #b82217; box-shadow: 0 6px 20px rgba(217, 45, 32, 0.35); }
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--eco-primary); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0,122,61,0.25); width: 100%; }
+        .btn:hover { background: var(--eco-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,122,61,0.35); }
+        .btn-red { background: var(--accent-red); box-shadow: 0 4px 15px rgba(217,45,32,0.25); }
+        .btn-red:hover { background: #b82217; box-shadow: 0 6px 20px rgba(217,45,32,0.35); }
         
-        section { padding: 70px 0; width: 100%; }
-        .bg-light { background-color: var(--bg-light); }
+        section { padding: 75px 0; width: 100%; }
+        .bg-white { background-color: #ffffff; }
         h2 { text-align: center; font-size: 28px; font-weight: 800; margin-bottom: 12px; color: var(--secondary-color); letter-spacing: -0.5px; padding: 0 10px; }
-        h2::after { content: ''; display: block; width: 45px; height: 4px; background: var(--perekrestok-red); margin: 12px auto 35px auto; border-radius: 2px; }
-        .section-subtitle { text-align: center; color: #616e7c; font-size: 15px; margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
+        h2::after { content: ''; display: block; width: 45px; height: 4px; background: var(--accent-red); margin: 12px auto 35px auto; border-radius: 2px; }
+        .section-subtitle { text-align: center; color: #616e7c; font-size: 15px; margin-bottom: 45px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
 
-        .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 800px; margin: 0 auto; width: 100%; }
-        .direction-card { background: var(--card-bg); padding: 30px 25px; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-color); border-top: 5px solid var(--x5-green); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; }
-        .direction-card:hover { transform: translateY(-4px); box-shadow: 0 10px 25px rgba(0,0,0,0.06); }
+        .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 900px; margin: 0 auto; width: 100%; }
+        .direction-card { background: var(--card-bg); padding: 35px 30px; border-radius: 14px; box-shadow: 0 6px 20px rgba(10,35,24,0.04); border: 1px solid var(--border-color); border-top: 5px solid var(--eco-primary); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; }
+        .direction-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(10,35,24,0.08); }
         
-        .card-icon { width: 45px; height: 45px; background: #eef7f2; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
+        .card-icon { width: 48px; height: 48px; background: #e8f5ec; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
         
-        .direction-card h3 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; line-height: 1.3; }
-        .direction-card p { color: #52606d; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
-        .direction-badge { display: inline-block; background: #eef7f2; color: var(--x5-green); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .direction-card h3 { font-size: 19px; font-weight: 700; color: var(--text-main); margin-bottom: 12px; line-height: 1.3; }
+        .direction-card p { color: #52606d; font-size: 14px; margin-bottom: 25px; font-weight: 400; }
+        .direction-badge { display: inline-block; background: #e8f5ec; color: var(--eco-primary); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Блок Этапы работы (Roadmap) */
         .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .roadmap-card { background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: left; }
-        .roadmap-num { font-size: 32px; font-weight: 800; color: var(--x5-green); margin-bottom: 10px; opacity: 0.8; }
-        .roadmap-card h4 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .roadmap-card { background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(10,35,24,0.02); position: relative; text-align: left; }
+        .roadmap-num { font-size: 32px; font-weight: 800; color: var(--eco-primary); margin-bottom: 10px; opacity: 0.85; }
+        .roadmap-card h4 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
         .roadmap-card p { font-size: 13px; color: #52606d; }
 
         /* Блок "Почему выбирают нас" (Манифест) */
         .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .benefit-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; }
-        .benefit-icon { font-size: 26px; margin-bottom: 15px; }
-        .benefit-card h4 { font-size: 17px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .benefit-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(10,35,24,0.03); text-align: left; }
+        .benefit-icon { font-size: 28px; margin-bottom: 15px; }
+        .benefit-card h4 { font-size: 17px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
         .benefit-card p { font-size: 14px; color: #52606d; }
 
         .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .case-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; border-left: 5px solid var(--x5-green); width: 100%; }
-        .case-card h3 { font-size: 18px; font-weight: 700; color: var(--secondary-color); margin-bottom: 10px; }
-        .case-tag { font-size: 11px; font-weight: 700; color: var(--perekrestok-red); text-transform: uppercase; margin-bottom: 8px; display: block; }
+        .case-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(10,35,24,0.03); position: relative; border-left: 5px solid var(--eco-primary); width: 100%; }
+        .case-card h3 { font-size: 18px; font-weight: 700; color: var(--text-main); margin-bottom: 10px; }
+        .case-tag { font-size: 11px; font-weight: 700; color: var(--accent-red); text-transform: uppercase; margin-bottom: 8px; display: block; }
         .case-text { font-size: 14px; color: #52606d; margin-bottom: 15px; }
-        .case-result { background: #f0f7f3; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--x5-dark-green); }
+        .case-result { background: #e8f5ec; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--eco-dark); }
 
         .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%; }
-        .faq-card h4 { font-size: 16px; font-weight: 700; color: var(--secondary-color); margin-bottom: 8px; }
+        .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(10,35,24,0.03); width: 100%; }
+        .faq-card h4 { font-size: 16px; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
         .faq-card p { font-size: 14px; color: #52606d; }
 
         /* Модальные окна */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,22,17,0.7); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-        .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 30px 25px; border-radius: 14px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--perekrestok-red); max-height: 90vh; overflow-y: auto; text-align: left; }
-        .modal-close { position: absolute; top: 15px; right: 15px; background: #f2f2f2; border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: #444; }
-        .modal-close:hover { background: var(--perekrestok-red); color: #fff; }
-        .modal-container h3 { font-size: 20px; font-weight: 800; color: var(--secondary-color); margin-bottom: 6px; }
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10,35,24,0.75); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
+        .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 35px 30px; border-radius: 16px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.2); border-top: 6px solid var(--accent-red); max-height: 90vh; overflow-y: auto; text-align: left; }
+        .modal-close { position: absolute; top: 15px; right: 15px; background: #f2f4f3; border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: #444; }
+        .modal-close:hover { background: var(--accent-red); color: #fff; }
+        .modal-container h3 { font-size: 20px; font-weight: 800; color: var(--text-main); margin-bottom: 6px; }
         .modal-container p { color: #52606d; font-size: 13px; margin-bottom: 16px; }
 
         .form-group { margin-bottom: 14px; }
         .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #333; }
         .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 13px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; background: #fff; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--x5-green); box-shadow: 0 0 0 3px rgba(0, 133, 63, 0.12); }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--eco-primary); box-shadow: 0 0 0 3px rgba(0,122,61,0.12); }
 
-        /* Юридическая сноска внизу формы для СБ и клиентов */
+        /* Юридическая сноска для СБ */
         .form-compliance-note { font-size: 11px; color: #8492a6; line-height: 1.4; margin-bottom: 15px; padding: 8px 10px; background: #f8faf9; border-radius: 6px; border: 1px solid var(--border-color); }
 
-        .price-box { background: #f0f7f3; border: 1px solid #cce8d7; padding: 16px; border-radius: 10px; margin-bottom: 16px; text-align: center; }
+        .price-box { background: #e8f5ec; border: 1px solid #c8e6d3; padding: 16px; border-radius: 10px; margin-bottom: 16px; text-align: center; }
         .price-title { font-size: 13px; color: #52606d; font-weight: 600; margin-bottom: 4px; }
-        .price-value { font-size: 22px; color: var(--x5-dark-green); font-weight: 800; }
+        .price-value { font-size: 22px; color: var(--eco-dark); font-weight: 800; }
 
         .status-tracker { margin-top: 15px; background: #f9fbfb; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color); display: none; }
-        .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--secondary-color); margin-bottom: 6px; }
+        .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--text-main); margin-bottom: 6px; }
         .tracker-info p { font-size: 13px; color: #52606d; margin-bottom: 4px; }
 
-        .token-success-box { background: #f0f7f3; border: 2px dashed var(--x5-green); padding: 20px; border-radius: 10px; text-align: center; display: none; margin-top: 12px; }
-        .token-success-box h4 { color: var(--x5-dark-green); font-size: 17px; margin-bottom: 6px; }
-        .generated-token { font-size: 24px; font-weight: 800; color: var(--secondary-color); background: #fff; padding: 8px; border-radius: 6px; display: inline-block; margin: 8px 0; border: 1px solid #cce8d7; }
+        .token-success-box { background: #e8f5ec; border: 2px dashed var(--eco-primary); padding: 20px; border-radius: 10px; text-align: center; display: none; margin-top: 12px; }
+        .token-success-box h4 { color: var(--eco-dark); font-size: 17px; margin-bottom: 6px; }
+        .generated-token { font-size: 24px; font-weight: 800; color: var(--text-main); background: #fff; padding: 8px; border-radius: 6px; display: inline-block; margin: 8px 0; border: 1px solid #c8e6d3; }
         .whatsapp-prompt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 10px; transition: background 0.2s; }
         .whatsapp-prompt-btn:hover { background: #20ba5a; }
 
-        .form-section { background: linear-gradient(135deg, #00853f 0%, #005c2a 100%); color: #fff; text-align: center; }
-        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-color); padding: 35px 25px; border-radius: 14px; box-shadow: 0 15px 40px rgba(0,0,0,0.12); text-align: left; width: 100%; }
-        .form-container h3 { text-align: center; margin-bottom: 8px; color: var(--secondary-color); font-size: 22px; font-weight: 800; }
+        .form-section { background: linear-gradient(135deg, var(--eco-dark) 0%, #113626 100%); color: #fff; text-align: center; }
+        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-main); padding: 35px 25px; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.15); text-align: left; width: 100%; }
+        .form-container h3 { text-align: center; margin-bottom: 8px; color: var(--text-main); font-size: 22px; font-weight: 800; }
         
-        footer { background: var(--secondary-color); color: #999; text-align: center; padding: 30px 0; font-size: 13px; border-top: 3px solid var(--perekrestok-red); width: 100%; }
+        footer { background: var(--eco-dark); color: #999; text-align: center; padding: 30px 0; font-size: 13px; border-top: 3px solid var(--accent-red); width: 100%; }
         
         @media (max-width: 992px) {
             .directions-grid { grid-template-columns: 1fr; max-width: 500px; }
@@ -147,7 +148,7 @@
         @media (max-width: 768px) {
             body { font-size: 14px; }
             .container { width: 92%; max-width: 100%; flex-direction: column; gap: 10px; padding-left: 15px; padding-right: 15px; }
-            header { padding: 10px 0; }
+            header { padding: 12px 0; }
             .logo { font-size: 18px; }
             .header-right { width: 100%; justify-content: space-between; gap: 10px; margin-top: 5px; }
             .status-btn { padding: 6px 10px; font-size: 12px; flex: 1; text-align: center; }
@@ -216,7 +217,7 @@
     </section>
 
     <!-- Направления деятельности -->
-    <section class="bg-light">
+    <section class="bg-white">
         <div class="container" style="flex-direction: column;">
             <h2>Направления нашей работы</h2>
             <p class="section-subtitle">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в обработку</p>
@@ -266,7 +267,7 @@
     </section>
 
     <!-- БЛОК: ЭТАПЫ РАБОТЫ (ROADMAP) -->
-    <section>
+    <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Этапы взаимодействия</h2>
             <p class="section-subtitle">Прозрачный и понятный порядок работы по официальному договору</p>
@@ -297,7 +298,7 @@
     </section>
 
     <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ НАС (МАНИФЕСТ) -->
-    <section class="bg-light">
+    <section class="bg-white">
         <div class="container" style="flex-direction: column;">
             <h2>Наши принципы работы</h2>
             <p class="section-subtitle">Надежность, предсказуемость и строгое соблюдение регламентов</p>
@@ -323,7 +324,7 @@
     </section>
 
     <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
-    <section>
+    <section class="bg-light">
         <div class="container" style="flex-direction: column;">
             <h2>Примеры решенных задач</h2>
             <p class="section-subtitle">Практические примеры урегулирования споров (конфиденциальность соблюдена)</p>
@@ -347,7 +348,7 @@
     </section>
 
     <!-- БЛОК FAQ -->
-    <section class="bg-light">
+    <section class="bg-white">
         <div class="container" style="flex-direction: column;">
             <h2>Часто задаваемые вопросы</h2>
             <p class="section-subtitle">Ответы на ключевые вопросы о сотрудничестве, сроках и оплате</p>
@@ -506,7 +507,7 @@
 
     <!-- МОДАЛЬНОЕ ОКНО: ПОДГОТОВКА ДОКУМЕНТАЦИИ -->
     <div id="modal-docs" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--x5-green);">
+        <div class="modal-container" style="border-top-color: var(--eco-primary);">
             <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">Экспертный отдел</span>
             <h3>Подготовка документации производителя</h3>
@@ -651,7 +652,7 @@
 
     <!-- Модалка Персонал -->
     <div id="modal-staff" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--x5-green);">
+        <div class="modal-container" style="border-top-color: var(--eco-primary);">
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;">Департамент кадров</span>
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
@@ -688,7 +689,7 @@
                         <label>Какое направление вас интересует? *</label>
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление из списка</option>
-                            <option value="Сопровождение аккредитации с X5 Group">Сопровождение аккредитации с X5 Group</option>
+                            <option value="Сопровождение договоров с X5 Group">Сопровождение договоров с X5 Group</option>
                             <option value="Подготовка документации производителя">Подготовка документации производителя</option>
                             <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
                             <option value="Претензионная работа и споры с сетью">Претензионная работа и споры с сетью</option>
