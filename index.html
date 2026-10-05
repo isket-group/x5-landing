@@ -274,7 +274,7 @@
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
 
-                <!-- Карточка 5: Юридический отдел (на всю ширину) -->
+                <!-- Карточка 5: Юридический отдел (на всю ширину с кнопкой по центру) -->
                 <div class="direction-card" style="grid-column: 1 / -1; max-width: 100%;">
                     <div>
                         <div class="card-icon">⚖️</div>
@@ -282,7 +282,9 @@
                         <h3>Претензионная работа по заказам и штрафам с сетью</h3>
                         <p>Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-order-request')" style="max-width: 350px;">Подать заявку</button>
+                    <div style="text-align: center; width: 100%;">
+                        <button class="btn" onclick="openModal('modal-order-request')" style="max-width: 350px; margin: 0 auto; display: inline-flex;">Подать заявку</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -471,8 +473,8 @@
                     <label>5. Хотите войти в сеть как: *</label>
                     <select name="entry_role" id="entryRole" onchange="calculatePrice()" required>
                         <option value="Как производитель" selected>Как производитель (+200 000 ₽)</option>
-                        <option value="Как трейдер">Как трейдер — без изменений</option>
-                        <option value="Как импортер">Как импортер — без изменений</option>
+                        <option value="Как трейдер">Как трейдер</option>
+                        <option value="Как импортер">Как импортер</option>
                         <option value="Без изменений">Без изменений</option>
                     </select>
                 </div>
@@ -877,11 +879,6 @@
             document.getElementById('priceDisplay').innerText = formattedPrice;
             document.getElementById('hiddenPrice').value = formattedPrice;
         }
-
-        // Инициализация расчета при загрузке страницы (чтобы сработал выбор по умолчанию)
-        window.addEventListener('DOMContentLoaded', () => {
-            // Установим дефолтные значения для демонстрации при первом открытии, если нужно
-        });
     </script>
 
 </body>
