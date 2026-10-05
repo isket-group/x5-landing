@@ -448,7 +448,7 @@
 
                 <div class="form-group">
                     <label>3. Категория компании *</label>
-                    <select name="company_category" id="companyCategory" onchange="toggleGoalOptions()" required>
+                    <select name="company_category" id="companyCategory" onchange="calculatePrice()" required>
                         <option value="" disabled selected>Выберите статус</option>
                         <option value="Трейдер">3.1 Трейдер</option>
                         <option value="Производитель">3.2 Производитель</option>
@@ -467,23 +467,13 @@
                     </select>
                 </div>
 
-                <!-- Динамический блок 5 для Трейдера -->
-                <div class="form-group" id="goalTraderBlock" style="display: none;">
-                    <label>5. Я трейдер и планирую работу как: *</label>
-                    <select name="goal_trader" id="goalTraderSelect" onchange="calculatePrice()">
-                        <option value="Производитель">5.1 Производитель (+250 000 ₽ за подготовку документации)</option>
-                        <option value="Трейдер">5.2 Трейдер</option>
-                        <option value="Импортер">5.3 Импортер</option>
-                    </select>
-                </div>
-
-                <!-- Динамический блок 5* для Производителя / Импортера -->
-                <div class="form-group" id="goalProdBlock" style="display: none;">
-                    <label>5*. Я производитель / импортер и планирую работу как: *</label>
-                    <select name="goal_producer" id="goalProdSelect" onchange="calculatePrice()">
-                        <option value="Производитель">5.1 Производитель (без доплат за документацию)</option>
-                        <option value="Импортер">5.2 Импортер</option>
-                        <option value="Трейдер">5.3 Трейдер (+250 000 ₽, если требуется пакет документов)</option>
+                <div class="form-group">
+                    <label>5. Хотите войти в сеть как: *</label>
+                    <select name="entry_role" id="entryRole" onchange="calculatePrice()" required>
+                        <option value="Как производитель" selected>Как производитель (+200 000 ₽)</option>
+                        <option value="Как трейдер">Как трейдер — без изменений</option>
+                        <option value="Как импортер">Как импортер — без изменений</option>
+                        <option value="Без изменений">Без изменений</option>
                     </select>
                 </div>
 
@@ -680,7 +670,7 @@
             <span class="direction-badge" style="margin-bottom: 12px;">Услуги менеджмента</span>
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
             <p>Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.</p>
-            <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Связаться с нами</a>
+            <a href="#contact" class="btn" onclick="openModal('modal-staff')">Связаться с нами</a>
         </div>
     </div>
 
@@ -851,28 +841,11 @@
             }
         }
 
-        function toggleGoalOptions() {
-            const compCat = document.getElementById('companyCategory').value;
-            const traderBlock = document.getElementById('goalTraderBlock');
-            const prodBlock = document.getElementById('goalProdBlock');
-
-            if (compCat === 'Трейдер') {
-                traderBlock.style.display = 'block';
-                prodBlock.style.display = 'none';
-            } else if (compCat === 'Производитель' || compCat === 'Импортер') {
-                traderBlock.style.display = 'none';
-                prodBlock.style.display = 'block';
-            } else {
-                traderBlock.style.display = 'none';
-                prodBlock.style.display = 'none';
-            }
-            calculatePrice();
-        }
-
         function calculatePrice() {
             const retail = document.getElementById('retailTarget').value;
             const supplierCat = document.getElementById('supplierCategory').value;
             const compCat = document.getElementById('companyCategory').value;
+            const entryRole = document.getElementById('entryRole').value;
             const age = document.getElementById('companyAge').value;
             
             let basePrice = 0;
@@ -891,16 +864,9 @@
                 basePrice += 200000;
             }
 
-            if (compCat === 'Трейдер') {
-                const goalTrader = document.getElementById('goalTraderSelect').value;
-                if (goalTrader === 'Производитель') {
-                    basePrice += 250000;
-                }
-            } else if (compCat === 'Производитель' || compCat === 'Импортер') {
-                const goalProd = document.getElementById('goalProdSelect').value;
-                if (goalProd === 'Трейдер') {
-                    basePrice += 250000;
-                }
+            // Доплата за вход как производитель
+            if (entryRole === 'Как производитель') {
+                basePrice += 200000;
             }
 
             if (age === 'Менее 1 года') {
@@ -911,6 +877,11 @@
             document.getElementById('priceDisplay').innerText = formattedPrice;
             document.getElementById('hiddenPrice').value = formattedPrice;
         }
+
+        // Инициализация расчета при загрузке страницы (чтобы сработал выбор по умолчанию)
+        window.addEventListener('DOMContentLoaded', () => {
+            // Установим дефолтные значения для демонстрации при первом открытии, если нужно
+        });
     </script>
 
 </body>
