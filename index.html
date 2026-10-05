@@ -232,22 +232,22 @@
                     <div>
                         <div class="card-icon">📄</div>
                         <span class="direction-badge">Департамент контрактов</span>
-                        <h3>Сопровождение аккредитации с X5 Group</h3>
-                        <p>Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
+                        <h3>Заключение договора с X5 Group</h3>
+                        <p>Сопровождение аккредитации с X5 Group. Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
                     </div>
                     <button class="btn btn-red" onclick="openModal('modal-contracts')">Рассчитать стоимость и подать заявку</button>
                 </div>
 
-                <!-- Карточка 2: Магнит (Тандер) — Кнопка Скоро заблокирована -->
+                <!-- Карточка 2: Магнит (Тандер) -->
                 <div class="direction-card">
                     <div class="badge-soon">
-                        <span class="tag-new">Новинка • Договоры с сетями от АО "Тандер" от 300 000 ₽</span>
+                        <span class="tag-new">Новинка</span>
                     </div>
                     <div>
                         <div class="card-icon">🛒</div>
                         <span class="direction-badge">Департамент контрактов</span>
-                        <h3>Сопровождение аккредитации с Магнит (АО «Тандер»)</h3>
-                        <p>Экспертная подготовка и сопровождение поставщиков при заведении договоров в торговую сеть Магнит (Тандер / Тандер Импорт).</p>
+                        <h3>Заключение договора с АО "Тандер"</h3>
+                        <p>Сопровождение аккредитации с Магнит (АО «Тандер»). Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
                     </div>
                     <button class="btn btn-disabled">Скоро</button>
                 </div>
@@ -267,9 +267,9 @@
                 <div class="direction-card">
                     <div>
                         <div class="card-icon">👥</div>
-                        <span class="direction-badge">Департамент кадров</span>
-                        <h3>Предоставление сотрудников на работу</h3>
-                        <p>Аутстаффинг и подбор профильных специалистов, мерчандайзеров, логистов и менеджеров по продажам с опытом работы с торговыми сетями.</p>
+                        <span class="direction-badge">Услуги менеджмента</span>
+                        <h3>Продажи в X5 Group</h3>
+                        <p>Предоставление сотрудников на работу. Подбор профильных специалистов в сфере продаж в X5 Group.</p>
                     </div>
                     <button class="btn" onclick="openModal('modal-staff')">Подробнее</button>
                 </div>
@@ -279,10 +279,10 @@
                     <div>
                         <div class="card-icon">⚖️</div>
                         <span class="direction-badge">Юридический отдел</span>
-                        <h3>Претензионная работа и споры с сетью</h3>
-                        <p>Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по SLA и штрафам.</p>
+                        <h3>Претензионная работа по заказам и штрафам с сетью</h3>
+                        <p>Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-order-request')" style="max-width: 350px;">Подать заявку на аудит</button>
+                    <button class="btn" onclick="openModal('modal-order-request')" style="max-width: 350px;">Подать заявку</button>
                 </div>
             </div>
         </div>
@@ -425,11 +425,11 @@
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Департамент контрактов</span>
-            <h3>Калькулятор стоимости и заявка на сопровождение X5 Group</h3>
+            <h3>Калькулятор стоимости и заявка на заключение договора с X5 Group</h3>
             <p>Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость консалтинговых услуг.</p>
             
-            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на сопровождение аккредитации X5')">
-                <input type="hidden" name="form_type" value="Заявка на сопровождение аккредитации X5">
+            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на заключение договора с X5 Group')">
+                <input type="hidden" name="form_type" value="Заявка на заключение договора с X5 Group">
                 <input type="hidden" name="generated_token" id="tokenContract">
 
                 <div class="form-group">
@@ -460,12 +460,10 @@
                     <label>4. Направление сопровождения: *</label>
                     <select name="retail_target" id="retailTarget" onchange="calculatePrice()" required>
                         <option value="" disabled selected>Выберите сеть</option>
-                        <option value="Тандер">4.1 Тандер (от 500 000 ₽)</option>
-                        <option value="Тандер Импорт">4.2 Тандер Импорт (от 350 000 ₽)</option>
-                        <option value="ТСХ Перекресток">4.3 ТСХ Перекрёсток (от 600 000 ₽)</option>
-                        <option value="ДСК Пятерочка">4.4 ДСК Пятёрочка (от 750 000 ₽)</option>
-                        <option value="ТСЧ Чижик">4.5 ТСЧ Чижик (от 500 000 ₽)</option>
-                        <option value="Все три сети">4.6 Все три сети (комплексно)</option>
+                        <option value="ТСХ Перекресток">4.1 ТСХ Перекрёсток (от 600 000 ₽)</option>
+                        <option value="ДСК Пятерочка">4.2 ДСК Пятёрочка (от 750 000 ₽)</option>
+                        <option value="ТСЧ Чижик">4.3 ТСЧ Чижик (от 500 000 ₽)</option>
+                        <option value="Все три сети">4.4 Все три сети (комплексно)</option>
                     </select>
                 </div>
 
@@ -557,13 +555,20 @@
 
                 <div class="form-group">
                     <label>4. Для какой сети готовятся документы? *</label>
-                    <select name="target_network" required>
+                    <select name="target_network" id="targetNetworkSelect" onchange="toggleCustomNetwork('targetNetworkSelect', 'customNetworkBlock')" required>
                         <option value="" disabled selected>Выберите сеть</option>
-                        <option value="ДСК Пятерочка">ДСК Пятёрочка</option>
-                        <option value="ТСХ Перекресток">ТСХ Перекрёсток</option>
+                        <option value="ДСК Пятёрочка">ДСК Пятёрочка</option>
+                        <option value="ТСХ Перекрёсток">ТСХ Перекрёсток</option>
                         <option value="ТСЧ Чижик">ТСЧ Чижик</option>
                         <option value="Все сети X5 Group">Все сети X5 Group</option>
+                        <option value="АО «Тандер»">АО «Тандер»</option>
+                        <option value="Другая сеть">Другая сеть</option>
                     </select>
+                </div>
+
+                <div class="form-group" id="customNetworkBlock" style="display: none;">
+                    <label>Укажите название другой сети *</label>
+                    <input type="text" name="custom_network_name" placeholder="Введите название сети...">
                 </div>
 
                 <div class="form-group">
@@ -595,7 +600,7 @@
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;">Юридический отдел</span>
-            <h3>Претензионная работа и споры с сетью</h3>
+            <h3>Претензионная работа по заказам и штрафам с сетью</h3>
             <p>Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.</p>
             
             <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Споры с сетью')">
@@ -617,7 +622,7 @@
                     <select name="order_operation" required>
                         <option value="" disabled selected>Выберите тип процедуры из списка</option>
                         <option value="Оспаривание штрафов по SL/SLT и недопоставкам">Оспаривание штрафов по SL/SLT и недопоставкам</option>
-                        <option value="Формирование и подача актов разногласий">Формирование и подача актов разногласий</option>
+                        <option value="Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам">Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам</option>
                         <option value="Согласование корректировок заказов и перепоставок">Согласование корректировок заказов и перепоставок</option>
                         <option value="Досудебное урегулирование претензий ритейла">Досудебное урегулирование претензий ритейла</option>
                     </select>
@@ -630,12 +635,19 @@
 
                 <div class="form-group">
                     <label>5. Торговая сеть *</label>
-                    <select name="retail_network" required>
+                    <select name="retail_network" id="retailNetworkSelect" onchange="toggleCustomNetwork('retailNetworkSelect', 'customRetailBlock')" required>
                         <option value="" disabled selected>Выберите сеть</option>
-                        <option value="Перекресток">Перекрёсток</option>
-                        <option value="Пятерочка">Пятёрочка</option>
+                        <option value="Перекрёсток">Перекрёсток</option>
+                        <option value="Пятёрочка">Пятёрочка</option>
                         <option value="Чижик">Чижик</option>
+                        <option value="АО «Тандер» (Магнит)">АО «Тандер» (Магнит)</option>
+                        <option value="Свой вариант">Свой вариант</option>
                     </select>
+                </div>
+
+                <div class="form-group" id="customRetailBlock" style="display: none;">
+                    <label>Укажите название своей сети *</label>
+                    <input type="text" name="custom_retail_name" placeholder="Введите название сети...">
                 </div>
 
                 <div class="form-group">
@@ -665,10 +677,10 @@
     <div id="modal-staff" class="modal-overlay">
         <div class="modal-container" style="border-top-color: var(--eco-primary);">
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;">Департамент кадров</span>
+            <span class="direction-badge" style="margin-bottom: 12px;">Услуги менеджмента</span>
             <h3>Предоставление сотрудников и кадровая поддержка</h3>
             <p>Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.</p>
-            <a href="#contact" class="btn" onclick="openModal('modal-staff')">Связаться с нами</a>
+            <a href="#contact" class="btn" onclick="closeModal('modal-staff')">Связаться с нами</a>
         </div>
     </div>
 
@@ -700,9 +712,10 @@
                         <label>Какое направление вас интересует? *</label>
                         <select name="selected_direction" required>
                             <option value="" disabled selected>Выберите направление из списка</option>
-                            <option value="Сопровождение договоров с X5 Group">Сопровождение договоров с X5 Group</option>
+                            <option value="Заключение договора с X5 Group">Заключение договора с X5 Group</option>
+                            <option value="Заключение договора с АО Тандер (Скоро)">Заключение договора с АО "Тандер" (Скоро)</option>
                             <option value="Подготовка документации производителя">Подготовка документации производителя</option>
-                            <option value="Предоставление сотрудников (Кадры)">Предоставление сотрудников (Кадры)</option>
+                            <option value="Продажи в X5 Group (Услуги менеджмента)">Продажи в X5 Group (Услуги менеджмента)</option>
                             <option value="Претензионная работа и споры с сетью">Претензионная работа и споры с сетью</option>
                             <option value="Другой вопрос / Консультация">Другой вопрос / Консультация</option>
                         </select>
@@ -736,6 +749,20 @@
         window.onclick = function(event) {
             if (event.target.classList.contains('modal-overlay')) {
                 event.target.style.display = 'none';
+            }
+        }
+
+        // Функция динамического отображения строки для ввода своей сети
+        function toggleCustomNetwork(selectId, blockId) {
+            const selectElem = document.getElementById(selectId);
+            const blockElem = document.getElementById(blockId);
+            const val = selectElem.value;
+            if (val === 'Другая сеть' || val === 'Свой вариант') {
+                blockElem.style.display = 'block';
+                blockElem.querySelector('input').setAttribute('required', 'true');
+            } else {
+                blockElem.style.display = 'none';
+                blockElem.querySelector('input').removeAttribute('required');
             }
         }
 
@@ -850,14 +877,10 @@
             
             let basePrice = 0;
 
-            if (retail === 'Тандер') {
-                basePrice = 500000;
-            } else if (retail === 'Тандер Импорт') {
-                basePrice = 350000;
+            if (retail === 'ТСХ Перекресток') {
+                basePrice = 600000;
             } else if (retail === 'ДСК Пятерочка') {
                 basePrice = 750000;
-            } else if (retail === 'ТСХ Перекресток') {
-                basePrice = 600000;
             } else if (retail === 'ТСЧ Чижик') {
                 basePrice = 500000;
             } else if (retail === 'Все три сети') {
