@@ -35,6 +35,11 @@
             scroll-behavior: smooth;
         }
 
+        /* Отступ сверху, чтобы фиксированная шапка не закрывала заголовки */
+        section[id] {
+            scroll-margin-top: 85px;
+        }
+
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
         body { color: var(--text-main); line-height: 1.6; background-color: var(--bg-page); -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
         
@@ -77,6 +82,60 @@
         .stat-num { font-size: 28px; font-weight: 800; color: #0f3822; }
         .stat-num span { color: var(--accent-red); }
         .stat-desc { font-size: 13px; color: #63756a; margin-top: 4px; }
+
+        /* Маршрут по сайту (Быстрая навигация) */
+        .site-route-nav {
+            margin-top: 35px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+        .route-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #63756a;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+        }
+        .route-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            max-width: 900px;
+        }
+        .route-pill {
+            background: #ffffff;
+            color: #0f3822;
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .route-pill:hover {
+            background: var(--eco-primary);
+            color: #ffffff;
+            border-color: var(--eco-primary);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,130,61,0.22);
+        }
+        .route-pill-accent {
+            background: #eaf5ef;
+            color: var(--eco-primary);
+            border-color: #c2e2d0;
+        }
+        .route-pill-accent:hover {
+            background: var(--accent-red);
+            border-color: var(--accent-red);
+            color: #ffffff;
+            box-shadow: 0 4px 15px rgba(227,30,36,0.25);
+        }
 
         .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--eco-primary); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0,130,61,0.2); width: 100%; }
         .btn:hover { background: var(--eco-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,130,61,0.3); }
@@ -185,6 +244,10 @@
             .stats-bar { gap: 20px; }
             .stat-num { font-size: 24px; }
             
+            .site-route-nav { margin-top: 25px; }
+            .route-links { gap: 8px; }
+            .route-pill { padding: 6px 14px; font-size: 12px; }
+
             section { padding: 50px 0; }
             h2 { font-size: 24px; }
             .section-subtitle { font-size: 14px; margin-bottom: 30px; }
@@ -272,11 +335,24 @@
                     <div class="stat-desc" data-tr="Sözleşme kapsamında gizlilik">Конфиденциальность по договору</div>
                 </div>
             </div>
+
+            <!-- БЛОК БЫСТРОГО МАРШРУТА ПО САЙТУ -->
+            <div class="site-route-nav">
+                <span class="route-title" data-tr="Hızlı Gezinme:">Быстрый переход:</span>
+                <div class="route-links">
+                    <a href="#directions" class="route-pill" data-tr="Faaliyetler">Направления</a>
+                    <a href="#roadmap" class="route-pill" data-tr="Aşamalar">Этапы работы</a>
+                    <a href="#benefits" class="route-pill" data-tr="Avantajlar">Преимущества</a>
+                    <a href="#cases" class="route-pill" data-tr="Vakalar">Кейсы</a>
+                    <a href="#faq" class="route-pill" data-tr="SSS">Частые вопросы</a>
+                    <a href="#contact" class="route-pill route-pill-accent" data-tr="Başvuru Yap">Оставить заявку</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Направления деятельности -->
-    <section class="bg-light" style="background-color: var(--bg-page);">
+    <section class="bg-light" id="directions" style="background-color: var(--bg-page);">
         <div class="container" style="flex-direction: column;">
             <h2 data-tr="Faaliyet Alanlarımız">Направления нашей деятельности</h2>
             <p class="section-subtitle" data-tr="Sizi ilgilendiren alanı seçin, maliyeti hesaplayın veya başvurunuzu gönderin">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу</p>
@@ -346,7 +422,7 @@
     </section>
 
     <!-- БЛОК: ЭТАПЫ РАБОТЫ (ROADMAP) -->
-    <section class="bg-white">
+    <section class="bg-white" id="roadmap">
         <div class="container" style="flex-direction: column;">
             <h2 data-tr="Zincir ile Sözleşme İmzalama Aşamaları">Этапы заключения договора с сетью</h2>
             <p class="section-subtitle" data-tr="Resmî sözleşme çerçevesinde şeffaf и düzenlenmiş çalışma süreci">Прозрачный и регламентированный процесс работы по официальному договору</p>
@@ -377,7 +453,7 @@
     </section>
 
     <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ İSKET GROUP (МАНИФЕСТ) -->
-    <section class="bg-page" style="background-color: var(--bg-page);">
+    <section class="bg-page" id="benefits" style="background-color: var(--bg-page);">
         <div class="container" style="flex-direction: column;">
             <h2 data-tr="Üreticiler Neden Bizi Seçiyor">Почему производители выбирают нас</h2>
             <p class="section-subtitle" data-tr="İlkelerimiz istikrarı, güvenliği и öngörülebilir sonuçları garanti eder">Наши принципы гарантируют стабильность, безопасность и предсказуемость результата</p>
@@ -403,7 +479,7 @@
     </section>
 
     <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
-    <section class="bg-white">
+    <section class="bg-white" id="cases">
         <div class="container" style="flex-direction: column;">
             <h2 data-tr="Çözülen Karmaşık Görevler">Решенные сложные задачи</h2>
             <p class="section-subtitle" data-tr="Perakende zinciri düzenlemeleri и itiraz süreçleriyle çalışma örnekleri (gizlilik korunmaktadır)">Примеры работы с претензиями и регламентами торговых сетей (конфиденциальность соблюдена)</p>
@@ -434,14 +510,14 @@
                     <span class="case-tag" data-tr="Vaka №4 • Kapsamlı Tedarikçi Başlangıcı">Кейс №4 • Комплексный запуск нового поставщика</span>
                     <h3 data-tr="Pjatjoroçka Tam Kapsamlı Akreditasyon Desteği">Полное сопровождение аккредитации и успешный запуск в «Пятёрочку»</h3>
                     <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Yeni bir tedarikçi Pjatjoroçka ile sözleşme imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.">Новый (недействующий) поставщик планировал заключить договор с торговой сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения многоуровневого комплаенс-аудита и подготовки полного пакета документации под требования сети.</span></p>
-                    <div class="case-result" data-tr="✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, üretim denetimi yapıldı и tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.">✓ Решение: Провели комплексную работу «под ключ»: создали цифровую инфраструктуру, провели независимый аудит предприятия и выявили пробелы в документации до официальной подачи. Помогли сформировать недостающий пакет документов, исключив риски вопросов от категорийного менеджера (КМ). Разработали коммерческое предложение, успешно подготовили предприятие к выездному аудиту агронома торговой сети. На основе безупречного пакета документов и пройденного аудита поставщику успешно завели договор с «Пятёрочкой» и открыли доступ к торгам на целевой регион.</div>
+                    <div class="case-result" data-tr="✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, производство denetimi yapıldı и tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.">✓ Решение: Провели комплексную работу «под ключ»: создали цифровую инфраструктуру, провели независимый аудит предприятия и выявили пробелы в документации до официальной подачи. Помогли сформировать недостающий пакет документов, исключив риски вопросов от категорийного менеджера (КМ). Разработали коммерческое предложение, успешно подготовили предприятие к выездному аудиту агронома торговой сети. На основе безупречного пакета документов и пройденного аудита поставщику успешно завели договор с «Пятёрочкой» и открыли доступ к торгам на целевой регион.</div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- БЛОК FAQ -->
-    <section class="bg-page" style="background-color: var(--bg-page);">
+    <section class="bg-page" id="faq" style="background-color: var(--bg-page);">
         <div class="container" style="flex-direction: column;">
             <h2 data-tr="Sıkça Sorulan Sorular и Garantiler">Часто задаваемые вопросы и гарантии</h2>
             <p class="section-subtitle" data-tr="Süreçler, ödemeler и iş güvenliği hakkında bilmeniz gerekenler">Все, что нужно знать о сроках, оплате и безопасности работы</p>
@@ -816,6 +892,13 @@
             "Успешных проектов аккредитации": "Başarılı akreditasyon projeleri",
             "Лет практики и экспертизы": "Yıllık pratik ve uzmanlık",
             "Конфиденциальность по договору": "Sözleşme kapsamında gizlilik",
+            "Быстрый переход:": "Hızlı Gezinme:",
+            "Направления": "Faaliyetler",
+            "Этапы работы": "Aşamalar",
+            "Преимущества": "Avantajlar",
+            "Кейсы": "Vakalar",
+            "Частые вопросы": "SSS",
+            "Оставить заявку": "Başvuru Yap",
             "Направления нашей деятельности": "Faaliyet Alanlarımız",
             "Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу": "Sizi ilgilendiren alanı seçin, maliyeti hesaplayın veya başvurunuzu gönderin",
             "Департамент контрактов": "Sözleşme Departmanı",
