@@ -1,0 +1,159 @@
+name: İSKET AI Agent 24/7
+
+on:
+  issues:
+    types: [opened]
+  issue_comment:
+    types: [created]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  update-website:
+    runs-on: ubuntu-latest
+    # Защита: агент выполняет команды ТОЛЬКО от владельца репозитория
+    if: |
+      (github.event_name == 'issues' && github.event.issue.user.login == github.repository_owner) ||
+      (github.event_name == 'issue_comment' && github.event.comment.user.login == github.repository_owner)
+
+    steps:
+      - name: 📥 Скачивание текущего кода сайта
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: 🐍 Установка окружения Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: 📦 Подключение SDK Gemini
+        run: pip install google-genai
+
+      - name: 🧠 Выполнение задачи ИИ-агентом
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          COMMENT_BODY: ${{ github.event.comment.body }}
+          EVENT_NAME: ${{ github.event_name }}
+        run: |
+          python3 - << 'EOF'
+          import os
+          import json
+          import sys
+          from google import genai
+          from google.genai import types
+
+          api_key = os.environ.get("GEMINI_API_KEY")
+          if not api_key:
+              print("Ошибка: Не найден GEMINI_API_KEY в секретах GitHub.")
+              sys.exit(1)
+
+          event_name = os.environ.get("EVENT_NAME", "")
+          if event_name == "issue_comment":
+              task = f"Задача из комментария: {os.environ.get('COMMENT_BODY', '')}\n(Контекст задачи: {os.environ.get('ISSUE_TITLE', '')})"
+          else:
+              task = f"Заголовок задачи: {os.environ.get('ISSUE_TITLE', '')}\nОписание: {os.environ.get('ISSUE_BODY', '')}"
+
+          with open("index.html", "r", encoding="utf-8") as f:
+              html_content = f.read()
+
+          system_prompt = """
+          Ты — персональный 24/7 ИИ-разработчик сайта многопрофильного холдинга İSKET GROUP (index.html).
+          
+          КОНТЕКСТ БИЗНЕСА И ПРАВИЛА БЕЗОПАСНОСТИ:
+          1. İSKET GROUP оказывает B2B-консалтинг, юридическое и технологическое сопровождение поставщиков и импортеров ФРОВ (фрукты, овощи), орехов и сухофруктов (из РФ, Турции, Узбекистана, Китая, Азербайджана) в федеральные сети (X5 Group: Пятёрочка, Перекрёсток, Чижик; а также Магнит / АО «Тандер»).
+          2. Юридическая чистота: контрактодержатель — ООО «ТУЛЬСКИЕ ОВОЩИ» (ИНН 9727096157, ОГРН 1247700828781). Всегда сохраняй соответствие 152-ФЗ (чекбоксы согласия) и безопасные для СБ торговых сетей формулировки (никаких серых схем, только официальный консалтинг и аудит).
+          3. Технические правила:
+             - Никогда не удаляй счетчик Яндекс.Метрики (ID 113432791) и скрипт сброса прокрутки.
+             - При добавлении или изменении текстов всегда поддерживай турецкий перевод в атрибутах data-tr.
+          
+          ФОРМАТ ОТВЕТА:
+          Верни СТРОГО валидный JSON объект со следующей структурой:
+          {
+            "summary": "Подробный отчет для владельца на русском языке о том, что именно было изменено на сайте",
+            "edits": [
+              {
+                "search": "ТОЧНЫЙ фрагмент кода из текущего index.html (символ в символ), который нужно заменить",
+                "replace": "Новый фрагмент кода, который встанет на его место"
+              }
+            ]
+          }
+          Важно: поле "search" должно на 100% совпадать с существующим участком кода в index.html.
+          """
+
+          client = genai.Client(api_key=api_key)
+          response = client.models.generate_content(
+              model="gemini-2.5-flash",
+              contents=[
+                  f"Текущий код файла index.html:\n```html\n{html_content}\n```\n\nВЫПОЛНИ СЛЕДУЮЩУЮ ЗАДАЧУ ВЛАДЕЛЬЦА:\n{task}"
+              ],
+              config=types.GenerateContentConfig(
+                  system_instruction=system_prompt,
+                  response_mime_type="application/json",
+                  temperature=0.1,
+              ),
+          )
+
+          result = json.loads(response.text)
+          edits = result.get("edits", [])
+          summary = result.get("summary", "Изменения успешно внесены.")
+
+          applied = 0
+          for edit in edits:
+              search_str = edit.get("search", "")
+              replace_str = edit.get("replace", "")
+              if search_str and search_str in html_content:
+                  html_content = html_content.replace(search_str, replace_str, 1)
+                  applied += 1
+              else:
+                  print(f"Предупреждение: не найден точный фрагмент:\n{search_str[:100]}...")
+
+          if applied == 0 and len(edits) > 0:
+              print("Не удалось применить правки (фрагменты не совпали).")
+              sys.exit(1)
+
+          with open("index.html", "w", encoding="utf-8") as f:
+              f.write(html_content)
+
+          with open("agent_report.txt", "w", encoding="utf-8") as f:
+              f.write(f"✅ **Задача выполнена автоматически!**\n\n{summary}\n\n🌐 Изменения уже опубликованы и появятся на сайте [isket-group.github.io/isket](https://isket-group.github.io/isket/) через 30–60 секунд.")
+          EOF
+
+      - name: 💾 Сохранение и публикация на сайте
+        run: |
+          git config user.name "İSKET AI Agent"
+          git config user.email "actions@github.com"
+          git add index.html
+          if git diff --staged --quiet; then
+            echo "Изменений в файле нет."
+          else
+            git commit -m "🤖 Авто-обновление от ИИ-агента (Задача #${{ github.event.issue.number }})"
+            git push origin main
+          fi
+
+      - name: 💬 Отчет владельцу и закрытие задачи
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const report = fs.existsSync('agent_report.txt') 
+              ? fs.readFileSync('agent_report.txt', 'utf8') 
+              : '✅ Изменения обработаны.';
+            
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: report
+            });
+
+            await github.rest.issues.update({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              state: 'closed'
+            });
