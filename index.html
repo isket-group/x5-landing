@@ -299,7 +299,7 @@
                         <h3 data-tr="Üretici Statüsü İçin Belgelendirme Hazırlığı">Подготовка документации для статуса производителя</h3>
                         <p data-tr="Güvenlik ve tarım denetimlerini geçmek için eksiksiz hukuki и teknik belge paketinin geliştirilmesi.">Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-docs')" data-tr="Hesapla ve Belgeleri Sipariş Et">Рассчитать и заказать доки</button>
+                    <button class="btn" onclick="openModal('modal-docs')" data-tr="Hesapla и Belgeleri Sipariş Et">Рассчитать и заказать доки</button>
                 </div>
 
                 <!-- Карточка 4: Кадры -->
@@ -417,7 +417,7 @@
                 <div class="case-card">
                     <span class="case-tag" data-tr="Vaka №4 • Kapsamlı Tedarikçi Başlangıcı">Кейс №4 • Комплексный запуск нового поставщика</span>
                     <h3 data-tr="Pjatjoroçka Tam Kapsamlı Akreditasyon Desteği">Полное сопровождение аккредитации и успешный запуск в «Пятёрочку»</h3>
-                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Yeni bir tedarikçi Pjatjoroçka ile sözleşме imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.">Новый (недействующий) поставщик планировал заключить договор с торговой сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения многоуровневого комплаенс-аудита и подготовки полного пакета документации под требования сети.</span></p>
+                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Yeni bir tedarikçi Pjatjoroçka ile sözleşme imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.">Новый (недействующий) поставщик планировал заключить договор с торговой сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения многоуровневого комплаенс-аудита и подготовки полного пакета документации под требования сети.</span></p>
                     <div class="case-result" data-tr="✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, üretim denetimi yapıldı и tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.">✓ Решение: Провели комплексную работу «под ключ»: создали цифровую инфраструктуру, провели независимый аудит предприятия и выявили пробелы в документации до официальной подачи. Помогли сформировать недостающий пакет документов, исключив риски вопросов от категорийного менеджера (КМ). Разработали коммерческое предложение, успешно подготовили предприятие к выездному аудиту агронома торговой сети. На основе безупречного пакета документов и пройденного аудита поставщику успешно завели договор с «Пятёрочкой» и открыли доступ к торгам на целевой регион.</div>
                 </div>
             </div>
@@ -550,15 +550,14 @@
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
-                <!-- Чекбокс согласия на обработку персональных данных (152-ФЗ) -->
+                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
                 <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
                     <input type="checkbox" id="consentContract" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentContract" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;">
+                    <label for="consentContract" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
                         Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
                     </label>
                 </div>
 
-                <!-- Блок вывода ориентировочной стоимости -->
                 <div class="price-box">
                     <div class="price-title" data-tr="Danışmanlık hizmetlerinin tahmini maliyeti:">Ориентировочная стоимость консалтинговых услуг:</div>
                     <div class="price-value" id="priceDisplay">0 ₽</div>
@@ -632,10 +631,10 @@
                     <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
                 </div>
 
-                <!-- Чекбокс согласия 152-ФЗ -->
+                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
                 <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
                     <input type="checkbox" id="consentDocs" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentDocs" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;">
+                    <label for="consentDocs" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
                         Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
                     </label>
                 </div>
@@ -664,7 +663,7 @@
         <div class="modal-container">
             <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 10px;" data-tr="Hukuk Departmanı">Юридический отдел</span>
-            <h3 data-tr="Siparişler ve Cezalar Üzerine Hak İddiaları">Претензионная работа по заказам и штрафам с сетью</h3>
+            <h3 data-tr="Siparişler ve Cezalar Üzerine Hak İddiaları и Çalışmalar">Претензионная работа по заказам и штрафам с сетью</h3>
             <p data-tr="Hukuki başvuru hazırlamak için sorunlu sipariş parametrelerini и anlaşmazlığın özünü doldurun.">Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.</p>
             
             <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Споры с сетью')">
@@ -710,7 +709,7 @@
                 </div>
 
                 <div class="form-group" id="customRetailBlock" style="display: none;">
-                    <label data-tr="Kendi zincir adınızı belirtin *">Укажите название другой сети *</label>
+                    <label data-tr="Kendi zincir adınızı belirtin *">Укажите название своей сети *</label>
                     <input type="text" name="custom_retail_name" placeholder="Zincir adını girin...">
                 </div>
 
@@ -724,10 +723,10 @@
                     <textarea name="comments" rows="3" placeholder="Anlaşmazlık nedenlerini, tutanak numaralarını или ürün kodlarını belirtin..."></textarea>
                 </div>
 
-                <!-- Чекбокс согласия 152-ФЗ -->
+                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
                 <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
                     <input type="checkbox" id="consentOrder" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentOrder" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;">
+                    <label for="consentOrder" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
                         Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
                     </label>
                 </div>
@@ -751,7 +750,7 @@
             <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
             <span class="direction-badge" style="margin-bottom: 12px;" data-tr="Yönetim Hizmetleri">Услуги менеджмента</span>
             <h3 data-tr="Personel Sağlama ve İK Desteği">Предоставление сотрудников и кадровая поддержка</h3>
-            <p data-tr="Federal zincirlere nitelikli personel ve profesyonel satış yöneticileri (KAM) sağlıyoruz.">Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.</p>
+            <p data-tr="Federal zincirlere nitelikli personel и profesyonel satış yöneticileri (KAM) sağlıyoruz.">Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.</p>
             <a href="#contact" class="btn" onclick="openModal('modal-staff')" data-tr="Bizimle İletişime Geçin">Связаться с нами</a>
         </div>
     </div>
@@ -819,10 +818,10 @@
                         <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
                     </div>
 
-                    <!-- Чекбокс согласия 152-ФЗ -->
+                    <!-- Чекбокс согласия 152-ФЗ с data-tr -->
                     <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
                         <input type="checkbox" id="consentGeneral" required style="width: 16px; height: 16px; margin-top: 2px;">
-                        <label for="consentGeneral" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;">
+                        <label for="consentGeneral" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
                             Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
                         </label>
                     </div>
@@ -866,24 +865,24 @@
             "Рассчитать стоимость и подать заявку": "Maliyeti Hesapla ve Başvur",
             "Новинка": "Yeni",
             "Заключение договора с АО \"Тандер\"": "Magnit (AO Tander) ile Sözleşme İmzalanması",
-            "Сопровождение аккредитации с Магнит (АО «Тандер»). Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.": "Magnit (AO Tander) akreditasyon desteği. Federal perakende zincirlerinde tedarikçi hazırlığı, denetim ve operasyonel süreçlerin yönetimi.",
+            "Сопровождение аккредитации с Магнит (АО «Тандер»). Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.": "Magnit (AO Tander) akreditasyon desteği. Federal perakende zincirlerinde tedarikçi hazırlığı, denetim и operasyonel süreçlerin yönetimi.",
             "Скоро": "Yakında",
             "Экспертный отдел": "Uzman Departmanı",
             "Подготовка документации для статуса производителя": "Üretici Statüsü İçin Belgelendirme Hazırlığı",
-            "Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.": "Güvenlik ve tarım denetimlerini geçmek için eksiksiz hukuki ve teknik belge paketinin geliştirilmesi.",
-            "Рассчитать и заказать доки": "Hesapla ve Belgeleri Sipariş Et",
+            "Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.": "Güvenlik ve tarım denetimlerini geçmek için eksiksiz hukuki и teknik belge paketinin geliştirilmesi.",
+            "Рассчитать и заказать доки": "Hesapla и Belgeleri Sipariş Et",
             "Услуги менеджмента": "Yönetim Hizmetleri",
             "Продажи в X5 Group": "X5 Group Satış Hizmetleri",
-            "Предоставление сотрудников на работу. Подбор профильных специалистов в сфере продаж в X5 Group.": "X5 Group satış alanında profesyonel uzman ve kadro desteği sağlanması.",
+            "Предоставление сотрудников на работу. Подбор профильных специалистов в сфере продаж в X5 Group.": "X5 Group satış alanında profesyonel uzman и kadro desteği sağlanması.",
             "Подробнее": "Daha Fazla Bilgi",
             "Юридический отдел": "Hukuk Departmanı",
-            "Претензионная работа по заказам и штрафам с сетью": "Zincir ile Sipariş ve Cezalar Üzerine Hak İddiaları ve Çalışmalar",
-            "Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.": "İtirazların, tutanakların ve resmî yazışmaların profesyonel olarak hazırlanması. Siparişler ve cezalarla ilgili hukuki uyuşmazlıkların çözümü.",
+            "Претензионная работа по заказам и штрафам с сетью": "Zincir ile Sipariş ve Cezalar Üzerine Hak İddiaları и Çalışmalar",
+            "Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.": "İtirazların, tutanakların и resmî yazışmaların profesyonel olarak hazırlanması. Siparişler и cezalarla ilgili hukuki uyuşmazlıkların çözümü.",
             "Подать заявку": "Başvuru Yap",
             "Этапы заключения договора с сетью": "Zincir ile Sözleşme İmzalama Aşamaları",
             "Прозрачный и регламентированный процесс работы по официальному договору": "Resmî sözleşme çerçevesinde şeffaf ve düzenlenmiş çalışma süreci",
             "Аудит и заявка": "Denetim ve Başvuru",
-            "Анализируем текущий статус вашей компании, исходную документацию и специфику продукции.": "Şirketinizin mevcut statüsünü, belgelerini ve ürün özelliklerini analiz ediyoruz.",
+            "Анализируем текущий статус вашей компании, исходную документацию и специфику продукции.": "Şirketinizin mevcut statüsünü, belgelerini и ürün özelliklerini analiz ediyoruz.",
             "Подготовка пакета": "Paket Hazırlığı",
             "Помогаем разработать юридические и технические регламенты, устраняющие риски для сети. Собираем всю подготовленную документацию.": "Zincir risklerini ortadan kaldıran hukuki и teknik yönetmelikler hazırlamanıza yardımcı oluyoruz. Tüm hazırlanan belgeleri topluyoruz.",
             "Правовое сопровождение": "Hukuki Destek",
@@ -981,7 +980,7 @@
             "Заказать подготовку документации": "Belge Hazırlığını Sipariş Et",
             "Ваш персональный номер для отслеживания:": "Takip numaranız:",
             "Сохраните его для проверки статуса.": "Durumu kontrol etmek için saklayın.",
-            "Претензионная работа по заказам и штрафам с сетью": "Siparişler ve Cezalar Üzerine Hak İddiaları",
+            "Претензионная работа по заказам и штрафам с сетью": "Siparişler и Cezalar Üzerine Hak İddiaları",
             "Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.": "Hukuki başvuru hazırlamak için sorunlu sipariş parametrelerini и anlaşmazlığın özünü doldurun.",
             "1. № заказа / претензии *": "1. Sipariş / İtiraz No *",
             "2. Дата заказа / акта *": "2. Дата заказа / акта *",
@@ -1017,7 +1016,8 @@
             "Наименование вашей компании (ООО) *": "Şirketinizin Adı (OOO) *",
             "Отправить запрос в холдинг": "Holding'e Talep Gönder",
             "Многопрофильный холдинг по сопровождению поставщиков (включая российских и зарубежных импортеров) в федеральные сети.": "Federal perakende zincirlerinde yerli ve uluslararası tedarikçi desteği sağlayan çok yönlü holding.",
-            "Gizlilik Politikası": "Политика конфиденциальности"
+            "Gizlilik Politikası": "Политика конфиденциальности",
+            "Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.": "Kişisel verilerin işlenmesine onay veriyor ve Gizlilik Politikası şartlarını kabul ediyorum."
         };
 
         let currentLang = 'ru';
