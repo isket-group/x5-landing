@@ -3,182 +3,209 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>İSKET GROUP — Многопрофильный холдинг: сопровождение поставщиков и решения для X5 Group</title>
-    <!-- Подключаем современный фирменный шрифт Inter -->
+    <title>İSKET GROUP — Консалтинг и сопровождение поставщиков ФРОВ, орехов и сухофруктов в федеральных сетях</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --header-bg: #ffffff;      /* Светлая, чистая шапка */
-            --header-text: #0f3822;    /* Глубокий темно-зеленый текст в шапке */
-            --eco-primary: #00823d;    /* Сочный фирменный зеленый */
-            --eco-hover: #006b32;      /* Темнее для наведения */
-            --accent-red: #e31e24;     /* Акцентный красный */
-            --bg-page: #f7faf8;        /* Очень светлый, легкий эко-фон страницы */
-            --text-main: #2b3630;      /* Основной комфортный текст */
-            --card-bg: #ffffff;        /* Белый фон карточек */
-            --border-color: #e5ede8;   /* Мягкие аккуратные рамки */
+            --bg-main: #f8faf9;
+            --bg-surface: #ffffff;
+            --bg-subtle: #eff5f2;
+            --text-primary: #0a2918;
+            --text-secondary: #4a5d52;
+            --text-muted: #76897e;
+            --brand-green: #007a37;
+            --brand-green-hover: #00612c;
+            --brand-red: #d91e26;
+            --brand-red-hover: #b8161d;
+            --border-light: #e2ece6;
+            --border-hover: #b8d4c4;
+            --shadow-sm: 0 4px 12px rgba(10, 41, 24, 0.03);
+            --shadow-md: 0 12px 32px rgba(10, 41, 24, 0.06);
+            --shadow-lg: 0 24px 48px rgba(10, 41, 24, 0.12);
+            --radius-md: 12px;
+            --radius-lg: 18px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', sans-serif; }
-        body { color: var(--text-main); line-height: 1.6; background-color: var(--bg-page); -webkit-font-smoothing: antialiased; overflow-x: hidden; width: 100%; }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { color: var(--text-primary); background-color: var(--bg-main); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+
+        .container { width: 90%; max-width: 1160px; margin: 0 auto; }
+
+        /* Шапка (Header) */
+        header { background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-light); position: fixed; width: 100%; top: 0; z-index: 1000; padding: 16px 0; transition: all 0.2s; }
+        .header-inner { display: flex; justify-content: space-between; align-items: center; }
         
-        header { background: var(--header-bg); color: var(--header-text); padding: 14px 0; position: fixed; width: 100%; top: 0; z-index: 1000; box-shadow: 0 4px 20px rgba(0,0,0,0.04); border-bottom: 2px solid var(--border-color); }
-        .container { width: 90%; max-width: 1180px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-        
-        /* Логотип */
-        .logo { display: flex; align-items: center; text-decoration: none; color: #111; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; gap: 10px; }
+        .logo { display: flex; align-items: center; text-decoration: none; gap: 12px; }
         .logo-icon { width: 34px; height: 34px; display: flex; align-items: center; justify-content: center; }
-        .logo-icon svg { width: 100%; height: 100%; fill: #111; }
-        .logo-text { font-family: 'Inter', sans-serif; font-weight: 800; font-size: 20px; letter-spacing: 0.5px; color: #111; }
+        .logo-icon svg { width: 100%; height: 100%; }
+        .logo-text { font-weight: 800; font-size: 20px; letter-spacing: 0.4px; color: #111; }
 
-        .header-right { display: flex; align-items: center; gap: 14px; }
-        .status-btn { background: #f0f5f2; border: 1.5px solid #d2e3d9; color: var(--header-text); padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
-        .status-btn:hover { background: var(--eco-primary); color: #fff; border-color: var(--eco-primary); }
+        .header-right { display: flex; align-items: center; gap: 12px; }
+        .status-btn { background: var(--bg-subtle); border: 1px solid var(--border-light); color: var(--text-primary); padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: all 0.2s; white-space: nowrap; }
+        .status-btn:hover { border-color: var(--brand-green); color: var(--brand-green); background: #fff; }
 
-        /* Кнопка переключения языка */
-        .lang-switch { background: var(--eco-primary); color: #fff; border: none; padding: 7px 14px; border-radius: 6px; font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
-        .lang-switch:hover { background: var(--eco-hover); }
+        .lang-switch { background: var(--text-primary); color: #fff; border: none; padding: 9px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; transition: background 0.2s; white-space: nowrap; }
+        .lang-switch:hover { background: var(--brand-green); }
 
-        .phone-whatsapp { font-size: 14px; font-weight: 600; color: var(--header-text); text-decoration: none; display: flex; align-items: center; gap: 6px; transition: color 0.3s; white-space: nowrap; }
-        .phone-whatsapp:hover { color: var(--eco-primary); }
-        .whatsapp-tag { background: #25d366; color: #fff; font-size: 10px; padding: 3px 6px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+        .phone-whatsapp { font-size: 14px; font-weight: 600; color: var(--text-primary); text-decoration: none; display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; transition: background 0.2s; white-space: nowrap; }
+        .phone-whatsapp:hover { background: var(--bg-subtle); }
+        .whatsapp-tag { background: #25d366; color: #fff; font-size: 10px; padding: 3px 7px; border-radius: 5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
 
         /* Плавающая кнопка WhatsApp */
-        .floating-whatsapp { position: fixed; bottom: 25px; right: 25px; background: #25d366; color: #fff; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 6px 20px rgba(37, 211, 102, 0.35); z-index: 1500; transition: transform 0.3s, background 0.3s; text-decoration: none; }
-        .floating-whatsapp:hover { transform: scale(1.1); background: #20ba5a; }
-        .floating-tooltip { position: absolute; right: 75px; background: #fff; color: #333; padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.08); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.3s; border: 1px solid var(--border-color); }
+        .floating-whatsapp { position: fixed; bottom: 28px; right: 28px; background: #25d366; color: #fff; width: 58px; height: 58px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35); z-index: 1500; transition: transform 0.25s, background 0.25s; text-decoration: none; }
+        .floating-whatsapp:hover { transform: translateY(-3px) scale(1.05); background: #20ba5a; }
+        .floating-tooltip { position: absolute; right: 72px; background: var(--bg-surface); color: var(--text-primary); padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; box-shadow: var(--shadow-md); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.25s; border: 1px solid var(--border-light); }
         .floating-whatsapp:hover .floating-tooltip { opacity: 1; }
 
+        /* Кнопки */
+        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--brand-green); color: #fff; padding: 14px 26px; font-size: 14px; font-weight: 600; text-decoration: none; border-radius: 10px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; gap: 8px; }
+        .btn:hover { background: var(--brand-green-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0, 122, 55, 0.22); }
+        .btn-red { background: var(--brand-red); }
+        .btn-red:hover { background: var(--brand-red-hover); box-shadow: 0 6px 20px rgba(217, 30, 38, 0.22); }
+        .btn-outline { background: #fff; color: var(--text-primary); border: 1.5px solid var(--border-light); }
+        .btn-outline:hover { background: var(--bg-subtle); border-color: var(--brand-green); color: var(--brand-green); box-shadow: none; }
+        .btn-disabled { background: #e6ece8; color: #829489; cursor: not-allowed; pointer-events: none; }
+
         /* Первый экран (Hero) */
-        .hero { background: linear-gradient(135deg, #eaf4ef 0%, #f4f8f6 100%); color: var(--text-main); padding: 170px 0 90px 0; text-align: center; border-bottom: 3px solid var(--border-color); position: relative; }
-        .hero h1 { font-size: 38px; font-weight: 800; margin-bottom: 20px; line-height: 1.2; letter-spacing: -0.5px; color: #0f3822; }
-        .hero h1 span { color: var(--accent-red); }
-        .hero p { font-size: 17px; font-weight: 400; margin-bottom: 35px; color: #4d5c53; max-width: 860px; margin-left: auto; margin-right: auto; padding: 0 10px; }
-        
-        /* Блок статистики */
-        .stats-bar { display: flex; justify-content: center; gap: 50px; margin-top: 40px; padding-top: 30px; border-top: 1px solid #d2e3d9; flex-wrap: wrap; }
-        .stat-item { text-align: center; }
-        .stat-num { font-size: 28px; font-weight: 800; color: #0f3822; }
-        .stat-num span { color: var(--accent-red); }
-        .stat-desc { font-size: 13px; color: #63756a; margin-top: 4px; }
+        .hero { padding: 155px 0 85px 0; background: radial-gradient(circle at 50% 0%, #e4f2ea 0%, var(--bg-main) 75%); border-bottom: 1px solid var(--border-light); text-align: center; }
+        .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--border-light); color: var(--brand-green); font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 30px; margin-bottom: 24px; box-shadow: var(--shadow-sm); text-transform: uppercase; letter-spacing: 0.6px; }
+        .hero h1 { font-size: 42px; font-weight: 800; line-height: 1.18; letter-spacing: -0.8px; color: var(--text-primary); max-width: 920px; margin: 0 auto 22px auto; }
+        .hero h1 span { color: var(--brand-green); }
+        .hero p { font-size: 17px; color: var(--text-secondary); max-width: 780px; margin: 0 auto 36px auto; font-weight: 400; }
+        .hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 55px; }
 
-        .btn { display: inline-flex; align-items: center; justify-content: center; background: var(--eco-primary); color: #fff; padding: 14px 24px; font-size: 15px; font-weight: 600; text-decoration: none; border-radius: 8px; transition: all 0.25s ease; border: none; cursor: pointer; text-align: center; box-shadow: 0 4px 15px rgba(0,130,61,0.2); width: 100%; }
-        .btn:hover { background: var(--eco-hover); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,130,61,0.3); }
-        .btn-red { background: var(--accent-red); box-shadow: 0 4px 15px rgba(227,30,36,0.2); }
-        .btn-red:hover { background: #c5161c; box-shadow: 0 6px 20px rgba(227,30,36,0.3); }
-        
-        .btn-disabled { background: #e2e8e4; color: #788a7f; cursor: not-allowed; box-shadow: none; pointer-events: none; }
+        /* Статистика в Hero */
+        .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; background: var(--bg-surface); padding: 28px 32px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); }
+        .stat-item { text-align: center; border-right: 1px solid var(--border-light); padding-right: 15px; }
+        .stat-item:last-child { border-right: none; padding-right: 0; }
+        .stat-num { font-size: 28px; font-weight: 800; color: var(--text-primary); line-height: 1.2; }
+        .stat-num span { color: var(--brand-red); }
+        .stat-desc { font-size: 12px; color: var(--text-muted); margin-top: 4px; font-weight: 500; }
 
-        section { padding: 75px 0; width: 100%; }
-        .bg-light { background-color: #ffffff; }
-        h2 { text-align: center; font-size: 30px; font-weight: 800; margin-bottom: 12px; color: #0f3822; letter-spacing: -0.5px; padding: 0 10px; }
-        h2::after { content: ''; display: block; width: 45px; height: 4px; background: var(--accent-red); margin: 12px auto 35px auto; border-radius: 2px; }
-        .section-subtitle { text-align: center; color: #63756a; font-size: 16px; margin-bottom: 40px; max-width: 750px; margin-left: auto; margin-right: auto; font-weight: 400; padding: 0 15px; }
+        /* Секции */
+        section { padding: 90px 0; }
+        .bg-white { background-color: var(--bg-surface); border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+        .section-header { text-align: center; max-width: 720px; margin: 0 auto 55px auto; }
+        .section-tag { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--brand-green); margin-bottom: 10px; }
+        h2 { font-size: 32px; font-weight: 800; color: var(--text-primary); letter-spacing: -0.5px; line-height: 1.25; margin-bottom: 14px; }
+        .section-subtitle { color: var(--text-secondary); font-size: 16px; font-weight: 400; }
 
-        .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 900px; margin: 0 auto; width: 100%; }
-        .direction-card { background: var(--card-bg); padding: 35px 30px; border-radius: 14px; box-shadow: 0 6px 20px rgba(0,0,0,0.03); border: 1px solid var(--border-color); border-top: 5px solid var(--eco-primary); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; width: 100%; position: relative; }
-        .direction-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(0,0,0,0.06); }
-        
-        .card-icon { width: 48px; height: 48px; background: #eaf5ef; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 18px; }
-        
-        .direction-card h3 { font-size: 19px; font-weight: 700; color: #0f3822; margin-bottom: 10px; line-height: 1.3; }
-        .direction-card p { color: #526359; font-size: 14px; margin-bottom: 20px; font-weight: 400; }
-        .direction-badge { display: inline-block; background: #eaf5ef; color: var(--eco-primary); font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 6px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px; }
-        
-        .badge-soon { position: absolute; top: 25px; right: 25px; }
-        .tag-new { background: #fffbe6; color: #b45309; border: 1px solid #fef3c7; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+        /* Навигатор по сценариям (2 трека) */
+        .tracks-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; margin-bottom: 20px; }
+        .track-card { background: var(--bg-surface); padding: 38px 34px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s; position: relative; overflow: hidden; }
+        .track-card:hover { border-color: var(--border-hover); box-shadow: var(--shadow-md); }
+        .track-card.track-new { border-top: 4px solid var(--brand-green); }
+        .track-card.track-existing { border-top: 4px solid var(--brand-red); }
+        .track-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: var(--text-muted); margin-bottom: 10px; display: block; }
+        .track-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 14px; color: var(--text-primary); }
+        .track-list { list-style: none; margin-bottom: 28px; }
+        .track-list li { font-size: 14px; color: var(--text-secondary); margin-bottom: 10px; display: flex; align-items: flex-start; gap: 10px; }
+        .track-list li::before { content: "•"; color: var(--brand-green); font-weight: 800; font-size: 18px; line-height: 1.2; }
+        .track-card.track-existing .track-list li::before { color: var(--brand-red); }
 
-        .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .roadmap-card { background: #fff; padding: 25px 20px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.02); position: relative; text-align: left; }
-        .roadmap-num { font-size: 32px; font-weight: 800; color: var(--eco-primary); margin-bottom: 10px; opacity: 0.85; }
-        .roadmap-card h4 { font-size: 16px; font-weight: 700; color: #0f3822; margin-bottom: 8px; }
-        .roadmap-card p { font-size: 13px; color: #526359; }
+        /* Услуги (Департаменты) */
+        .directions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+        .direction-card { background: var(--bg-surface); padding: 34px 30px; border-radius: var(--radius-lg); border: 1px solid var(--border-light); box-shadow: var(--shadow-sm); display: flex; flex-direction: column; justify-content: space-between; transition: all 0.25s ease; position: relative; }
+        .direction-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); border-color: var(--border-hover); }
+        .card-top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+        .card-icon { width: 44px; height: 44px; background: var(--bg-subtle); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+        .direction-badge { background: var(--bg-subtle); color: var(--brand-green); font-size: 11px; font-weight: 700; padding: 5px 12px; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+        .tag-new { background: #fff8eb; color: #b45309; border: 1px solid #fde68a; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; text-transform: uppercase; }
+        .direction-card h3 { font-size: 19px; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
+        .direction-card p { color: var(--text-secondary); font-size: 14px; margin-bottom: 24px; }
 
-        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .benefit-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); text-align: left; }
-        .benefit-icon { font-size: 28px; margin-bottom: 15px; }
-        .benefit-card h4 { font-size: 18px; font-weight: 700; color: #0f3822; margin-bottom: 10px; }
-        .benefit-card p { font-size: 14px; color: #526359; }
+        /* Этапы работы (Roadmap) */
+        .roadmap-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .roadmap-card { background: var(--bg-main); padding: 28px 24px; border-radius: var(--radius-md); border: 1px solid var(--border-light); position: relative; }
+        .roadmap-num { font-size: 13px; font-weight: 800; color: var(--brand-green); background: #e3f2ea; display: inline-block; padding: 4px 10px; border-radius: 6px; margin-bottom: 14px; }
+        .roadmap-card h4 { font-size: 16px; font-weight: 700; color: var(--text-primary); margin-bottom: 8px; }
+        .roadmap-card p { font-size: 13px; color: var(--text-secondary); }
 
-        .cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .case-card { background: #fff; padding: 30px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative; border-left: 5px solid var(--eco-primary); width: 100%; }
-        .case-card h3 { font-size: 19px; font-weight: 700; color: #0f3822; margin-bottom: 10px; }
-        .case-tag { font-size: 11px; font-weight: 700; color: var(--accent-red); text-transform: uppercase; margin-bottom: 8px; display: block; }
-        .case-text { font-size: 14px; color: #526359; margin-bottom: 15px; }
-        .case-result { background: #eaf5ef; padding: 12px; border-radius: 8px; font-size: 13px; font-weight: 600; color: #0f3822; }
+        /* Преимущества */
+        .benefits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 24px; }
+        .benefit-card { background: var(--bg-surface); padding: 30px; border-radius: var(--radius-md); border: 1px solid var(--border-light); }
+        .benefit-icon { font-size: 24px; margin-bottom: 14px; }
+        .benefit-card h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+        .benefit-card p { font-size: 14px; color: var(--text-secondary); }
 
-        .faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 25px; max-width: 1180px; margin: 0 auto; width: 100%; }
-        .faq-card { background: #fff; padding: 25px; border-radius: 12px; border: 1px solid var(--border-color); box-shadow: 0 4px 15px rgba(0,0,0,0.03); width: 100%; }
-        .faq-card h4 { font-size: 17px; font-weight: 700; color: #0f3822; margin-bottom: 8px; }
-        .faq-card p { font-size: 14px; color: #526359; }
+        /* Компактные Аккордеоны (Кейсы и FAQ) */
+        .accordion-list { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+        details.accordion-item { background: var(--bg-surface); border: 1px solid var(--border-light); border-radius: var(--radius-md); box-shadow: var(--shadow-sm); overflow: hidden; transition: border-color 0.2s; }
+        details.accordion-item:hover { border-color: var(--border-hover); }
+        details.accordion-item[open] { border-color: var(--brand-green); box-shadow: var(--shadow-md); }
+        summary.accordion-header { padding: 22px 26px; font-size: 16px; font-weight: 700; color: var(--text-primary); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+        summary.accordion-header::-webkit-details-marker { display: none; }
+        .accordion-header-left { display: flex; flex-direction: column; gap: 4px; text-align: left; }
+        .case-tag { font-size: 11px; font-weight: 700; color: var(--brand-green); text-transform: uppercase; letter-spacing: 0.5px; }
+        .accordion-icon { width: 28px; height: 28px; border-radius: 50%; background: var(--bg-subtle); display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--text-primary); flex-shrink: 0; transition: transform 0.25s, background 0.25s; }
+        details[open] .accordion-icon { transform: rotate(45deg); background: var(--brand-green); color: #fff; }
+        .accordion-body { padding: 0 26px 24px 26px; font-size: 14px; color: var(--text-secondary); border-top: 1px solid var(--border-light); padding-top: 18px; }
+        .case-result { background: var(--bg-subtle); padding: 14px 16px; border-radius: 8px; font-size: 13px; font-weight: 600; color: var(--text-primary); margin-top: 12px; border-left: 3px solid var(--brand-green); }
 
-        /* Модальные окна */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15,56,34,0.5); backdrop-filter: blur(4px); z-index: 2000; justify-content: center; align-items: center; padding: 15px; }
-        .modal-container { background: #fff; width: 100%; max-width: 650px; padding: 35px 30px; border-radius: 16px; position: relative; box-shadow: 0 20px 50px rgba(0,0,0,0.15); border-top: 6px solid var(--accent-red); max-height: 90vh; overflow-y: auto; text-align: left; }
-        .modal-close { position: absolute; top: 15px; right: 15px; background: #f2f4f3; border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: #444; }
-        .modal-close:hover { background: var(--accent-red); color: #fff; }
-        .modal-container h3 { font-size: 22px; font-weight: 800; color: #0f3822; margin-bottom: 8px; }
-        .modal-container p { color: #526359; font-size: 14px; margin-bottom: 18px; }
+        /* Финальная секция формы */
+        .form-section { background: linear-gradient(180deg, var(--bg-main) 0%, #e4f0ea 100%); }
+        .form-container { max-width: 580px; margin: 0 auto; background: var(--bg-surface); padding: 42px 36px; border-radius: var(--radius-lg); box-shadow: var(--shadow-lg); border: 1px solid var(--border-light); }
+        .form-container h3 { text-align: center; margin-bottom: 6px; color: var(--text-primary); font-size: 24px; font-weight: 800; }
+
+        /* Элементы форм и модальные окна */
+        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 41, 24, 0.55); backdrop-filter: blur(5px); z-index: 2000; justify-content: center; align-items: center; padding: 16px; }
+        .modal-container { background: var(--bg-surface); width: 100%; max-width: 620px; padding: 36px 32px; border-radius: var(--radius-lg); position: relative; box-shadow: var(--shadow-lg); max-height: 90vh; overflow-y: auto; text-align: left; border-top: 5px solid var(--brand-green); }
+        .modal-close { position: absolute; top: 18px; right: 18px; background: var(--bg-subtle); border: none; width: 34px; height: 34px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; cursor: pointer; color: var(--text-secondary); transition: all 0.2s; }
+        .modal-close:hover { background: var(--brand-red); color: #fff; }
+        .modal-container h3 { font-size: 21px; font-weight: 800; color: var(--text-primary); margin-bottom: 8px; }
+        .modal-container p { color: var(--text-secondary); font-size: 14px; margin-bottom: 20px; }
 
         .form-group { margin-bottom: 14px; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: #333; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 13px; border: 1px solid #dcdcdc; border-radius: 8px; font-size: 14px; font-family: 'Inter', sans-serif; background: #fff; }
-        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--eco-primary); box-shadow: 0 0 0 3px rgba(0,130,61,0.12); }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 13px; color: var(--text-primary); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 11px 14px; border: 1px solid #d5e0d9; border-radius: 8px; font-size: 14px; background: #fff; color: var(--text-primary); transition: border-color 0.2s; }
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--brand-green); box-shadow: 0 0 0 3px rgba(0, 122, 55, 0.1); }
 
-        .price-box { background: #eaf5ef; border: 1px solid #c2e2d0; padding: 16px; border-radius: 10px; margin-bottom: 18px; text-align: center; }
-        .price-title { font-size: 13px; color: #526359; font-weight: 600; margin-bottom: 4px; }
-        .price-value { font-size: 22px; color: #0f3822; font-weight: 800; }
+        .consent-row { display: flex; align-items: flex-start; gap: 10px; margin: 14px 0; }
+        .consent-row input[type="checkbox"] { width: 16px; height: 16px; margin-top: 3px; flex-shrink: 0; accent-color: var(--brand-green); cursor: pointer; }
+        .consent-row label { font-weight: 400; color: var(--text-secondary); font-size: 12px; line-height: 1.45; cursor: pointer; }
+        .consent-row a { color: var(--brand-green); text-decoration: underline; font-weight: 500; }
 
-        .status-tracker { margin-top: 15px; background: #f4f8f6; padding: 16px; border-radius: 10px; border: 1px solid var(--border-color); display: none; }
-        .tracker-info h5 { font-size: 15px; font-weight: 700; color: #0f3822; margin-bottom: 6px; }
-        .tracker-info p { font-size: 13px; color: #526359; margin-bottom: 4px; }
+        .price-box { background: var(--bg-subtle); border: 1px solid var(--border-hover); padding: 16px; border-radius: 10px; margin-bottom: 18px; text-align: center; }
+        .price-title { font-size: 12px; color: var(--text-secondary); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
+        .price-value { font-size: 24px; color: var(--text-primary); font-weight: 800; }
 
-        .token-success-box { background: #eaf5ef; border: 2px dashed var(--eco-primary); padding: 20px; border-radius: 10px; text-align: center; display: none; margin-top: 12px; }
-        .token-success-box h4 { color: #0f3822; font-size: 17px; margin-bottom: 6px; }
-        .generated-token { font-size: 24px; font-weight: 800; color: #0f3822; background: #fff; padding: 8px; border-radius: 6px; display: inline-block; margin: 8px 0; border: 1px solid #c2e2d0; }
-        .whatsapp-prompt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 10px 20px; border-radius: 6px; font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 10px; transition: background 0.2s; }
-        .whatsapp-prompt-btn:hover { background: #20ba5a; }
+        .status-tracker { margin-top: 15px; background: var(--bg-subtle); padding: 18px; border-radius: 10px; border: 1px solid var(--border-light); display: none; }
+        .tracker-info h5 { font-size: 15px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px; }
+        .tracker-info p { font-size: 13px; color: var(--text-secondary); margin-bottom: 4px; }
 
-        .form-section { background: linear-gradient(135deg, #eaf4ef 0%, #d8eadf 100%); color: var(--text-main); text-align: center; border-top: 3px solid var(--border-color); }
-        .form-container { max-width: 600px; margin: 0 auto; background: #fff; color: var(--text-main); padding: 35px 25px; border-radius: 16px; box-shadow: 0 15px 40px rgba(0,0,0,0.08); text-align: left; width: 100%; border: 1px solid var(--border-color); }
-        .form-container h3 { text-align: center; margin-bottom: 8px; color: #0f3822; font-size: 24px; font-weight: 800; }
-        
-        footer { background: #ffffff; color: #63756a; text-align: center; padding: 35px 0; font-size: 13px; border-top: 2px solid var(--border-color); width: 100%; }
-        footer p { margin-bottom: 6px; }
-        footer a { color: var(--eco-primary); text-decoration: none; }
+        .token-success-box { background: var(--bg-subtle); border: 2px dashed var(--brand-green); padding: 24px; border-radius: 12px; text-align: center; display: none; margin-top: 12px; }
+        .generated-token { font-size: 24px; font-weight: 800; color: var(--text-primary); background: #fff; padding: 8px 16px; border-radius: 8px; display: inline-block; margin: 10px 0; border: 1px solid var(--border-hover); }
+        .whatsapp-prompt-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: #25d366; color: #fff; padding: 11px 20px; border-radius: 8px; font-size: 14px; font-weight: 600; text-decoration: none; margin-top: 10px; }
+
+        /* Подвал */
+        footer { background: var(--bg-surface); color: var(--text-muted); padding: 45px 0; font-size: 13px; border-top: 1px solid var(--border-light); text-align: center; }
+        .footer-legal { max-width: 780px; margin: 14px auto; padding: 16px; background: var(--bg-main); border-radius: var(--radius-md); border: 1px solid var(--border-light); color: var(--text-secondary); font-size: 12px; line-height: 1.6; }
+        footer a { color: var(--brand-green); text-decoration: none; font-weight: 500; }
         footer a:hover { text-decoration: underline; }
-        
+
         @media (max-width: 992px) {
-            .directions-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
-            .roadmap-grid, .benefits-grid { grid-template-columns: repeat(2, 1fr); }
-            .cases-grid, .faq-grid { grid-template-columns: 1fr; }
+            .tracks-grid, .directions-grid { grid-template-columns: 1fr; }
+            .roadmap-grid { grid-template-columns: repeat(2, 1fr); }
+            .benefits-grid { grid-template-columns: 1fr; }
+            .stats-bar { grid-template-columns: repeat(2, 1fr); }
+            .stat-item:nth-child(2) { border-right: none; }
         }
         @media (max-width: 768px) {
-            body { font-size: 14px; }
-            .container { width: 92%; max-width: 100%; flex-direction: column; gap: 10px; padding-left: 15px; padding-right: 15px; }
-            header { padding: 12px 0; }
-            .logo { font-size: 18px; }
-            .header-right { width: 100%; justify-content: space-between; gap: 10px; margin-top: 5px; }
-            .status-btn { padding: 6px 10px; font-size: 12px; flex: 1; text-align: center; }
-            .phone-whatsapp { font-size: 13px; flex: 1; justify-content: center; }
-            
-            .hero { padding: 140px 0 60px 0; }
+            .header-inner { flex-direction: column; gap: 12px; }
+            .header-right { width: 100%; justify-content: space-between; flex-wrap: wrap; }
+            .hero { padding: 155px 0 60px 0; }
             .hero h1 { font-size: 28px; }
             .hero p { font-size: 15px; }
-            .stats-bar { gap: 20px; }
-            .stat-num { font-size: 24px; }
-            
-            section { padding: 50px 0; }
-            h2 { font-size: 24px; }
-            .section-subtitle { font-size: 14px; margin-bottom: 30px; }
-            
-            .roadmap-grid, .benefits-grid { grid-template-columns: 1fr; }
-            .direction-card, .case-card, .faq-card, .benefit-card { padding: 22px 18px; width: 100%; }
-            
-            .modal-container { padding: 25px 15px; max-height: 95vh; width: 95%; }
-            .form-container { padding: 25px 15px; width: 100%; }
-            .floating-whatsapp { bottom: 20px; right: 20px; width: 50px; height: 50px; font-size: 26px; }
+            .stats-bar { grid-template-columns: 1fr; padding: 20px; gap: 14px; }
+            .stat-item { border-right: none; border-bottom: 1px solid var(--border-light); padding-bottom: 12px; padding-right: 0; }
+            .stat-item:last-child { border-bottom: none; padding-bottom: 0; }
+            section { padding: 60px 0; }
+            h2 { font-size: 25px; }
+            .roadmap-grid { grid-template-columns: 1fr; }
+            .track-card, .direction-card, .form-container, .modal-container { padding: 24px 18px; }
         }
     </style>
 
@@ -198,7 +225,6 @@
 </head>
 <body>
 
-    <!-- Принудительный сброс прокрутки в самый верх -->
     <script>
         if ('scrollRestoration' in history) {
             history.scrollRestoration = 'manual';
@@ -212,9 +238,9 @@
         <span class="floating-tooltip" data-tr="Uzmana yazın!">Эксперт на связи! Написать</span>
     </a>
 
+    <!-- Шапка -->
     <header>
-        <div class="container">
-            <!-- Графический логотип İSKET GROUP -->
+        <div class="container header-inner">
             <a href="#" class="logo">
                 <div class="logo-icon">
                     <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
@@ -236,20 +262,30 @@
         </div>
     </header>
 
+    <!-- Первый экран (Hero) -->
     <section class="hero">
-        <div class="container" style="flex-direction: column;">
-            <h1 data-tr="İSKET GROUP Çeşitlendirilmiş Holdingi">Многопрофильный холдинг <span>İSKET GROUP</span></h1>
-            <p data-tr="Federal perakende zincirlerinde akreditasyon için yerli ve uluslararası tedarikçilere (Türkiye dahil) yönelik paket destek ve teknolojik hazırlık: uzman desteği, belgelendirme, İK dış kaynak kullanımı ve alacak yönetimi.">Пакетное сопровождение и технологическая подготовка поставщиков (включая российские и зарубежные компании, в том числе из Турции) к аккредитации в федеральных сетях: экспертная поддержка, стандартизация документации, кадровый аутстаффинг и претензионно-исковая работа.</p>
-            <a href="#contact" class="btn btn-red" style="width: auto;" data-tr="Holding Yönetimi ile İletişime Geçin">Связаться с руководством холдинга</a>
+        <div class="container">
+            <div class="hero-badge" data-tr="B2B Perakende Danışmanlığı • Rusya, Türkiye, Özbekistan, Çin, Azerbaycan">B2B-консалтинг для ритейла • РФ, Турция, Узбекистан, Китай, Азербайджан</div>
+            <h1 data-tr="Federal Zincirlerde Yaş Meyve-Sebze, Kuruyemiş ve Kuru Meyve Tedarikçilerine Hukuki ve Teknolojik Destek">Сопровождение поставщиков <span>ФРОВ, орехов и сухофруктов</span> в федеральных сетях</h1>
+            <p data-tr="Üreticiler, ithalatçılar ve tüccarlar için X5 Group ve Magnit (AO Tander) zincirlerinde anahtar teslim akreditasyon, üretici statüsü belgelendirmesi, SL/SLT cezalarının iptali ve satış yönetimi.">Комплексная подготовка производителей, трейдеров и импортеров к аккредитации в X5 Group и Магнит: стандартизация документации под статус производителя, запуск отгрузок, снятие блокировок и оспаривание штрафов SL/SLT.</p>
+            
+            <div class="hero-actions">
+                <button class="btn btn-red" style="width: auto; min-width: 260px;" onclick="openModal('modal-contracts')" data-tr="Zincire Giriş Maliyetini Hesapla">Рассчитать выход в сеть</button>
+                <button class="btn btn-outline" style="width: auto; min-width: 260px;" onclick="openModal('modal-order-request')" data-tr="Cezalara İtiraz Et / Blokajı Kaldır">Оспорить штраф / Снять блокировку</button>
+            </div>
 
             <div class="stats-bar">
                 <div class="stat-item">
                     <div class="stat-num">65<span>+</span></div>
-                    <div class="stat-desc" data-tr="Başarılı akreditasyon projeleri">Успешных проектов аккредитации</div>
+                    <div class="stat-desc" data-tr="Başarılı akreditasyon projesi">Успешных проектов аккредитации</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num">6</div>
-                    <div class="stat-desc" data-tr="Yıllık pratik ve uzmanlık">Лет практики и экспертизы</div>
+                    <div class="stat-desc" data-tr="Yıllık pratik ve uzmanlık">Лет практики в федеральном ритейле</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-num">5</div>
+                    <div class="stat-desc" data-tr="Ülke: Rusya, TR, UZ, CN, AZ">Стран: РФ, Турция, УЗ, КНР, АЗ</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-num">100<span>%</span></div>
@@ -259,529 +295,313 @@
         </div>
     </section>
 
-    <!-- Направления деятельности -->
-    <section class="bg-light" style="background-color: var(--bg-page);">
-        <div class="container" style="flex-direction: column;">
-            <h2 data-tr="Faaliyet Alanlarımız">Направления нашей деятельности</h2>
-            <p class="section-subtitle" data-tr="Sizi ilgilendiren alanı seçin, maliyeti hesaplayın veya başvurunuzu gönderin">Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу</p>
+    <!-- Навигатор: 2 четких сценария для клиента -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-tr="Hızlı Çözüm Seçimi">Быстрый выбор решения</span>
+                <h2 data-tr="Şu Anda Hangi Görevi Çözüyorsunuz?">Какую задачу вы решаете прямо сейчас?</h2>
+                <p class="section-subtitle" data-tr="Durumunuza uygun çalışma senaryosunu seçin — hem yeni adaylar hem de mevcut tedarikçiler için çözümler sunuyoruz">Выберите ваш профиль, чтобы сразу перейти к нужному инструменту без лишнего поиска</p>
+            </div>
+
+            <div class="tracks-grid">
+                <!-- Сценарий А -->
+                <div class="track-card track-new">
+                    <div>
+                        <span class="track-label" data-tr="Senaryo A • Yeni Tedarikçiler ve İthalatçılar İçin">Сценарий А • Новым поставщикам и импортерам</span>
+                        <h3 data-tr="Federal Perakende Zincirlerine Çıkmak İstiyorum">Хочу завести продукцию в торговую сеть</h3>
+                        <ul class="track-list">
+                            <li data-tr="Yaş meyve-sebze, kuruyemiş veya kuru meyve üretiyor ya da ithal ediyorsunuz (dökme veya paketli).">Производите или импортируете овощи, фрукты, орехи, сухофрукты (весовой товар или фасовка).</li>
+                            <li data-tr="X5 Group (Pjatjoroçka, Perekrestok, Çijik) ile sözleşme imzalamak ve SAP kodu almak istiyorsunuz.">Нужно пройти комплаенс-аудит, получить SAP-код и открыть доступ к торгам в X5 Group.</li>
+                            <li data-tr="Güvenlik ve tarım uzmanı denetimini geçmek için 'Üretici' statüsü belgelerine ihtiyacınız var.">Требуется собрать юридический и технический пакет документов под статус производителя.</li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button class="btn" style="flex: 1;" onclick="openModal('modal-contracts')" data-tr="Sözleşme Hesaplayıcısı">Калькулятор договора X5</button>
+                        <button class="btn btn-outline" style="flex: 1;" onclick="openModal('modal-docs')" data-tr="Üretici Belgeleri (250 bin ₽)">Пакет документов (250 000 ₽)</button>
+                    </div>
+                </div>
+
+                <!-- Сценарий Б -->
+                <div class="track-card track-existing">
+                    <div>
+                        <span class="track-label" data-tr="Senaryo B • Mevcut Tedarikçiler İçin">Сценарий Б • Действующим поставщикам сетей</span>
+                        <h3 data-tr="Mevcut Sözleşmede Sorunlar, Cezalar veya Blokaj Var">Нужно решить проблему с заказом, штрафами или SL</h3>
+                        <ul class="track-list">
+                            <li data-tr="Dağıtım merkezi slot hataları nedeniyle haksız SL/SLT ve eksik teslimat cezaları kesildi.">Начислены штрафы по уровню сервиса (SL/SLT) или за недопоставку из-за сбоя слотов в РЦ.</li>
+                            <li data-tr="Sevkiyatlar veya ödemeler bloke edildi, sipariş hacmini ceza almadan düzeltmek gerekiyor.">Заблокированы отгрузки или оплаты, требуется срочно согласовать перепоставку без санкций.</li>
+                            <li data-tr="Pjatjoroçka ihalelerine erken erişim onayı veya deneyimli satış yöneticisi (KAM) gerekiyor.">Нужен досрочный допуск к торгам или профильный менеджер по продажам (KAM) для ведения сети.</li>
+                        </ul>
+                    </div>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button class="btn btn-red" style="flex: 1;" onclick="openModal('modal-order-request')" data-tr="İtiraz / Talep Gönder">Оформить претензию / запрос</button>
+                        <button class="btn btn-outline" style="flex: 1;" onclick="openModal('modal-staff')" data-tr="Satış Yöneticisi (KAM)">Подключить менеджера (KAM)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Департаменты и услуги -->
+    <section class="bg-white">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-tr="Uzmanlık Alanlarımız">Профильные департаменты</span>
+                <h2 data-tr="Faaliyet Alanlarımız ve Hizmetler">Все направления работы холдинга</h2>
+                <p class="section-subtitle" data-tr="Biz ürün satın almıyoruz — üreticilerin ve ithalatçıların federal perakende zincirlerinde güvenle satış yapmasını sağlıyoruz">Мы не перекупаем ваш товар — мы выстраиваем для вашей компании прямые, юридически защищенные продажи в федеральный ритейл</p>
+            </div>
             
             <div class="directions-grid">
                 <!-- Карточка 1: X5 Group -->
                 <div class="direction-card">
                     <div>
-                        <div class="card-icon">📄</div>
-                        <span class="direction-badge" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
+                        <div class="card-top-row">
+                            <div class="card-icon">📄</div>
+                            <span class="direction-badge" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
+                        </div>
                         <h3 data-tr="X5 Group ile Sözleşme İmzalanması">Заключение договора с X5 Group</h3>
-                        <p data-tr="X5 Group ile akreditasyon desteği. Federal ağlarla çalışmaya hazırlanan yerli ve uluslararası tedarikçiler için danışmanlık: veri tabanı denetimi, uyumluluk kontrollerine hazırlık и sevkiyatların başlatılması.">Сопровождение аккредитации с X5 Group. Полный цикл консультационной поддержки при подготовке поставщиков (включая импортеров) к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
+                        <p data-tr="Pjatjoroçka, Perekrestok ve Çijik zincirlerinde yerli ve yabancı (Türkiye, Özbekistan, Çin, Azerbaycan) tedarikçiler için tam kapsamlı akreditasyon, denetim hazırlığı ve ilk sevkiyatların başlatılması.">Полный цикл сопровождения аккредитации в сети «Пятёрочка», «Перекрёсток» и «Чижик» для российских производителей и импортеров: аудит баз, подготовка к комплаенс-проверкам и запуск отгрузок.</p>
                     </div>
                     <button class="btn btn-red" onclick="openModal('modal-contracts')" data-tr="Maliyeti Hesapla ve Başvur">Рассчитать стоимость и подать заявку</button>
                 </div>
 
-                <!-- Карточка 2: Магнит (Тандер) -->
-                <div class="direction-card">
-                    <div class="badge-soon">
-                        <span class="tag-new" data-tr="Yeni">Новинка</span>
-                    </div>
-                    <div>
-                        <div class="card-icon">🛒</div>
-                        <span class="direction-badge" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
-                        <h3 data-tr="Magnit (AO Tander) ile Sözleşme İmzalanması">Заключение договора с АО "Тандер"</h3>
-                        <p data-tr="Magnit (AO Tander) akreditasyon desteği. Federal perakende zincirlerinde tedarikçi hazırlığı, denetim и operasyonel süreçlerin yönetimi.">Сопровождение аккредитации с Магнит (АО «Тандер»). Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.</p>
-                    </div>
-                    <button class="btn btn-disabled" data-tr="Yakında">Скоро</button>
-                </div>
-
-                <!-- Карточка 3: Документы производителя -->
+                <!-- Карточка 2: Документы производителя -->
                 <div class="direction-card">
                     <div>
-                        <div class="card-icon">📋</div>
-                        <span class="direction-badge" data-tr="Uzman Departmanı">Экспертный отдел</span>
+                        <div class="card-top-row">
+                            <div class="card-icon">📋</div>
+                            <span class="direction-badge" data-tr="Uzman Departmanı">Экспертный отдел</span>
+                        </div>
                         <h3 data-tr="Üretici Statüsü İçin Belgelendirme Hazırlığı">Подготовка документации для статуса производителя</h3>
-                        <p data-tr="Güvenlik ve tarım denetimlerini geçmek için eksiksiz hukuki и teknik belge paketinin geliştirilmesi.">Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.</p>
+                        <p data-tr="Güvenlik servisi ve tarım uzmanlarının (agronom) saha denetimlerini başarıyla geçmek için eksiksiz hukuki ve teknik belge paketinin anahtar teslim geliştirilmesi.">Разработка полного юридического и технического пакета документов (декларации, регламенты, спецификации, производственный аудит) для прохождения проверки СБ и выездного аудита агрономов сети.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-docs')" data-tr="Hesapla и Belgeleri Sipariş Et">Рассчитать и заказать доки</button>
+                    <button class="btn" onclick="openModal('modal-docs')" data-tr="Belgeleri Sipariş Et (250.000 ₽)">Заказать пакет документов (250 000 ₽)</button>
                 </div>
 
-                <!-- Карточка 4: Кадры -->
+                <!-- Карточка 3: Юридический отдел -->
                 <div class="direction-card">
                     <div>
-                        <div class="card-icon">👥</div>
-                        <span class="direction-badge" data-tr="Yönetim Hizmetleri">Услуги менеджмента</span>
-                        <h3 data-tr="X5 Group Satış Hizmetleri">Продажи в X5 Group</h3>
-                        <p data-tr="X5 Group satış alanında profesyonel uzman и kadro desteği sağlanması.">Предоставление сотрудников на работу. Подбор профильных специалистов в сфере продаж в X5 Group.</p>
+                        <div class="card-top-row">
+                            <div class="card-icon">⚖️</div>
+                            <span class="direction-badge" data-tr="Hukuk Departmanı">Юридический отдел</span>
+                        </div>
+                        <h3 data-tr="Zincir ile Sipariş ve Cezalar Üzerine Hak İddiaları">Претензионная работа по заказам и штрафам с сетью</h3>
+                        <p data-tr="SL/SLT cezalarına itiraz, mutabakat zaptı hazırlanması, blokajların kaldırılması ve lojistik departmanı ile sipariş hacmi düzeltmelerinin resmî olarak yürütülmesi.">Составление юридически выверенных претензий и актов разногласий, снятие блокировок по SL/SLT и оплатам, оперативное согласование корректировок объемов и перепоставок без штрафов.</p>
                     </div>
-                    <button class="btn" onclick="openModal('modal-staff')" data-tr="Daha Fazla Bilgi">Подробнее</button>
+                    <button class="btn" onclick="openModal('modal-order-request')" data-tr="Hukuki Başvuru Yap">Подать заявку юристам</button>
                 </div>
 
-                <!-- Карточка 5: Юридический отдел -->
-                <div class="direction-card" style="grid-column: 1 / -1; max-width: 100%;">
+                <!-- Карточка 4: Кадры и Продажи -->
+                <div class="direction-card">
                     <div>
-                        <div class="card-icon">⚖️</div>
-                        <span class="direction-badge" data-tr="Hukuk Departmanı">Юридический отдел</span>
-                        <h3 data-tr="Zincir ile Sipariş ve Cezalar Üzerine Hak İddiaları ve Çalışmalar">Претензионная работа по заказам и штрафам с сетью</h3>
-                        <p data-tr="İtirazların, tutanakların и resmî yazışmaların profesyonel olarak hazırlanması. Siparişler и cezalarla ilgili hukuki uyuşmazlıkların çözümü.">Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.</p>
+                        <div class="card-top-row">
+                            <div class="card-icon">👥</div>
+                            <span class="direction-badge" data-tr="Yönetim Hizmetleri">Услуги менеджмента</span>
+                        </div>
+                        <h3 data-tr="X5 Group Satış Yönetimi (KAM Desteği)">Управление продажами в X5 Group (KAM)</h3>
+                        <p data-tr="Dökme yükten paketli ürünlere (STM dahil) kadar tüm ürün gruplarında ihale порталı yönetimi, fiyat mutabakatı ve sevkiyat kontrolü için profesyonel uzman sağlanması.">Предоставление профильных специалистов (Key Account Manager) для сопровождения ваших продаж в сети: от весового товара до фасовки и СТМ, участие в торгах и контроль документооборота.</p>
                     </div>
-                    <div style="text-align: center; width: 100%;">
-                        <button class="btn" onclick="openModal('modal-order-request')" style="max-width: 350px; margin: 0 auto; display: inline-flex;" data-tr="Başvuru Yap">Подать заявку</button>
+                    <button class="btn btn-outline" onclick="openModal('modal-staff')" data-tr="Daha Fazla Bilgi">Подробнее об услуге</button>
+                </div>
+
+                <!-- Карточка 5: Магнит (Тандер) -->
+                <div class="direction-card" style="grid-column: 1 / -1; flex-direction: row; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; padding: 26px 30px;">
+                    <div style="flex: 1; min-width: 280px;">
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                            <span class="direction-badge" style="margin-bottom: 0;" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
+                            <span class="tag-new" data-tr="Yeni">Новинка</span>
+                        </div>
+                        <h3 style="margin-bottom: 6px;" data-tr="Magnit (AO Tander) ile Sözleşme İmzalanması">Заключение договора с сетью «Магнит» (АО «Тандер»)</h3>
+                        <p style="margin-bottom: 0;" data-tr="Magnit perakende zincirinde tedarikçi akreditasyonu, uyumluluk denetimi ve operasyonel süreçlerin başlatılması.">Комплексное сопровождение аккредитации поставщиков и импортеров в торговую сеть «Магнит»: аудит, комплаенс и старт отгрузок.</p>
                     </div>
+                    <button class="btn btn-disabled" style="width: auto; min-width: 200px;" data-tr="Yakında Açılıyor">Скоро открытие направления</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК: ЭТАПЫ РАБОТЫ -->
-    <section class="bg-white">
-        <div class="container" style="flex-direction: column;">
-            <h2 data-tr="Zincir ile Sözleşme İmzalama Aşamaları">Этапы заключения договора с сетью</h2>
-            <p class="section-subtitle" data-tr="Resmî sözleşme çerçevesinde şeffaf ve düzenlenmiş çalışma süreci">Прозрачный и регламентированный процесс работы по официальному договору</p>
+    <!-- Этапы работы + Преимущества -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-tr="Şeffaf Süreç">Регламент работы</span>
+                <h2 data-tr="Sözleşme İmzalama Aşamaları ve İlkelerimiz">Как выстроен процесс сопровождения</h2>
+                <p class="section-subtitle" data-tr="Resmî danışmanlık sözleşmesi çerçevesinde 4 adımda öngörülebilir sonuç">Прозрачная работа строго по официальному договору консалтинговых услуг</p>
+            </div>
 
             <div class="roadmap-grid">
                 <div class="roadmap-card">
-                    <div class="roadmap-num">01</div>
+                    <span class="roadmap-num">Этап 01</span>
                     <h4 data-tr="Denetim ve Başvuru">Аудит и заявка</h4>
-                    <p data-tr="Şirketinizin mevcut statüsünü, belgelerini и ürün özelliklerini analiz ediyoruz.">Анализируем текущий статус вашей компании, исходную документацию и специфику продукции.</p>
+                    <p data-tr="Şirketinizin mevcut statüsünü, belgelerini ve ürün özelliklerini analiz ediyoruz.">Анализируем текущий статус вашей компании, исходную документацию и специфику продукции (ФРОВ, орехи, сухофрукты).</p>
                 </div>
                 <div class="roadmap-card">
-                    <div class="roadmap-num">02</div>
+                    <span class="roadmap-num">Этап 02</span>
                     <h4 data-tr="Paket Hazırlığı">Подготовка пакета</h4>
-                    <p data-tr="Zincir risklerini ortadan kaldıran hukuki и teknik yönetmelikler hazırlamanıza yardımcı oluyoruz. Tüm hazırlanan belgeleri topluyoruz.">Помогаем разработать юридические и технические регламенты, устраняющие риски для сети. Собираем всю подготовленную документацию.</p>
+                    <p data-tr="Zincir risklerini ortadan kaldıran hukuki ve teknik yönetmelikler hazırlıyoruz.">Разрабатываем юридические и технические регламенты, устраняющие риски отказа со стороны СБ и агрономов сети.</p>
                 </div>
                 <div class="roadmap-card">
-                    <div class="roadmap-num">03</div>
+                    <span class="roadmap-num">Этап 03</span>
                     <h4 data-tr="Hukuki Destek">Правовое сопровождение</h4>
-                    <p data-tr="Sözleşmenin kabulü и imzalanması sürecini destekliyoruz. Tüm yazışmaları, itiraz süreçlerini и teknik şartname mutabakatlarını yürütüyoruz.">Сопровождаем процедуру акцептования договора и дальнейшего его подписания. Ведем всю переписку, претензионную работу и согласование спецификаций.</p>
+                    <p data-tr="Sözleşmenin kabulü, yazışmalar ve teknik şartname mutabakatlarını yürütüyoruz.">Сопровождаем процедуру акцептования договора, ведем переписку и согласование спецификаций.</p>
                 </div>
                 <div class="roadmap-card">
-                    <div class="roadmap-num">04</div>
+                    <span class="roadmap-num">Этап 04</span>
                     <h4 data-tr="Başlangıç ve Destek">Старт и поддержка</h4>
-                    <p data-tr="SAP kodu alımı и ihale portalının aktivasyonunda destek sağlıyoruz. İstikrarlı operasyonel faaliyet и kesintisiz belge akışı sağlıyoruz.">Сопровождаем в получении SAP кода и активации тендерного портала. Обеспечиваем стабильную операционную деятельность и бесперебойный документооборот.</p>
+                    <p data-tr="SAP kodu alımı ve ihale portalının aktivasyonunda destek sağlıyoruz.">Сопровождаем получение SAP-кода, активацию тендерного портала и регулярные отгрузки без штрафов.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- БЛОК: ПОЧЕМУ ВЫБИРАЮТ İSKET GROUP -->
-    <section class="bg-page" style="background-color: var(--bg-page);">
-        <div class="container" style="flex-direction: column;">
-            <h2 data-tr="Üreticiler Neden Bizi Seçiyor">Почему производители выбирают нас</h2>
-            <p class="section-subtitle" data-tr="İlkelerimiz istikrarı, güvenliği и öngörülebilir sonuçları garanti eder">Наши принципы гарантируют стабильность, безопасность и предсказуемость результата</p>
 
             <div class="benefits-grid">
                 <div class="benefit-card">
                     <div class="benefit-icon">🎯</div>
-                    <h4 data-tr="Perakende Kuralları">Регламенты ритейла</h4>
-                    <p data-tr="Federal perakende zincirlerinin kalite standartlarına и iç yönetmeliklerine kusursuz uyum odaklı çalışma.">Фокус на безупречное соблюдение стандартов качества и внутренних регламентов федеральных торговых сетей.</p>
+                    <h4 data-tr="Perakende Kuralları">Стандарты ритейла</h4>
+                    <p data-tr="Federal perakende zincirlerinin kalite standartlarına ve iç yönetmeliklerine kusursuz uyum.">Безупречное соблюдение стандартов качества и внутренних комплаенс-регламентов федеральных торговых сетей.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">⚖️</div>
                     <h4 data-tr="Yasal Zemin">Чистое правовое поле</h4>
-                    <p data-tr="Kesinlikle resmî hizmet sözleşmeleri и şeffaf belge akışı temelinde çalışma.">Работа исключительно на основе официальных договоров оказания услуг и прозрачного документооборота.</p>
+                    <p data-tr="Kesinlikle resmî hizmet sözleşmeleri ve şeffaf belge akışı temelinde çalışma.">Работа исключительно на основе официальных договоров оказания услуг и прозрачного документооборота РФ.</p>
                 </div>
                 <div class="benefit-card">
                     <div class="benefit-icon">⚙️</div>
                     <h4 data-tr="Derin Uzmanlık">Глубокая экспертиза</h4>
-                    <p data-tr="Perakendenin dahili iş süreçleri, lojistik matrisleri и SAP yapıları hakkında derinlemesine bilgi.">Доскональное знание внутренних бизнес-процессов, логистических матриц и SAP-структур ритейла.</p>
+                    <p data-tr="Perakendenin dahili iş süreçleri, lojistik matrisleri ve SAP yapıları hakkında derinlemesine bilgi.">Доскональное знание внутренних бизнес-процессов, логистических матриц, слотов РЦ и SAP-структур ритейла.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК РЕАЛЬНЫХ КЕЙСОВ -->
+    <!-- Компактные Кейсы (Аккордеон) -->
     <section class="bg-white">
-        <div class="container" style="flex-direction: column;">
-            <h2 data-tr="Çözülen Karmaşık Görevler">Решенные сложные задачи</h2>
-            <p class="section-subtitle" data-tr="Perakende zinciri düzenlemeleri и itiraz süreçleriyle çalışma örnekleri (gizlilik korunmaktadır)">Примеры работы с претензиями и регламентами торговых сетей (конфиденциальность соблюдена)</p>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-tr="Pratik Deneyim">Практика холдинга</span>
+                <h2 data-tr="Çözülen Karmaşık Görevler">Решенные сложные задачи</h2>
+                <p class="section-subtitle" data-tr="Detayları görmek için ilgili vakaya tıklayın (müşteri gizliliği sözleşme ile korunmaktadır)">Нажмите на интересующий кейс, чтобы раскрыть задачу и юридическое решение (конфиденциальность партнеров защищена)</p>
+            </div>
 
-            <div class="cases-grid" style="grid-template-columns: repeat(2, 1fr);">
-                <div class="case-card">
-                    <span class="case-tag" data-tr="Vaka №1 • SL İtiraz Çalışması">Кейс №1 • Претензионная работа по SL</span>
-                    <h3 data-tr="Hizmet Seviyesi Cezalarına İtiraz">Оспаривание штрафов по уровню сервиса</h3>
-                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Bir sebze tedarikçisi, dağıtım merkezindeki teslimat slotu arızaları nedeniyle eksik teslimat cezalarıyla karşılaştı.">Поставщик овощей столкнулся с автоматическим начислением штрафов за недопоставку из-за сбоя слотов приемки в распределительном центре.</span></p>
-                    <div class="case-result" data-tr="✓ Çözüm: Hukuki açıdan doğru mutabakat zaptı и araç takip numaralarını içeren belgeler hazırlandı. İtiraz kategori yöneticisi tarafından kabul edildi.">✓ Решение: Подготовили юридически выверенный акт разногласий и пакет подтверждающих документов со всеми трек-номерами машин. Претензия была удовлетворена категорийным менеджером.</div>
-                </div>
+            <div class="accordion-list">
+                <details class="accordion-item" open>
+                    <summary class="accordion-header">
+                        <div class="accordion-header-left">
+                            <span class="case-tag" data-tr="Vaka №1 • SL İtiraz Çalışması">Кейс №1 • Претензионная работа по SL</span>
+                            <span data-tr="Hizmet Seviyesi (SL) Cezalarına İtiraz ve İptal">Оспаривание штрафов за недопоставку из-за сбоя слотов РЦ</span>
+                        </div>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p><b data-tr="Görev:">Задача:</b> <span data-tr="Bir sebze tedarikçisi, dağıtım merkezindeki teslimat slotu arızaları nedeniyle eksik teslimat cezalarıyla karşılaştı.">Поставщик овощей столкнулся с автоматическим начислением штрафов за недопоставку из-за сбоя слотов приемки в распределительном центре.</span></p>
+                        <div class="case-result" data-tr="✓ Çözüm: Hukuki açıdan doğru mutabakat zaptı ve araç takip numaralarını içeren belgeler hazırlandı. İtiraz kategori yöneticisi tarafından kabul edildi.">✓ Решение: Подготовили юридически выверенный акт разногласий и пакет подтверждающих документов со всеми трек-номерами машин. Претензия была удовлетворена категорийным менеджером.</div>
+                    </div>
+                </details>
 
-                <div class="case-card">
-                    <span class="case-tag" data-tr="Vaka №2 • Şartname Mutabakatı">Кейс №2 • Согласование спецификаций</span>
-                    <h3 data-tr="Lojistik Uyuşmazlıklarının Hızlı Çözümü">Оперативное урегулирование логистических споров</h3>
-                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Parti miktarının acilen ayarlanması и ceza yaptırımı olmaksızın mevcut yönetmelik çerçevesinde yeniden teslimatın koordine edilmesi gerekiyordu.">Требовалось срочно скорректировать объем партии и согласовать перепоставку в рамках действующего регламента без штрафных санкций.</span></p>
-                    <div class="case-result" data-tr="✓ Çözüm: Resmî başvuru yapıldı, lojistik departmanı ile görüşmeler yürütüldü и ortak для mali kayıp yaşanmadan değişiklikler yapıldı.">✓ Решение: Составили официальное обращение, провели переговоры с логистическим департаментом и зафиксировали изменения без финансовых потерь для партнера.</div>
-                </div>
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <div class="accordion-header-left">
+                            <span class="case-tag" data-tr="Vaka №2 • Şartname Mutabakatı">Кейс №2 • Согласование спецификаций</span>
+                            <span data-tr="Lojistik Uyuşmazlıklarının Ceza Almadan Çözümü">Оперативная корректировка объема партии и перепоставка без санкций</span>
+                        </div>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p><b data-tr="Görev:">Задача:</b> <span data-tr="Parti miktarının acilen ayarlanması ve ceza yaptırımı olmaksızın mevcut yönetmelik çerçevesinde yeniden teslimatın koordine edilmesi gerekiyordu.">Требовалось срочно скорректировать объем партии и согласовать перепоставку в рамках действующего регламента без штрафных санкций.</span></p>
+                        <div class="case-result" data-tr="✓ Çözüm: Resmî başvuru yapıldı, lojistik departmanı ile görüşmeler yürütüldü ve ortak için mali kayıp yaşanmadan değişiklikler yapıldı.">✓ Решение: Составили официальное обращение, провели переговоры с логистическим департаментом и зафиксировали изменения без финансовых потерь для партнера.</div>
+                    </div>
+                </details>
 
-                <div class="case-card">
-                    <span class="case-tag" data-tr="Vaka №3 • SL İstisnası Onayı">Кейс №3 • Согласование исключения по SL</span>
-                    <h3 data-tr="Pjatjoroçka İhale Erişiminin Hızlandırılması">Сокращение срока ожидания и допуск к торгам в «Пятёрочку»</h3>
-                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Mevcut tedarikçi Pjatjoroçka ihalelerine katılmak istiyordu. Zincir, yüksek hizmet seviyesinin (SL) en az 2 ay korunması şartını koymuştu.">Действующий поставщик (успешно отгружающий товар в сети «Перекрёсток») планировал выйти в торги на «Пятёрочку». Сеть выставила стандартное требование: не менее 2 месяцев удерживать высокий уровень сервиса (SL), что при специфике объемов и рисках разовых сбоев затягивало запуск на неопределенный срок.</span></p>
-                    <div class="case-result" data-tr="✓ Çözüm: Bağımsız üretim denetimi gerçekleştirildi и kategori yöneticisi için uzman gerekçesi oluşturuldu. Resmî evraklar hazırlandı и zincir tedarikçiye ihalelere erken erişim izni verdi.">✓ Решение: Провели независимый аудит производства, сформировали экспертное обоснование объемов и рисков для категорийного менеджера. Подготовили официальный комплексный пакет документов и юридически выверенное обращение. На основании подтвержденных производственных мощностей и аудита сеть приняла решение открыть поставщику досрочный доступ к торгам на «Пятёрочку».</div>
-                </div>
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <div class="accordion-header-left">
+                            <span class="case-tag" data-tr="Vaka №3 • SL İstisnası Onayı">Кейс №3 • Допуск к торгам</span>
+                            <span data-tr="Pjatjoroçka İhale Erişiminin Hızlandırılması">Сокращение 2-месячного срока ожидания SL и допуск к торгам в «Пятёрочку»</span>
+                        </div>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p><b data-tr="Görev:">Задача:</b> <span data-tr="Mevcut tedarikçi Pjatjoroçka ihalelerine katılmak istiyordu. Zincir, yüksek hizmet seviyesinin (SL) en az 2 ay korunması şartını koymuştu.">Действующий поставщик сети «Перекрёсток» планировал выйти в торги на «Пятёрочку». Сеть выставила стандартное требование: не менее 2 месяцев удерживать высокий уровень сервиса (SL), что затягивало запуск сезона.</span></p>
+                        <div class="case-result" data-tr="✓ Çözüm: Bağımsız üretim denetimi gerçekleştirildi ve kategori yöneticisi için uzman gerekçesi oluşturuldu. Zincir tedarikçiye ihalelere erken erişim izni verdi.">✓ Решение: Провели независимый аудит производства, сформировали экспертное обоснование объемов для категорийного менеджера и юридически выверенное обращение. Сеть открыла поставщику досрочный доступ к торгам на «Пятёрочку».</div>
+                    </div>
+                </details>
 
-                <div class="case-card">
-                    <span class="case-tag" data-tr="Vaka №4 • Kapsamlı Tedarikçi Başlangıcı">Кейс №4 • Комплексный запуск нового поставщика</span>
-                    <h3 data-tr="Pjatjoroçka Tam Kapsamlı Akreditasyon Desteği">Полное сопровождение аккредитации и успешный запуск в «Пятёрочку»</h3>
-                    <p class="case-text"><b data-tr="Görev:">Задача:</b> <span data-tr="Yeni bir tedarikçi Pjatjoroçka ile sözleşme imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.">Новый (недействующий) поставщик планировал заключить договор с торговой сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения многоуровневого комплаенс-аудита и подготовки полного пакета документации под требования сети.</span></p>
-                    <div class="case-result" data-tr="✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, üretim denetimi yapıldı и tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.">✓ Решение: Провели комплексную работу «под ключ»: создали цифровую инфраструктуру, провели независимый аудит предприятия и выявили пробелы в документации до официальной подачи. Помогли сформировать недостающий пакет документов, исключив риски вопросов от категорийного менеджера (КМ). Разработали коммерческое предложение, успешно подготовили предприятие к выездному аудиту агронома торговой сети. На основе безупречного пакета документов и пройденного аудита поставщику успешно завели договор с «Пятёрочкой» и открыли доступ к торгам на целевой регион.</div>
-                </div>
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <div class="accordion-header-left">
+                            <span class="case-tag" data-tr="Vaka №4 • Anahtar Teslim Başlangıç">Кейс №4 • Запуск нового поставщика</span>
+                            <span data-tr="Pjatjoroçka Tam Kapsamlı Akreditasyon ve Agronom Denetimi">Полное сопровождение аккредитации и прохождение выездного аудита агронома</span>
+                        </div>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p><b data-tr="Görev:">Задача:</b> <span data-tr="Yeni bir tedarikçi Pjatjoroçka ile sözleşme imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.">Новый поставщик планировал заключить договор с сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения комплаенс-аудита и подготовки документации под требования сети.</span></p>
+                        <div class="case-result" data-tr="✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, üretim denetimi yapıldı ve tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.">✓ Решение: Создали цифровую инфраструктуру, провели пре-аудит предприятия, сформировали пакет документов для КМ и подготовили площадку к выездному аудиту агронома. Договор с «Пятёрочкой» успешно подписан, открыт доступ к торгам.</div>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
-    <!-- БЛОК FAQ -->
-    <section class="bg-page" style="background-color: var(--bg-page);">
-        <div class="container" style="flex-direction: column;">
-            <h2 data-tr="Sıkça Sorulan Sorular и Garantiler">Часто задаваемые вопросы и гарантии</h2>
-            <p class="section-subtitle" data-tr="Süreçler, ödemeler и iş güvenliği hakkında bilmeniz gerekenler">Все, что нужно знать о сроках, оплате и безопасности работы</p>
+    <!-- Компактный FAQ (Аккордеон) -->
+    <section>
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag" data-tr="Güvenlik ve Garantiler">Ответы на вопросы</span>
+                <h2 data-tr="Sıkça Sorulan Sorular">Часто задаваемые вопросы и гарантии</h2>
+                <p class="section-subtitle" data-tr="Süreçler, ödemeler ve iş güvenliği hakkında temel bilgiler">Ключевая информация о порядке оплаты, сроках и юридической безопасности</p>
+            </div>
 
-            <div class="faq-grid">
-                <div class="faq-card">
-                    <h4 data-tr="💳 Ödemeler nasıl gerçekleştirilir?">💳 Как устроена оплата услуг?</h4>
-                    <p data-tr="Ödemeler kesinlikle resmi danışmanlık и hukuk hizmetleri sözleşmesine dayanarak aşamalı olarak yapılır.">Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких оплат за результат внутри закрытых систем сетей не практикуется.</p>
-                </div>
-                <div class="faq-card">
-                    <h4 data-tr="⏳ İşlemlerin süreleri nedir?">⏳ Какие сроки выполнения задач?</h4>
-                    <p data-tr="Belge hazırlığı 1 haftadan başlar, hukuki inceleme и itirazlar 2-5 gün sürer.">Сроки зависят от типа задачи: подготовка документации занимает от 1 недели, юридический аудит и составление претензий — от 2 до 5 дней, комплексное сопровождение — по графику договора.</p>
-                </div>
-                <div class="faq-card">
-                    <h4 data-tr="🛡 Ne tür garantiler sunuyorsunuz?">🛡 Какие гарантии вы предоставляете?</h4>
-                    <p data-tr="Hukuki и teknik belgelendirmede en yüksek kaliteyi, sıkı gizliliği и Rusya Federasyonu yasalarına tam uyumu garanti ediyoruz.">Мы гарантируем высочайшее качество юридической и технической подготовки документов, строгую конфиденциальность и работу исключительно в правовом поле РФ.</p>
-                </div>
-                <div class="faq-card">
-                    <h4 data-tr="🔒 İşletmemiz için güvenli mi?">🔒 Безопасно ли это для нашего бизнеса?</h4>
-                    <p data-tr="Kesinlikle. Tüm faaliyetlerimiz klasik B2B danışmanlık hizmetidir.">Абсолютно. Вся наша деятельность представляет собой классический B2B-консалтинг, помогающий поставщикам приводить свою документацию в полное соответствие с требованиями сетей.</p>
-                </div>
+            <div class="accordion-list">
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span data-tr="💳 Ödemeler nasıl gerçekleştirilir?">💳 Как устроена оплата услуг?</span>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p data-tr="Ödemeler kesinlikle resmi danışmanlık ve hukuk hizmetleri sözleşmesine dayanarak aşamalı olarak yapılır. Ağların закрытые sistemleri içinde sonuç odaklı gayriresmi ödemeler yapılmaz.">Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких неформальных оплат внутри закрытых систем сетей не практикуется.</p>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span data-tr="⏳ İşlemlerin süreleri nedir?">⏳ Какие сроки выполнения задач?</span>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p data-tr="Belge hazırlığı 1 haftadan başlar, hukuki inceleme ve itirazlar 2-5 gün sürer, kapsamlı akreditasyon sözleşme takvimine göre ilerler.">Подготовка документации производителя занимает от 1 недели, юридический аудит и составление претензий — от 2 до 5 рабочих дней, комплексное сопровождение договора — по графику контракта.</p>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span data-tr="🛡 Minimum ürün hacmi şartınız var mı?">🛡 Есть ли требования к минимальному объему продукции?</span>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p data-tr="Biz ürün satın alan bir ticaret ağı değiliz; tedarikçilere danışmanlık veriyoruz. Bu nedenle minimum parti sınırımız yoktur, hem dökme ürün hem de paketli (STM) gruplarla çalışıyoruz.">Мы не закупаем товар, а оказываем консалтинговое и юридическое сопровождение поставщикам. Поэтому у нас нет понятия минимального объема — мы сопровождаем выход в сеть как с валовым весовым продуктом, так и с розничной фасовкой.</p>
+                    </div>
+                </details>
+
+                <details class="accordion-item">
+                    <summary class="accordion-header">
+                        <span data-tr="🔒 İşletmemiz ve perakende güvenliği (SB) için güvenli mi?">🔒 Безопасно ли это для нашего бизнеса и СБ торговых сетей?</span>
+                        <span class="accordion-icon">+</span>
+                    </summary>
+                    <div class="accordion-body">
+                        <p data-tr="Kesinlikle. Tüm faaliyetlerimiz klasik B2B danışmanlık ve hukuk hizmetidir. Tedarikçilerin belgelerini perakende zincirlerinin resmi standartlarına uygun hale getiriyoruz.">Абсолютно. Вся наша деятельность представляет собой классический B2B-консалтинг, помогающий поставщикам и импортерам приводить свою документацию и операционные процессы в полное соответствие с официальными требованиями сетей.</p>
+                    </div>
+                </details>
             </div>
         </div>
     </section>
 
-    <!-- МОДАЛЬНОЕ ОКНО: ЛИЧНЫЙ КАБИНЕТ / СТАТУС ЗАЯВКИ -->
-    <div id="modal-cabinet" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-cabinet')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;" data-tr="Tedarikçi Paneli">Личный кабинет поставщика</span>
-            <h3 data-tr="Başvuru Durumunu Kontrol Et">Проверка статуса заявки</h3>
-            <p data-tr="Çalışma aşamasını öğrenmek için başvuru numaranızı (token) girin.">Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.</p>
-            
-            <div class="form-group">
-                <label data-tr="Başvuru Numarası (örn: ISKET-555) *">Номер заявки (например: ISKET-555) *</label>
-                <input type="text" id="orderTokenInput" placeholder="Введите номер...">
-            </div>
-
-            <button class="btn" onclick="checkOrderStatus()" style="width: 100%; margin-bottom: 15px;" data-tr="Durumu Kontrol Et">Проверить статус</button>
-
-            <div id="statusTrackerBox" class="status-tracker">
-                <div class="tracker-info" id="trackerContent">
-                    <h5 data-tr="Veriler yükleniyor...">Загрузка данных...</h5>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО: КАЛЬКУЛЯТОР X5 -->
-    <div id="modal-contracts" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
-            <h3 data-tr="X5 Group Sözleşme Hesaplayıcısı ve Başvuru">Калькулятор стоимости и заявка на заключение договора с X5 Group</h3>
-            <p data-tr="Danışmanlık hizmetlerinin tahmini maliyetini öğrenmek için şirket bilgilerinizi doldurun.">Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость консалтинговых услуг.</p>
-            
-            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на заключение договора с X5 Group')">
-                <input type="hidden" name="form_type" value="Заявка на заключение договора с X5 Group">
-                <input type="hidden" name="generated_token" id="tokenContract">
-
-                <div class="form-group">
-                    <label data-tr="1. Şirket Adı (OOO) *">1. Наименование ООО *</label>
-                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="2. Tedarikçi Kategorisi *">2. Категория поставщика *</label>
-                    <select name="supplier_category" id="supplierCategory" onchange="calculatePrice()" required>
-                        <option value="" disabled selected data-tr="Kategori seçin">Выберите категорию</option>
-                        <option value="Действующий поставщик" data-tr="2.1 Mevcut tedarikçi">2.1 Действующий поставщик</option>
-                        <option value="Недействующий поставщик" data-tr="2.2 Mevcut olmayan tedarikçi (+200.000 ₽)">2.2 Недействующий поставщик (+200 000 ₽)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="3. Şirket Türü *">3. Категория компании *</label>
-                    <select name="company_category" id="companyCategory" onchange="calculatePrice()" required>
-                        <option value="" disabled selected data-tr="Statü seçin">Выберите статус</option>
-                        <option value="Трейдер" data-tr="3.1 Tüccar (Trader)">3.1 Трейдер</option>
-                        <option value="Производитель" data-tr="3.2 Üretici">3.2 Производитель</option>
-                        <option value="Импортер" data-tr="3.3 İthalatçı">3.3 Импортер</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="4. Destek Alanı: *">4. Направление сопровождения: *</label>
-                    <select name="retail_target" id="retailTarget" onchange="calculatePrice()" required>
-                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
-                        <option value="ТСХ Перекресток" data-tr="4.1 Perekrestok (600.000 ₽'den başlayan)">4.1 ТСХ Перекрёсток (от 600 000 ₽)</option>
-                        <option value="ДСК Пятерочка" data-tr="4.2 Pjatjoroçka (750.000 ₽'den başlayan)">4.2 ДСК Пятёрочка (от 750 000 ₽)</option>
-                        <option value="ТСЧ Чижик" data-tr="4.3 Çijik (500.000 ₽'den başlayan)">4.3 ТСЧ Чижик (от 500 000 ₽)</option>
-                        <option value="Все три сети" data-tr="4.4 Tüm üç zincir (Kapsamlı)">4.4 Все три сети (комплексно)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="5. Zincire hangi statüde girmek istiyorsunuz? *">5. Хотите войти в сеть как: *</label>
-                    <select name="entry_role" id="entryRole" onchange="calculatePrice()" required>
-                        <option value="Как производитель" selected data-tr="Üretici olarak (+200.000 ₽)">Как производитель (+200 000 ₽)</option>
-                        <option value="Как трейдер" data-tr="Tüccar olarak">Как трейдер</option>
-                        <option value="Как импортер" data-tr="İthalatçı olarak">Как импортер</option>
-                        <option value="Без изменений" data-tr="Değişiklik yok">Без изменений</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="Şirketin Yaşı (OOO) *">Возраст компании (ООО) *</label>
-                    <select name="company_age" id="companyAge" onchange="calculatePrice()" required>
-                        <option value="" disabled selected data-tr="Tüzel kişilik yaşını seçin">Выберите возраст юрлица</option>
-                        <option value="Более 1 года" data-tr="1 yıldan fazla">Более 1 года</option>
-                        <option value="Менее 1 года" data-tr="1 yıldan az (+100.000 ₽)">Менее 1 года (+100 000 ₽ к стоимости)</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="Satış Bölgesi *">Регион продаж *</label>
-                    <input type="text" name="sales_region" placeholder="Örn: Moskova, Merkez, Kuzey-Batı..." required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="İletişim Telefonu (WhatsApp) *">Контактный телефон (WhatsApp) *</label>
-                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
-                </div>
-
-                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
-                    <input type="checkbox" id="consentContract" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentContract" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
-                        Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
-                    </label>
-                </div>
-
-                <div class="price-box">
-                    <div class="price-title" data-tr="Danışmanlık hizmetlerinin tahmini maliyeti:">Ориентировочная стоимость консалтинговых услуг:</div>
-                    <div class="price-value" id="priceDisplay">0 ₽</div>
-                    <input type="hidden" name="calculated_price" id="hiddenPrice" value="0">
-                </div>
-
-                <button type="submit" class="btn btn-red" style="width: 100%;" data-tr="Danışmanlık Başvurusunu Gönder">Отправить заявку на консультацию</button>
-            </form>
-
-            <div id="successBox-contract" class="token-success-box">
-                <h4 data-tr="🎉 Başvuru başarıyla gönderildi!">🎉 Заявка успешно отправлена!</h4>
-                <p data-tr="Kişisel talebinize benzersiz bir numara atandı:">Вашему персональному запросу присвоен уникальный номер:</p>
-                <div class="generated-token" id="tokenDisplay-contract">ISKET-0000</div>
-                <p style="font-size: 13px; color: #555; margin-bottom: 10px;" data-tr="Panelde takip etmek için bu numarayı saklayın.">Сохраните этот номер для отслеживания в личном кабинете.</p>
-                <a id="whatsappLink-contract" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Bu numara ile WhatsApp'tan yazın">💬 Написать в WhatsApp с этим номером</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО: ПОДГОТОВКА ДОКУМЕНТАЦИИ -->
-    <div id="modal-docs" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--eco-primary);">
-            <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;" data-tr="Uzman Departmanı">Экспертный отдел</span>
-            <h3 data-tr="Üretici Statüsünü Onaylamak İçin Belge Hazırlığı">Подготовка документации для подтверждения статуса производителя</h3>
-            <p data-tr="Perakende zinciri gereksinimlerine uygun uzman belge paketi siparişi için bilgileri doldurun.">Заполните данные для заказа экспертного пакета документов под требования торговой сети.</p>
-            
-            <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на подготовку документации производителя')">
-                <input type="hidden" name="form_type" value="Заявка на подготовку документации производителя">
-                <input type="hidden" name="generated_token" id="tokenDocs">
-
-                <div class="form-group">
-                    <label data-tr="1. Şirket Adı (OOO) *">1. Наименование ООО *</label>
-                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="2. Tedarikçi Statüsü *">2. Статус поставщика *</label>
-                    <select name="supplier_status" required>
-                        <option value="" disabled selected data-tr="Statü seçin">Выберите статус</option>
-                        <option value="Действующий поставщик" data-tr="Mevcut tedarikçi">Действующий поставщик</option>
-                        <option value="Недействующий поставщик" data-tr="Mevcut olmayan tedarikçi">Недействующий поставщик</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="3. Şirketin Kuruluş Yılı *">3. Год создания компании *</label>
-                    <input type="number" name="creation_year" placeholder="Örn: 2022" min="1990" max="2026" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="4. Belgeler hangi zincir için hazırlanıyor? *">4. Для какой сети готовятся документы? *</label>
-                    <select name="target_network" id="targetNetworkSelect" onchange="toggleCustomNetwork('targetNetworkSelect', 'customNetworkBlock')" required>
-                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
-                        <option value="ДСК Пятёрочка">ДСК Пятёрочка</option>
-                        <option value="ТСХ Перекрёсток">ТСХ Перекрёсток</option>
-                        <option value="ТСЧ Чижик">ТСЧ Чижик</option>
-                        <option value="Все сети X5 Group">Все сети X5 Group</option>
-                        <option value="АО «Тандер»">АО «Тандер»</option>
-                        <option value="Другая сеть" data-tr="Diğer zincir">Другая сеть</option>
-                    </select>
-                </div>
-
-                <div class="form-group" id="customNetworkBlock" style="display: none;">
-                    <label data-tr="Diğer zincirin adını belirtin *">Укажите название другой сети *</label>
-                    <input type="text" name="custom_network_name" placeholder="Zincir adını girin...">
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="İletişim Telefonu (WhatsApp) *">Контактный телефон (WhatsApp) *</label>
-                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
-                </div>
-
-                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
-                    <input type="checkbox" id="consentDocs" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentDocs" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
-                        Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
-                    </label>
-                </div>
-
-                <div class="price-box">
-                    <div class="price-title" data-tr="Toplam hizmet bedeli:">Итоговая стоимость услуг:</div>
-                    <div class="price-value">250 000 ₽</div>
-                    <input type="hidden" name="service_price" value="250 000 ₽">
-                </div>
-
-                <button type="submit" class="btn" style="width: 100%;" data-tr="Belge Hazırlığını Sipariş Et">Заказать подготовку документации</button>
-            </form>
-
-            <div id="successBox-docs" class="token-success-box">
-                <h4 data-tr="🎉 Başvuru başarıyla gönderildi!">🎉 Заявка успешно отправлена!</h4>
-                <p data-tr="Takip numaranız:">Ваш персональный номер для отслеживания:</p>
-                <div class="generated-token" id="tokenDisplay-docs">ISKET-0000</div>
-                <p style="font-size: 13px; color: #555; margin-bottom: 10px;" data-tr="Durumu kontrol etmek için saklayın.">Сохраните его для проверки статуса.</p>
-                <a id="whatsappLink-docs" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Bu numara ile WhatsApp'tan yazın">💬 Написать в WhatsApp с этим номером</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО: ПРЕТЕНЗИОННАЯ РАБОТА -->
-    <div id="modal-order-request" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 10px;" data-tr="Hukuk Departmanı">Юридический отдел</span>
-            <h3 data-tr="Siparişler ve Cezalar Üzerine Hak İddiaları и Çalışmalar">Претензионная работа по заказам и штрафам с сетью</h3>
-            <p data-tr="Hukuki başvuru hazırlamak için sorunlu sipariş parametrelerini и anlaşmazlığın özünü doldurun.">Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.</p>
-            
-            <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Споры с сетью')">
-                <input type="hidden" name="form_type" value="Претензионная работа / Споры с сетью">
-                <input type="hidden" name="generated_token" id="tokenOrder">
-
-                <div class="form-group">
-                    <label data-tr="1. Sipariş / İtiraz No *">1. № заказа / претензии *</label>
-                    <input type="text" name="order_number" placeholder="Örn: 12345678" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="2. Sipariş / Tutanak Tarihi *">2. Дата заказа / акта *</label>
-                    <input type="date" name="order_date" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="3. İşlem / Prosedür Türü *">3. Тип операции / процедуры *</label>
-                    <select name="order_operation" required>
-                        <option value="" disabled selected data-tr="Listeden prosedür türü seçin">Выберите тип процедуры из списка</option>
-                        <option value="Оспаривание штрафов по SL/SLT и недопоставкам" data-tr="SL/SLT ve eksik teslimat cezalarına itiraz">Оспаривание штрафов по SL/SLT и недопоставкам</option>
-                        <option value="Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам" data-tr="SL/SLT ve ödeme blokajlarının kaldırılması için zincire talep oluşturulması">Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам</option>
-                        <option value="Согласование корректировок заказов и перепоставок" data-tr="Sipariş düzeltmelerinin и yeniden teslimatların mutabakatı">Согласование корректировок заказов и перепоставок</option>
-                        <option value="Досудебное урегулирование претензий ритейла" data-tr="Perakende itirazlarının mahkeme öncesi çözümü">Досудебное урегулирование претензий ритейла</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="4. Şirket SAP Numarası *">4. SAP № Компании *</label>
-                    <input type="text" name="sap_company_number" placeholder="Örn: 0001234567" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="5. Perakende Zinciri *">5. Торговая сеть *</label>
-                    <select name="retail_network" id="retailNetworkSelect" onchange="toggleCustomNetwork('retailNetworkSelect', 'customRetailBlock')" required>
-                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
-                        <option value="Перекрёсток">Перекрёсток</option>
-                        <option value="Пятёрочка">Пятёрочка</option>
-                        <option value="Чижик">Чижик</option>
-                        <option value="АО «Тандер» (Магнит)">АО «Тандер» (Магнит)</option>
-                        <option value="Свой вариант" data-tr="Kendi seçeneğim">Свой вариант</option>
-                    </select>
-                </div>
-
-                <div class="form-group" id="customRetailBlock" style="display: none;">
-                    <label data-tr="Kendi zincir adınızı belirtin *">Укажите название своей сети *</label>
-                    <input type="text" name="custom_retail_name" placeholder="Zincir adını girin...">
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="6. İletişim Bilgileriniz (Телефон / WhatsApp) *">6. Ваши контактные данные (Телефон / WhatsApp) *</label>
-                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
-                </div>
-
-                <div class="form-group">
-                    <label data-tr="7. Sorunun Özü / Anlaşmazlık Detayları">7. Суть вопроса / Детали спора</label>
-                    <textarea name="comments" rows="3" placeholder="Anlaşmazlık nedenlerini, tutanak numaralarını или ürün kodlarını belirtin..."></textarea>
-                </div>
-
-                <!-- Чекбокс согласия 152-ФЗ с data-tr -->
-                <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
-                    <input type="checkbox" id="consentOrder" required style="width: 16px; height: 16px; margin-top: 2px;">
-                    <label for="consentOrder" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
-                        Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
-                    </label>
-                </div>
-
-                <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 5px;" data-tr="Başvuruyu İşleme Gönder">Отправить обращение в работу</button>
-            </form>
-
-            <div id="successBox-order" class="token-success-box">
-                <h4>🎉 <span data-tr="Başvuru işleme alındı!">Обращение принято в работу!</span></h4>
-                <p data-tr="İtiraz durumunu takip numarası:">Номер для отслеживания статуса претензии:</p>
-                <div class="generated-token" id="tokenDisplay-order">ISKET-0000</div>
-                <br>
-                <a id="whatsappLink-order" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Talep hakkında WhatsApp'tan yazın">💬 Написать в WhatsApp по обращению</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- Модалка Персонал -->
-    <div id="modal-staff" class="modal-overlay">
-        <div class="modal-container" style="border-top-color: var(--eco-primary);">
-            <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
-            <span class="direction-badge" style="margin-bottom: 12px;" data-tr="Yönetim Hizmetleri">Услуги менеджмента</span>
-            <h3 data-tr="Personel Sağlama ve İK Desteği">Предоставление сотрудников и кадровая поддержка</h3>
-            <p data-tr="Federal zincirlere nitelikli personel и profesyonel satış yöneticileri (KAM) sağlıyoruz.">Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.</p>
-            <a href="#contact" class="btn" onclick="openModal('modal-staff')" data-tr="Bizimle İletişime Geçin">Связаться с нами</a>
-        </div>
-    </div>
-
-    <!-- МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
-    <div id="modal-privacy" class="modal-overlay">
-        <div class="modal-container">
-            <button class="modal-close" onclick="closeModal('modal-privacy')">&times;</button>
-            <h3 style="margin-bottom: 15px;">Политика конфиденциальности и обработки персональных данных</h3>
-            <div style="font-size: 13px; color: #526359; max-height: 60vh; overflow-y: auto; line-height: 1.5; display: flex; flex-direction: column; gap: 10px;">
-                <p>Настоящая Политика конфиденциальности регулирует порядок обработки и защиты персональных данных пользователей сайта, действующего под коммерческим наименованием <b>İSKET GROUP</b>.</p>
-                <p><b>1. Оператор персональных данных:</b><br>
-                ООО «ТУЛЬСКИЕ ОВОЩИ»<br>
-                ИНН: 9727096157 | ОГРН: 1247700828781<br>
-                Юридический адрес: 117042, г. Москва, Южнобутовская ул., д. 72, пом. 3/1<br>
-                Электронная почта: tulskie68@mail.ru</p>
-                <p><b>2. Цели сбора данных:</b><br>
-                Предоставление консультаций, расчет стоимости услуг сопровождения аккредитации в федеральных торговых сетях, заключение и исполнение договоров оказания услуг, а также обработка обращений и претензий.</p>
-                <p><b>3. Защита информации:</b><br>
-                Оператор принимает все необходимые технические и организационные меры для защиты персональных данных пользователей от неправомерного доступа, изменения или раскрытия в соответствии с Федеральным законом РФ № 152-ФЗ «О персональных данных».</p>
-            </div>
-            <button class="btn" onclick="closeModal('modal-privacy')" style="margin-top: 20px;">Закрыть</button>
-        </div>
-    </div>
-
-    <!-- Общая секция заявки -->
+    <!-- Финальная форма обратной связи -->
     <section class="form-section" id="contact">
-        <div class="container" style="flex-direction: column;">
+        <div class="container">
             <div class="form-container">
-                <h3 data-tr="İSKET GROUP Holding Başvurusu">Заявка в холдинг İSKET GROUP</h3>
-                <p style="font-size: 13px; color: #666; margin-bottom: 25px; text-align: center;"><span data-tr="Başvurular doğrudan yönetime iletilir:">Заявки поступают напрямую руководству:</span> <b>tulskie68@mail.ru</b></p>
+                <h3 data-tr="İSKET GROUP Holding Başvurusu">Прямая заявка руководству</h3>
+                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 24px; text-align: center;">
+                    <span data-tr="Başvurular doğrudan incelenir:">Оставьте контакты для разбора вашей ситуации:</span> <b>tulskie68@mail.ru</b>
+                </p>
                 
                 <form action="https://formspree.io/f/mkjgeynq" method="POST">
                     <input type="hidden" name="form_type" value="Общая заявка с сайта">
@@ -805,221 +625,375 @@
                         <select name="selected_direction" required>
                             <option value="" disabled selected data-tr="Listeden bir alan seçin">Выберите направление из списка</option>
                             <option value="Заключение договора с X5 Group" data-tr="X5 Group ile Sözleşme İmzalanması">Заключение договора с X5 Group</option>
-                            <option value="Заключение договора с АО Тандер (Скоро)" data-tr="Magnit (AO Tander) ile Sözleşme (Yakında)">Заключение договора с АО "Тандер" (Скоро)</option>
-                            <option value="Подготовка документации производителя" data-tr="Üretici Belgelendirme Hazırlığı">Подготовка документации производителя</option>
-                            <option value="Продажи в X5 Group (Услуги менеджмента)" data-tr="X5 Group Satışları (Yönetim Hizmetleri)">Продажи в X5 Group (Услуги менеджмента)</option>
+                            <option value="Подготовка документации производителя" data-tr="Üretici Belgelendirme Hazırlığı (250.000 ₽)">Подготовка документации производителя (250 000 ₽)</option>
                             <option value="Претензионная работа и споры с сетью" data-tr="Zincir ile İtiraz ve Anlaşmazlık Çalışmaları">Претензионная работа и споры с сетью</option>
+                            <option value="Продажи в X5 Group (Услуги менеджмента)" data-tr="X5 Group Satışları (Yönetim Hizmetleri)">Продажи в X5 Group (Услуги менеджмента)</option>
                             <option value="Другой вопрос / Консультация" data-tr="Diğer Soru / Danışmanlık">Другой вопрос / Консультация</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label data-tr="Şirketinizin Adı (OOO) *">Наименование вашей компании (ООО) *</label>
-                        <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                        <label data-tr="Şirketinizin Adı ve Ülke *">Наименование вашей компании и страна *</label>
+                        <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт» (РФ / Турция / УЗ)" required>
                     </div>
 
-                    <!-- Чекбокс согласия 152-ФЗ с data-tr -->
-                    <div class="form-group" style="display: flex; align-items: flex-start; gap: 8px; font-size: 12px; margin: 12px 0;">
-                        <input type="checkbox" id="consentGeneral" required style="width: 16px; height: 16px; margin-top: 2px;">
-                        <label for="consentGeneral" style="font-weight: 400; color: #555; font-size: 11px; line-height: 1.4;" data-tr="Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.">
-                            Я даю согласие на <a href="#" onclick="openModal('modal-privacy'); return false;" style="color: var(--eco-primary);">обработку персональных данных</a> и принимаю условия Политики конфиденциальности.
+                    <div class="consent-row">
+                        <input type="checkbox" id="consentGeneral" required>
+                        <label for="consentGeneral">
+                            <span data-tr="Kişisel verilerin işlenmesine onay veriyor ve ">Я даю согласие на обработку персональных данных и принимаю условия </span>
+                            <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik Politikasını kabul ediyorum.">Политики конфиденциальности.</a>
                         </label>
                     </div>
 
-                    <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 10px;" data-tr="Holding'e Talep Gönder">Отправить запрос в холдинг</button>
+                    <button type="submit" class="btn btn-red" style="width: 100%; margin-top: 8px;" data-tr="Holding'e Talep Gönder">Отправить запрос в холдинг</button>
                 </form>
             </div>
         </div>
     </section>
 
+    <!-- Подвал с юридическими реквизитами -->
     <footer>
-        <div class="container" style="justify-content: center; flex-direction: column; text-align: center;">
-            <p>&copy; 2020–2026 İSKET GROUP. <span data-tr="Federal perakende zincirlerinde yerli ve uluslararası tedarikçi desteği sağlayan çok yönlü holding.">Многопрофильный холдинг по сопровождению поставщиков (включая российских и зарубежных импортеров) в федеральные сети.</span></p>
-            <p style="margin-top: 8px; color: #526359; font-size: 12px;">
-                Официальный контрактодержатель и исполнитель услуг: <b>ООО «ТУЛЬСКИЕ ОВОЩИ»</b><br>
-                ИНН: 9727096157 | ОГРН: 1247700828781 | Юр. адрес: 117042, г. Москва, Южнобутовская ул., д. 72, пом. 3/1
-            </p>
-            <p style="margin-top: 6px;">
-                <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik Politikası">Политика конфиденциальности</a>
+        <div class="container">
+            <p style="font-weight: 700; color: var(--text-primary);">&copy; 2020–2026 İSKET GROUP</p>
+            <p data-tr="Federal perakende zincirlerinde yerli ve uluslararası tedarikçi desteği sağlayan danışmanlık holdingi.">Консалтинговое сопровождение производителей и импортеров ФРОВ, орехов и сухофруктов в федеральных сетях.</p>
+            
+            <div class="footer-legal">
+                <span data-tr="Resmî sözleşme sahibi ve hizmet sağlayıcı:">Официальный контрактодержатель и исполнитель услуг:</span> <b>ООО «ТУЛЬСКИЕ ОВОЩИ»</b><br>
+                ИНН: 9727096157 | КПП: 772701001 | ОГРН: 1247700828781<br>
+                <span data-tr="Yasal adres:">Юридический адрес:</span> 117042, г. Москва, Южнобутовская ул., д. 72, помещ. 3/1 | Email: tulskie68@mail.ru
+            </div>
+
+            <p style="margin-top: 10px;">
+                <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik ve Kişisel Verileri Koruma Politikası (152-FZ)">Политика конфиденциальности и обработки персональных данных (152-ФЗ)</a>
             </p>
         </div>
     </footer>
 
-    <!-- Скрипты -->
-    <script>
-        const trDict = {
-            "Uzmana yazın!": "Uzmana yazın!",
-            "🔍 Статус заявки": "🔍 Başvuru Durumu",
-            "+90 (530) 661-08-35": "+90 (530) 661-08-35",
-            "Многопрофильный холдинг": "Çeşitlendirilmiş Holding",
-            "Пакетное сопровождение и технологическая подготовка поставщиков (включая российские и зарубежные компании, в том числе из Турции) к аккредитации в федеральных сетях: экспертная поддержка, стандартизация документации, кадровый аутстаффинг и претензионно-исковая работа.": "Federal perakende zincirlerinde akreditasyon için yerli ve uluslararası tedarikçilere (Türkiye dahil) yönelik paket destek ve teknolojik hazırlık: uzman desteği, belgelendirme, İK dış kaynak kullanımı ve alacak yönetimi.",
-            "Связаться с руководством холдинга": "Holding Yönetimi ile İletişime Geçin",
-            "Успешных проектов аккредитации": "Başarılı akreditasyon projeleri",
-            "Лет практики и экспертизы": "Yıllık pratik ve uzmanlık",
-            "Конфиденциальность по договору": "Sözleşme kapsamında gizlilik",
-            "Направления нашей деятельности": "Faaliyet Alanlarımız",
-            "Выберите интересующее направление, рассчитайте стоимость или отправьте заявку в работу": "Sizi ilgilendiren alanı seçin, maliyeti hesaplayın veya başvurunuzu gönderin",
-            "Департамент контрактов": "Sözleşme Departmanı",
-            "Заключение договора с X5 Group": "X5 Group ile Sözleşme İmzalanması",
-            "Сопровождение аккредитации с X5 Group. Полный цикл консультационной поддержки при подготовке поставщиков (включая импортеров) к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.": "X5 Group ile akreditasyon desteği. Federal ağlarla çalışmaya hazırlanan yerli ve uluslararası tedarikçiler için danışmanlık: veri tabanı denetimi, uyumluluk kontrollerine hazırlık ve sevkiyatların başlatılması.",
-            "Рассчитать стоимость и подать заявку": "Maliyeti Hesapla ve Başvur",
-            "Новинка": "Yeni",
-            "Заключение договора с АО \"Тандер\"": "Magnit (AO Tander) ile Sözleşme İmzalanması",
-            "Сопровождение аккредитации с Магнит (АО «Тандер»). Полный цикл консультационной поддержки при подготовке поставщиков к работе с федеральными сетями: аудит баз, подготовка к комплаенс-проверкам и старт отгрузок.": "Magnit (AO Tander) akreditasyon desteği. Federal perakende zincirlerinde tedarikçi hazırlığı, denetim и operasyonel süreçlerin yönetimi.",
-            "Скоро": "Yakında",
-            "Экспертный отдел": "Uzman Departmanı",
-            "Подготовка документации для статуса производителя": "Üretici Statüsü İçin Belgelendirme Hazırlığı",
-            "Разработка полного юридического и технического пакета документов для прохождения комплаенс-аудита службы безопасности и агрономов своими силами.": "Güvenlik ve tarım denetimlerini geçmek için eksiksiz hukuki и teknik belge paketinin geliştirilmesi.",
-            "Рассчитать и заказать доки": "Hesapla и Belgeleri Sipariş Et",
-            "Услуги менеджмента": "Yönetim Hizmetleri",
-            "Продажи в X5 Group": "X5 Group Satış Hizmetleri",
-            "Предоставление сотрудников на работу. Подбор профильных специалистов в сфере продаж в X5 Group.": "X5 Group satış alanında profesyonel uzman и kadro desteği sağlanması.",
-            "Подробнее": "Daha Fazla Bilgi",
-            "Юридический отдел": "Hukuk Departmanı",
-            "Претензионная работа по заказам и штрафам с сетью": "Zincir ile Sipariş ve Cezalar Üzerine Hak İddiaları и Çalışmalar",
-            "Профессиональное составление претензий, актов разногласий и официальных писем. Правовое урегулирование вопросов по заказам и штрафам.": "İtirazların, tutanakların и resmî yazışmaların profesyonel olarak hazırlanması. Siparişler и cezalarla ilgili hukuki uyuşmazlıkların çözümü.",
-            "Подать заявку": "Başvuru Yap",
-            "Этапы заключения договора с сетью": "Zincir ile Sözleşme İmzalama Aşamaları",
-            "Прозрачный и регламентированный процесс работы по официальному договору": "Resmî sözleşme çerçevesinde şeffaf ve düzenlenmiş çalışma süreci",
-            "Аудит и заявка": "Denetim ve Başvuru",
-            "Анализируем текущий статус вашей компании, исходную документацию и специфику продукции.": "Şirketinizin mevcut statüsünü, belgelerini и ürün özelliklerini analiz ediyoruz.",
-            "Подготовка пакета": "Paket Hazırlığı",
-            "Помогаем разработать юридические и технические регламенты, устраняющие риски для сети. Собираем всю подготовленную документацию.": "Zincir risklerini ortadan kaldıran hukuki и teknik yönetmelikler hazırlamanıza yardımcı oluyoruz. Tüm hazırlanan belgeleri topluyoruz.",
-            "Правовое сопровождение": "Hukuki Destek",
-            "Сопровождаем процедуру акцептования договора и дальнейшего его подписания. Ведем всю переписку, претензионную работу и согласование спецификаций.": "Sözleşmenin kabulü и imzalanması sürecini destekliyoruz. Tüm yazışmaları, itiraz süreçlerini и teknik şartname mutabakatlarını yürütüyoruz.",
-            "Старт и поддержка": "Başlangıç ve Destek",
-            "Сопровождаем в получении SAP кода и активации тендерного портала. Обеспечиваем стабильную операционную деятельность и kesintisiz belge akışı sağlıyoruz.": "SAP kodu alımı и ihale portalının aktivasyonunda destek sağlıyoruz. İstikrarlı operasyonel faaliyet и kesintisiz belge akışı sağlıyoruz.",
-            "Почему производители выбирают нас": "Üreticiler Neden Bizi Seçiyor",
-            "Наши принципы гарантируют стабильность, безопасность и предсказуемость результата": "İlkelerimiz istikrarı, güvenliği и öngörülebilir sonuçları garanti eder",
-            "Регламенты ритейла": "Perakende Kuralları",
-            "Фокус на безупречное соблюдение стандартов качества и внутренних регламентов федеральных торговых сетей.": "Federal perakende zincirlerinin kalite standartlarına и iç yönetmeliklerine kusursuz uyum odaklı çalışma.",
-            "Чистое правовое поле": "Yasal Zemin",
-            "Работа исключительно на основе официальных договоров оказания услуг и прозрачного документооборота.": "Kesinlikle resmî hizmet sözleşmeleri и şeffaf belge akışı temelinde çalışma.",
-            "Глубокая экспертиза": "Derin Uzmanlık",
-            "Доскональное знание внутренних бизнес-процессов, логистических матриц и SAP-структур ритейла.": "Perakendenin dahili iş süreçleri, lojistik matrisleri и SAP yapıları hakkında derinlemesine bilgi.",
-            "Решенные сложные задачи": "Çözülen Karmaşık Görevler",
-            "Примеры работы с претензиями и регламентами торговых сетей (конфиденциальность соблюдена)": "Perakende zinciri düzenlemeleri и itiraz süreçleriyle çalışma örnekleri (gizlilik korunmaktadır)",
-            "Кейс №1 • Претензионная работа по SL": "Vaka №1 • SL İtiraz Çalışması",
-            "Оспаривание штрафов по уровню сервиса": "Hizmet Seviyesi Cezalarına İtiraz",
-            "Задача:": "Görev:",
-            "Поставщик овощей столкнулся с автоматическим начислением штрафов за недопоставку из-за сбоя слотов приемки в распределительном центре.": "Bir sebze tedarikçisi, dağıtım merkezindeki teslimat slotu arızaları nedeniyle eksik teslimat cezalarıyla karşılaştı.",
-            "✓ Решение: Подготовили юридически выверенный акт разногласий и пакет подтверждающих документов со всеми трек-номерами машин. Претензия была удовлетворена категорийным менеджером.": "✓ Çözüm: Hukuki açıdan doğru mutabakat zaptı и araç takip numaralarını içeren belgeler hazırlandı. İtiraz kategori yöneticisi tarafından kabul edildi.",
-            "Кейс №2 • Согласование спецификаций": "Vaka №2 • Şartname Mutabakatı",
-            "Оперативное урегулирование логистических споров": "Lojistik Uyuşmazlıklarının Hızlı Çözümü",
-            "Требовалось срочно скорректировать объем партии и согласовать перепоставку в рамках действующего регламента без штрафных санкций.": "Parti miktarının acilen ayarlanması и ceza yaptırımı olmaksızın mevcut yönetmelik çerçevesinde yeniden teslimatın koordine edilmesi gerekiyordu.",
-            "✓ Решение: Составили официальное обращение, провели переговоры с логистическим департаментом и зафиксировали изменения без финансовых потерь для партнера.": "✓ Çözüm: Resmî başvuru yapıldı, lojistik departmanı ile görüşmeler yürütüldü и ortak için mali kayıp yaşanmadan değişiklikler yapıldı.",
-            "Кейс №3 • Согласование исключения по SL": "Vaka №3 • SL İstisnası Onayı",
-            "Сокращение срока ожидания и допуск к торгам в «Пятёрочку»": "Pjatjoroçka İhale Erişiminin Hızlandırılması",
-            "Действующий поставщик (успешно отгружающий товар в сети «Перекрёсток») планировал выйти в торги на «Пятёрочку». Сеть выставила стандартное требование: не менее 2 месяцев удерживать высокий уровень сервиса (SL), что при специфике объемов и рисках разовых сбоев затягивало запуск на неопределенный срок.": "Mevcut tedarikçi Pjatjoroçka ihalelerine katılmak istiyordu. Zincir, yüksek hizmet seviyesinin (SL) en az 2 ay korunması şartını koymuştu.",
-            "✓ Решение: Провели независимый аудит производства, сформировали экспертное обоснование объемов и рисков для категорийного менеджера. Подготовили официальный комплексный пакет документов и юридически выверенное обращение. На основании подтвержденных производственных мощностей и аудита сеть приняла решение открыть поставщику досрочный доступ к торгам на «Пятёрочку».": "✓ Çözüm: Bağımsız üretim denetimi gerçekleştirildi и kategori yöneticisi için uzman gerekçesi oluşturuldu. Resmî evraklar hazırlandı и zincir tedarikçiye ihalelere erken erişim izni verdi.",
-            "Кейс №4 • Комплексный запуск нового поставщика": "Vaka №4 • Kapsamlı Tedarikçi Başlangıcı",
-            "Полное сопровождение аккредитации и успешный запуск в «Пятёрочку»": "Pjatjoroçka Tam Kapsamlı Akreditasyon Desteği",
-            "Новый (недействующий) поставщик планировал заключить договор с торговой сетью «Пятёрочка» на поставку нескольких культур, но не имел опыта прохождения многоуровневого комплаенс-аудита и подготовки полного пакета документации под требования сети.": "Yeni bir tedarikçi Pjatjoroçka ile sözleşme imzalamak istiyor ancak uyumluluk denetim tecrübesi bulunmuyordu.",
-            "✓ Решение: Провели комплексную работу «под ключ»: создали цифровую инфраструктуру, провели независимый аудит предприятия и выявили пробелы в документации до официальной подачи. Помогли сформировать недостающий пакет документов, исключив риски вопросов от категорийного менеджера (КМ). Разработали коммерческое предложение, успешно подготовили предприятие к выездному аудиту агронома торговой сети. На основе безупречного пакета документов и пройденного аудита поставщику успешно завели договор с «Пятёрочкой» и открыли доступ к торгам на целевой регион.": "✓ Çözüm: Anahtar teslim süreç yürütüldü, dijital altyapı oluşturuldu, üretim denetimi yapıldı и tarım uzmanı kontrolü başarıyla tamamlanarak sözleşme imzalandı.",
-            "Часто задаваемые вопросы и гарантии": "Sıkça Sorulan Sorular и Garantiler",
-            "Все, что нужно знать о сроках, оплате и безопасности работы": "Süreçler, ödemeler и iş güvenliği hakkında bilmeniz gerekenler",
-            "💳 Как устроена оплата услуг?": "💳 Ödemeler nasıl gerçekleştirilir?",
-            "Оплата услуг осуществляется строго по официальному договору оказания консалтинговых и юридических услуг поэтапно. Никаких оплат за результат внутри закрытых систем сетей не практикуется.": "Ödemeler kesinlikle resmi danışmanlık и hukuk hizmetleri sözleşmesine dayanarak aşamalı olarak yapılır.",
-            "⏳ Какие сроки выполнения задач?": "⏳ İşlemlerin süreleri nedir?",
-            "Сроки зависят от типа задачи: подготовка документации занимает от 1 недели, юридический аудит и составление претензий — от 2 до 5 дней, комплексное сопровождение — по графику договора.": "Belge hazırlığı 1 haftadan başlar, hukuki inceleme и itirazlar 2-5 gün sürer.",
-            "🛡 Какие гарантии вы предоставляете?": "🛡 Ne tür garantiler sunuyorsunuz?",
-            "Мы гарантируем высочайшее качество юридической и технической подготовки документов, строгую конфиденциальность и работу исключительно в правовом поле РФ.": "Hukuki и teknik belgelendirmede en yüksek kaliteyi, sıkı gizliliği и Rusya Federasyonu yasalarına tam uyumu garanti ediyoruz.",
-            "🔒 Безопасно ли это для нашего бизнеса?": "🔒 İşletmemiz için güvenli mi?",
-            "Абсолютно. Вся наша деятельность представляет собой классический B2B-консалтинг, помогающий поставщикам приводить свою документацию в полное соответствие с требованиями сетей.": "Kesinlikle. Tüm faaliyetlerimiz klasik B2B danışmanlık hizmetidir.",
-            "Личный кабинет поставщика": "Tedarikçi Paneli",
-            "Проверка статуса заявки": "Başvuru Durumunu Kontrol Et",
-            "Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.": "Çalışma aşamasını öğrenmek için başvuru numaranızı (token) girin.",
-            "Номер заявки (например: ISKET-555) *": "Başvuru Numarası (örn: ISKET-555) *",
-            "Проверить статус": "Durumu Kontrol Et",
-            "Загрузка данных...": "Veriler yükleniyor...",
-            "Калькулятор стоимости и заявка на заключение договора с X5 Group": "X5 Group Sözleşme Hesaplayıcısı ve Başvuru",
-            "Заполните параметры вашей компании, чтобы узнать ориентировочную стоимость консалтинговых услуг.": "Danışmanlık hizmetlerinin tahmini maliyetini öğrenmek için şirket bilgilerinizi doldurun.",
-            "1. Наименование ООО *": "1. Şirket Adı (OOO) *",
-            "2. Категория поставщика *": "2. Tedarikçi Kategorisi *",
-            "Выберите категорию": "Kategori seçin",
-            "2.1 Действующий поставщик": "2.1 Mevcut tedarikçi",
-            "2.2 Недействующий поставщик (+200 000 ₽)": "2.2 Mevcut olmayan tedarikçi (+200.000 ₽)",
-            "3. Категория компании *": "3. Şirket Türü *",
-            "Выберите статус": "Statü seçin",
-            "3.1 Трейдер": "3.1 Tüccar (Trader)",
-            "3.2 Производитель": "3.2 Üretici",
-            "3.3 Импортер": "3.3 İthalatçı",
-            "4. Направление сопровождения: *": "4. Destek Alanı: *",
-            "Выберите сеть": "Zincir seçin",
-            "4.1 ТСХ Перекрёсток (от 600 000 ₽)": "4.1 Perekrestok (600.000 ₽'den başlayan)",
-            "4.2 ДСК Пятёрочка (от 750 000 ₽)": "4.2 Pjatjoroçka (750.000 ₽'den başlayan)",
-            "4.3 ТСЧ Чижик": "4.3 Çijik (500.000 ₽'den başlayan)",
-            "4.4 Все три сети (комплексно)": "4.4 Tüm üç zincir (Kapsamlı)",
-            "5. Хотите войти в сеть как: *": "5. Zincire hangi statüde girmek istiyorsunuz? *",
-            "Как производитель (+200 000 ₽)": "Üretici olarak (+200.000 ₽)",
-            "Как трейдер": "Tüccar olarak",
-            "Как импортер": "İthalatçı olarak",
-            "Без изменений": "Değişiklik yok",
-            "Возраст компании (ООО) *": "Şirketin Yaşı (OOO) *",
-            "Выберите возраст юрлица": "Tüzel kişilik yaşını seçin",
-            "Более 1 года": "1 yıldan fazla",
-            "Менее 1 года (+100 000 ₽ к стоимости)": "1 yıldan az (+100.000 ₽)",
-            "Регион продаж *": "Satış Bölgesi *",
-            "Контактный телефон (WhatsApp) *": "İletişim Telefonu (WhatsApp) *",
-            "Ориентировочная стоимость консалтинговых услуг:": "Danışmanlık hizmetlerinin tahmini maliyeti:",
-            "Отправить заявку на консультацию": "Danışmanlık Başvurusunu Gönder",
-            "🎉 Заявка успешно отправлена!": "🎉 Başvuru başarıyla gönderildi!",
-            "Вашему персональному запросу присвоен уникальный номер:": "Kişisel talebinize benzersiz bir numara atandı:",
-            "Сохраните этот номер для отслеживания в личном кабинете.": "Panelde takip etmek için bu numarayı saklayın.",
-            "💬 Написать в WhatsApp с этим номером": "💬 Bu numara ile WhatsApp'tan yazın",
-            "Подготовка документации для подтверждения статуса производителя": "Üretici Statüsünü Onaylamak İçin Belge Hazırlığı",
-            "Заполните данные для заказа экспертного пакета документов под требования торговой сети.": "Perakende zinciri gereksinimlerine uygun uzman belge paketi siparişi için bilgileri doldurun.",
-            "Статус поставщика *": "Tedarikçi Statüsü *",
-            "Действующий поставщик": "Mevcut tedarikçi",
-            "Недействующий поставщик": "Mevcut olmayan tedarikçi",
-            "Год создания компании *": "Şirketin Kuruluş Yılı *",
-            "Для какой сети готовятся документы? *": "Belgeler hangi zincir için hazırlanıyor? *",
-            "Другая сеть": "Diğer zincir",
-            "Укажите название другой сети *": "Diğer zincirin adını belirtin *",
-            "Итоговая стоимость услуг:": "Toplam hizmet bedeli:",
-            "Заказать подготовку документации": "Belge Hazırlığını Sipariş Et",
-            "Ваш персональный номер для отслеживания:": "Takip numaranız:",
-            "Сохраните его для проверки статуса.": "Durumu kontrol etmek için saklayın.",
-            "Претензионная работа по заказам и штрафам с сетью": "Siparişler и Cezalar Üzerine Hak İddiaları",
-            "Заполните параметры проблемного заказа и суть спора для подготовки юридического обращения.": "Hukuki başvuru hazırlamak için sorunlu sipariş parametrelerini и anlaşmazlığın özünü doldurun.",
-            "1. № заказа / претензии *": "1. Sipariş / İtiraz No *",
-            "2. Дата заказа / акта *": "2. Дата заказа / акта *",
-            "3. Тип операции / процедуры *": "3. İşlem / Prosedür Türü *",
-            "Выберите тип процедуры из списка": "Listeden prosedür türü seçin",
-            "Оспаривание штрафов по SL/SLT и недопоставкам": "SL/SLT ve eksik teslimat cezalarına itiraz",
-            "Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам": "SL/SLT ve ödeme blokajlarının kaldırılması için zincire talep oluşturulması",
-            "Согласование корректировок заказов и перепоставок": "Sipariş düzeltmelerinin и yeniden teslimatların mutabakatı",
-            "Досудебное урегулирование претензий ритейла": "Perakende itirazlarının mahkeme öncesi çözümü",
-            "4. SAP № Компании *": "4. Şirket SAP Numarası *",
-            "5. Торговая сеть *": "5. Perakende Zinciri *",
-            "Свой вариант": "Kendi seçeneğim",
-            "Укажите название своей сети *": "Kendi zincir adınızı belirtin *",
-            "6. Ваши контактные данные (Телефон / WhatsApp) *": "6. İletişim Bilgileriniz (Телефон / WhatsApp) *",
-            "7. Суть вопроса / Детали спора": "7. Sorunun Özü / Anlaşmazlık Detayları",
-            "Отправить обращение в работу": "Başvuruyu İşleme Gönder",
-            "Обращение принято в работу!": "Başvuru işleme alındı!",
-            "Номер для отслеживания статуса претензии:": "İtiraz durumunu takip numarası:",
-            "💬 Написать в WhatsApp по обращению": "💬 Talep hakkında WhatsApp'tan yazın",
-            "Предоставление сотрудников и кадровая поддержка": "Personel Sağlama и İK Desteği",
-            "Предоставляем проверенный персонал и профессиональных менеджеров по продажам (KAM) в федеральные сети.": "Federal zincirlere nitelikli personel и profesyonel satış yöneticileri (KAM) sağlıyoruz.",
-            "Связаться с нами": "Bizimle İletişime Geçin",
-            "Заявка в холдинг İSKET GROUP": "İSKET GROUP Holding Başvurusu",
-            "Заявки поступают напрямую руководству:": "Başvurular doğrudan yönetime iletilir:",
-            "Ваше имя *": "Adınız *",
-            "Электронная почта (Email) *": "E-posta (Email) *",
-            "Какое направление вас интересует? *": "Какое направление вас интересует? *",
-            "Выберите направление из списка": "Listeden bir alan seçin",
-            "Заключение договора с АО Тандер (Скоро)": "Magnit (AO Tander) ile Sözleşme (Yakında)",
-            "Подготовка документации производителя": "Üretici Belgelendirme Hazırlığı",
-            "Продажи в X5 Group (Услуги менеджмента)": "X5 Group Satışları (Yönetim Hizmetleri)",
-            "Другой вопрос / Консультация": "Diğer Soru / Danışmanlık",
-            "Наименование вашей компании (ООО) *": "Şirketinizin Adı (OOO) *",
-            "Отправить запрос в холдинг": "Holding'e Talep Gönder",
-            "Многопрофильный холдинг по сопровождению поставщиков (включая российских и зарубежных импортеров) в федеральные сети.": "Federal perakende zincirlerinde yerli ve uluslararası tedarikçi desteği sağlayan çok yönlü holding.",
-            "Gizlilik Politikası": "Политика конфиденциальности",
-            "Я даю согласие на обработку персональных данных и принимаю условия Политики конфиденциальности.": "Kişisel verilerin işlenmesine onay veriyor ve Gizlilik Politikası şartlarını kabul ediyorum."
-        };
+    <!-- МОДАЛЬНОЕ ОКНО: ЛИЧНЫЙ КАБИНЕТ / СТАТУС ЗАЯВКИ -->
+    <div id="modal-cabinet" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-cabinet')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px; display: inline-block;" data-tr="Tedarikçi Paneli">Личный кабинет поставщика</span>
+            <h3 data-tr="Başvuru Durumunu Kontrol Et">Проверка статуса заявки</h3>
+            <p data-tr="Çalışma aşamasını öğrenmek için başvuru numaranızı (token) girin.">Введите ваш персональный номер заявки (токен), чтобы узнать текущий этап выполнения работ.</p>
+            
+            <div class="form-group">
+                <label data-tr="Başvuru Numarası (örn: ISKET-555) *">Номер заявки (например: ISKET-555) *</label>
+                <input type="text" id="orderTokenInput" placeholder="Введите номер...">
+            </div>
 
+            <button class="btn" onclick="checkOrderStatus()" style="width: 100%; margin-bottom: 15px;" data-tr="Durumu Kontrol Et">Проверить статус</button>
+
+            <div id="statusTrackerBox" class="status-tracker">
+                <div class="tracker-info" id="trackerContent">
+                    <h5 data-tr="Veriler yükleniyor...">Загрузка данных...</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: КАЛЬКУЛЯТОР X5 -->
+    <div id="modal-contracts" class="modal-overlay">
+        <div class="modal-container" style="border-top-color: var(--brand-red);">
+            <button class="modal-close" onclick="closeModal('modal-contracts')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px; display: inline-block;" data-tr="Sözleşme Departmanı">Департамент контрактов</span>
+            <h3 data-tr="X5 Group Sözleşme Hesaplayıcısı ve Başvuru">Калькулятор стоимости и заявка на договор с X5 Group</h3>
+            <p data-tr="Danışmanlık hizmetlerinin tahmini maliyetini öğrenmek için şirket bilgilerinizi doldurun.">Укажите параметры вашей компании для расчета ориентировочной стоимости сопровождения.</p>
+            
+            <form id="contractForm" onsubmit="handleFormSubmit(event, 'contractForm', 'Заявка на заключение договора с X5 Group')">
+                <input type="hidden" name="form_type" value="Заявка на заключение договора с X5 Group">
+                <input type="hidden" name="generated_token" id="tokenContract">
+
+                <div class="form-group">
+                    <label data-tr="1. Şirket Adı (OOO / İthalatçı) *">1. Наименование компании *</label>
+                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="2. Tedarikçi Kategorisi *">2. Категория поставщика *</label>
+                    <select name="supplier_category" id="supplierCategory" onchange="calculatePrice()" required>
+                        <option value="" disabled selected data-tr="Kategori seçin">Выберите категорию</option>
+                        <option value="Действующий поставщик" data-tr="2.1 Mevcut tedarikçi">2.1 Действующий поставщик</option>
+                        <option value="Недействующий поставщик" data-tr="2.2 Mevcut olmayan tedarikçi (+200.000 ₽)">2.2 Недействующий поставщик (+200 000 ₽)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="3. Şirket Профили *">3. Профиль компании *</label>
+                    <select name="company_category" id="companyCategory" onchange="calculatePrice()" required>
+                        <option value="" disabled selected data-tr="Statü seçin">Выберите статус</option>
+                        <option value="Трейдер" data-tr="3.1 Tüccar (Trader)">3.1 Трейдер</option>
+                        <option value="Производитель" data-tr="3.2 Üretici">3.2 Производитель</option>
+                        <option value="Импортер" data-tr="3.3 İthalatçı">3.3 Импортер</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="4. Hedef Perakende Zinciri *">4. Направление сопровождения *</label>
+                    <select name="retail_target" id="retailTarget" onchange="calculatePrice()" required>
+                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
+                        <option value="ТСХ Перекресток" data-tr="4.1 Perekrestok (600.000 ₽'den başlayan)">4.1 ТСХ Перекрёсток (от 600 000 ₽)</option>
+                        <option value="ДСК Пятерочка" data-tr="4.2 Pjatjoroçka (750.000 ₽'den başlayan)">4.2 ДСК Пятёрочка (от 750 000 ₽)</option>
+                        <option value="ТСЧ Чижик" data-tr="4.3 Çijik (500.000 ₽'den başlayan)">4.3 ТСЧ Чижик (от 500 000 ₽)</option>
+                        <option value="Все три сети" data-tr="4.4 Tüm üç zincir (Kapsamlı)">4.4 Все три сети (комплексно)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="5. Zincire hangi statüde girmek istiyorsunuz? *">5. Целевой статус входа в сеть *</label>
+                    <select name="entry_role" id="entryRole" onchange="calculatePrice()" required>
+                        <option value="Как производитель" selected data-tr="Üretici olarak (+200.000 ₽)">Как производитель (+200 000 ₽)</option>
+                        <option value="Как трейдер" data-tr="Tüccar olarak">Как трейдер</option>
+                        <option value="Как импортер" data-tr="İthalatçı olarak">Как импортер</option>
+                        <option value="Без изменений" data-tr="Değişiklik yok">Без изменений</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="6. Şirketin Yaşı *">6. Возраст юрлица *</label>
+                    <select name="company_age" id="companyAge" onchange="calculatePrice()" required>
+                        <option value="" disabled selected data-tr="Tüzel kişilik yaşını seçin">Выберите возраст юрлица</option>
+                        <option value="Более 1 года" data-tr="1 yıldan fazla">Более 1 года</option>
+                        <option value="Менее 1 года" data-tr="1 yıldan az (+100.000 ₽)">Менее 1 года (+100 000 ₽)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="7. Satış Bölgesi ve Ürün Grubu *">7. Регион продаж и продукция *</label>
+                    <input type="text" name="sales_region" placeholder="Örn: Moskova, Merkez / Sebze, Kuruyemiş..." required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="8. İletişim Telefonu (WhatsApp) *">8. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <div class="consent-row">
+                    <input type="checkbox" id="consentContract" required>
+                    <label for="consentContract">
+                        <span data-tr="Kişisel verilerin işlenmesine onay veriyor ve ">Я даю согласие на обработку персональных данных и принимаю условия </span>
+                        <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik Politikasını kabul ediyorum.">Политики конфиденциальности.</a>
+                    </label>
+                </div>
+
+                <div class="price-box">
+                    <div class="price-title" data-tr="Tahmini danışmanlık maliyeti (başlangıç):">Ориентировочная стоимость услуг (от):</div>
+                    <div class="price-value" id="priceDisplay">0 ₽</div>
+                    <input type="hidden" name="calculated_price" id="hiddenPrice" value="0">
+                </div>
+
+                <button type="submit" class="btn btn-red" style="width: 100%;" data-tr="Danışmanlık Başvurusunu Gönder">Отправить заявку на консультацию</button>
+            </form>
+
+            <div id="successBox-contract" class="token-success-box">
+                <h4 data-tr="🎉 Başvuru başarıyla gönderildi!">🎉 Заявка успешно отправлена!</h4>
+                <p data-tr="Kişisel talebinize benzersiz bir numara atandı:">Вашему запросу присвоен уникальный номер:</p>
+                <div class="generated-token" id="tokenDisplay-contract">ISKET-0000</div>
+                <p style="font-size: 13px; color: #555; margin-bottom: 10px;" data-tr="Panelde takip etmek için bu numarayı saklayın.">Сохраните этот номер для проверки статуса в шапке сайта.</p>
+                <a id="whatsappLink-contract" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Bu numara ile WhatsApp'tan yazın">💬 Написать в WhatsApp с этим номером</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ПОДГОТОВКА ДОКУМЕНТАЦИИ (250 000 ₽) -->
+    <div id="modal-docs" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-docs')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px; display: inline-block;" data-tr="Uzman Departmanı">Экспертный отдел</span>
+            <h3 data-tr="Üretici Statüsünü Onaylamak İçin Belge Hazırlığı">Подготовка документации для подтверждения статуса производителя</h3>
+            <p data-tr="Perakende zinciri gereksinimlerine uygun uzman belge paketi siparişi için bilgileri doldurun.">Заполните данные для формирования полного пакета документов под требования СБ и агрономов сети.</p>
+            
+            <form id="docsForm" onsubmit="handleFormSubmit(event, 'docsForm', 'Заявка на подготовку документации производителя')">
+                <input type="hidden" name="form_type" value="Заявка на подготовку документации производителя">
+                <input type="hidden" name="generated_token" id="tokenDocs">
+
+                <div class="form-group">
+                    <label data-tr="1. Şirket Adı *">1. Наименование компании *</label>
+                    <input type="text" name="company_name" placeholder="ООО «Агро-Стандарт»" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="2. Tedarikçi Statüsü *">2. Статус поставщика *</label>
+                    <select name="supplier_status" required>
+                        <option value="" disabled selected data-tr="Statü seçin">Выберите статус</option>
+                        <option value="Действующий поставщик" data-tr="Mevcut tedarikçi">Действующий поставщик</option>
+                        <option value="Недействующий поставщик" data-tr="Mevcut olmayan tedarikçi">Новый (недействующий) поставщик</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="3. Şirketin Kuruluş Yılı *">3. Год создания компании *</label>
+                    <input type="number" name="creation_year" placeholder="2023" min="1990" max="2026" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="4. Belgeler hangi zincir için hazırlanıyor? *">4. Целевая торговая сеть *</label>
+                    <select name="target_network" id="targetNetworkSelect" onchange="toggleCustomNetwork('targetNetworkSelect', 'customNetworkBlock')" required>
+                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
+                        <option value="ДСК Пятёрочка">ДСК Пятёрочка</option>
+                        <option value="ТСХ Перекрёсток">ТСХ Перекрёсток</option>
+                        <option value="ТСЧ Чижик">ТСЧ Чижик</option>
+                        <option value="Все сети X5 Group">Все сети X5 Group</option>
+                        <option value="АО «Тандер»">АО «Тандер»</option>
+                        <option value="Другая сеть" data-tr="Diğer zincir">Другая сеть</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="customNetworkBlock" style="display: none;">
+                    <label data-tr="Diğer zincirin adını belirtin *">Укажите название другой сети *</label>
+                    <input type="text" name="custom_network_name" placeholder="Название сети...">
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="5. İletişim Telefonu (WhatsApp) *">5. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <div class="consent-row">
+                    <input type="checkbox" id="consentDocs" required>
+                    <label for="consentDocs">
+                        <span data-tr="Kişisel verilerin işlenmesine onay veriyor ve ">Я даю согласие на обработку персональных данных и принимаю условия </span>
+                        <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik Politikasını kabul ediyorum.">Политики конфиденциальности.</a>
+                    </label>
+                </div>
+
+                <div class="price-box">
+                    <div class="price-title" data-tr="Sabit paket maliyeti:">Стоимость подготовки пакета документов:</div>
+                    <div class="price-value">250 000 ₽</div>
+                    <input type="hidden" name="service_price" value="250 000 ₽">
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%;" data-tr="Belge Hazırlığını Sipariş Et">Заказать подготовку документации</button>
+            </form>
+
+            <div id="successBox-docs" class="token-success-box">
+                <h4 data-tr="🎉 Başvuru başarıyla gönderildi!">🎉 Заявка успешно отправлена!</h4>
+                <p data-tr="Takip numaranız:">Ваш персональный номер для отслеживания:</p>
+                <div class="generated-token" id="tokenDisplay-docs">ISKET-0000</div>
+                <a id="whatsappLink-docs" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Bu numara ile WhatsApp'tan yazın">💬 Написать в WhatsApp с этим номером</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ПРЕТЕНЗИОННАЯ РАБОТА -->
+    <div id="modal-order-request" class="modal-overlay">
+        <div class="modal-container" style="border-top-color: var(--brand-red);">
+            <button class="modal-close" onclick="closeModal('modal-order-request')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 10px; display: inline-block;" data-tr="Hukuk Departmanı">Юридический отдел</span>
+            <h3 data-tr="Siparişler ve Cezalar Üzerine Hak İddiaları">Претензионная работа по заказам, блокировкам и штрафам</h3>
+            <p data-tr="Hukuki başvuru hazırlamak için sorunlu sipariş parametrelerini ve anlaşmazlığın özünü doldurun.">Укажите параметры проблемного заказа для подготовки юридически выверенного обращения в сеть.</p>
+            
+            <form id="orderForm" onsubmit="handleFormSubmit(event, 'orderForm', 'Претензионная работа / Споры с сетью')">
+                <input type="hidden" name="form_type" value="Претензионная работа / Споры с сетью">
+                <input type="hidden" name="generated_token" id="tokenOrder">
+
+                <div class="form-group">
+                    <label data-tr="1. Sipariş / İtiraz No *">1. № заказа / претензии *</label>
+                    <input type="text" name="order_number" placeholder="12345678" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="2. Sipariş / Tutanak Tarihi *">2. Дата заказа / акта *</label>
+                    <input type="date" name="order_date" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="3. İşlem / Prosedür Türü *">3. Тип процедуры *</label>
+                    <select name="order_operation" required>
+                        <option value="" disabled selected data-tr="Listeden prosedür türü seçin">Выберите тип процедуры из списка</option>
+                        <option value="Оспаривание штрафов по SL/SLT и недопоставкам" data-tr="SL/SLT ve eksik teslimat cezalarına itiraz">Оспаривание штрафов по SL/SLT и недопоставкам</option>
+                        <option value="Формирование запроса в сеть на снятие блокировки по SL/SLT и по оплатам" data-tr="SL/SLT ve ödeme blokajlarının kaldırılması talebi">Снятие блокировки по SL/SLT и оплатам</option>
+                        <option value="Согласование корректировок заказов и перепоставок" data-tr="Sipariş düzeltmelerinin ve yeniden teslimatların mutabakatı">Согласование корректировок заказов и перепоставок</option>
+                        <option value="Досудебное урегулирование претензий ритейла" data-tr="Perakende itirazlarının mahkeme öncesi çözümü">Досудебное урегулирование претензий ритейла</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="4. Şirket SAP Numarası *">4. SAP № Компании *</label>
+                    <input type="text" name="sap_company_number" placeholder="0001234567" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="5. Perakende Zinciri *">5. Торговая сеть *</label>
+                    <select name="retail_network" id="retailNetworkSelect" onchange="toggleCustomNetwork('retailNetworkSelect', 'customRetailBlock')" required>
+                        <option value="" disabled selected data-tr="Zincir seçin">Выберите сеть</option>
+                        <option value="Перекрёсток">Перекрёсток</option>
+                        <option value="Пятёрочка">Пятёрочка</option>
+                        <option value="Чижик">Чижик</option>
+                        <option value="АО «Тандер» (Магнит)">АО «Тандер» (Магнит)</option>
+                        <option value="Свой вариант" data-tr="Kendi seçeneğim">Свой вариант</option>
+                    </select>
+                </div>
+
+                <div class="form-group" id="customRetailBlock" style="display: none;">
+                    <label data-tr="Kendi zincir adınızı belirtin *">Укажите название своей сети *</label>
+                    <input type="text" name="custom_retail_name" placeholder="Название сети...">
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="6. İletişim Bilgileriniz (Телефон / WhatsApp) *">6. Контактный телефон (WhatsApp) *</label>
+                    <input type="tel" name="client_phone" placeholder="+7 (999) 000-00-00" required>
+                </div>
+
+                <div class="form-group">
+                    <label data-tr="7. Sorunun Özü / Anlaşmazlık Detayları">7. Детали спора</label>
+                    <textarea name="comments" rows="3" placeholder="Опишите ситуацию, номера актов или коды РЦ..."></textarea>
+                </div>
+
+                <div class="consent-row">
+                    <input type="checkbox" id="consentOrder" required>
+                    <label for="consentOrder">
+                        <span data-tr="Kişisel verilerin işlenmesine onay veriyor ve ">Я даю согласие на обработку персональных данных и принимаю условия </span>
+                        <a href="#" onclick="openModal('modal-privacy'); return false;" data-tr="Gizlilik Politikasını kabul ediyorum.">Политики конфиденциальности.</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-red" style="width: 100%;" data-tr="Başvuruyu İşleme Gönder">Отправить обращение в работу</button>
+            </form>
+
+            <div id="successBox-order" class="token-success-box">
+                <h4 data-tr="🎉 Başvuru işleme alındı!">🎉 Обращение принято в работу!</h4>
+                <p data-tr="İtiraz durumunu takip numarası:">Номер для отслеживания статуса претензии:</p>
+                <div class="generated-token" id="tokenDisplay-order">ISKET-0000</div>
+                <br>
+                <a id="whatsappLink-order" href="https://wa.me/905306610835" target="_blank" class="whatsapp-prompt-btn" data-tr="💬 Talep hakkında WhatsApp'tan yazın">💬 Написать в WhatsApp по обращению</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модалка Персонал (KAM) -->
+    <div id="modal-staff" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-staff')">&times;</button>
+            <span class="direction-badge" style="margin-bottom: 12px; display: inline-block;" data-tr="Yönetim Hizmetleri">Услуги менеджмента</span>
+            <h3 data-tr="Personel Sağlama ve Satış Yönetimi (KAM)">Аутстаффинг профильных менеджеров (KAM) для работы с сетями</h3>
+            <p data-tr="Federal zincirlerde ihale portalını yönetecek, fiyat mutabakatlarını yapacak ve sevkiyatları kontrol edecek deneyimli satış uzmanları sağlıyoruz.">Предоставляем опытных профильных специалистов по продажам в X5 Group для полного ведения вашего контракта: участие в аукционах, согласование цен, работа со спецификациями и контроль уровня сервиса SL.</p>
+            <a href="#contact" class="btn" onclick="closeModal('modal-staff')" data-tr="Uzman Talebi Bırakın">Оставить заявку на подбор специалиста</a>
+        </div>
+    </div>
+
+    <!-- МОДАЛЬНОЕ ОКНО: ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ -->
+    <div id="modal-privacy" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" onclick="closeModal('modal-privacy')">&times;</button>
+            <h3 style="margin-bottom: 15px;" data-tr="Gizlilik ve Kişisel Verileri Koruma Politikası">Политика конфиденциальности и обработки персональных данных</h3>
+            <div style="font-size: 13px; color: var(--text-secondary); max-height: 60vh; overflow-y: auto; line-height: 1.6; display: flex; flex-direction: column; gap: 12px;">
+                <p>Настоящая Политика конфиденциальности регулирует порядок обработки и защиты персональных данных пользователей сайта, действующего под коммерческим наименованием <b>İSKET GROUP</b>, в соответствии с Федеральным законом РФ № 152-ФЗ «О персональных данных».</p>
+                <p><b>1. Оператор персональных данных и контрактодержатель:</b><br>
+                Общество с ограниченной ответственностью «ТУЛЬСКИЕ ОВОЩИ»<br>
+                ИНН: 9727096157 | КПП: 772701001 | ОГРН: 1247700828781<br>
+                Юридический адрес: 117042, г. Москва, Южнобутовская ул., д. 72, помещ. 3/1<br>
+                Электронная почта: tulskie68@mail.ru</p>
+                <p><b>2. Цели сбора данных:</b><br>
+                Предоставление B2B-консультаций, расчет стоимости услуг сопровождения аккредитации в федеральных торговых сетях, подготовка документации, заключение и исполнение договоров возмездного оказания консалтинговых и юридических услуг.</p>
+                <p><b>3. Конфиденциальность и защита информации:</b><br>
+                Оператор принимает все необходимые правовые, организационные и технические меры для защиты данных от неправомерного доступа и гарантирует полную коммерческую тайну обращений партнеров.</p>
+            </div>
+            <button class="btn" onclick="closeModal('modal-privacy')" style="margin-top: 20px;" data-tr="Kapat">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
         let currentLang = 'ru';
 
         function toggleLanguage() {
@@ -1029,11 +1003,9 @@
 
             const elements = document.querySelectorAll('[data-tr]');
             elements.forEach(el => {
-                const ruText = el.getAttribute('data-original') || el.innerText;
                 if (!el.getAttribute('data-original')) {
-                    el.setAttribute('data-original', ruText);
+                    el.setAttribute('data-original', el.innerText);
                 }
-
                 if (currentLang === 'tr') {
                     const trText = el.getAttribute('data-tr');
                     if (trText) el.innerText = trText;
@@ -1044,16 +1016,14 @@
 
             const inputs = document.querySelectorAll('input[placeholder], textarea[placeholder]');
             inputs.forEach(input => {
-                const phRu = input.getAttribute('data-ph-ru') || input.placeholder;
                 if (!input.getAttribute('data-ph-ru')) {
-                    input.setAttribute('data-ph-ru', phRu);
+                    input.setAttribute('data-ph-ru', input.placeholder);
                 }
                 if (currentLang === 'tr') {
-                    if (input.placeholder.includes('ООО')) input.placeholder = 'Örn: OOO «Agro-Standart»';
+                    if (input.placeholder.includes('ООО')) input.placeholder = 'Örn: OOO «Agro-Standart» (TR / RU)';
                     if (input.placeholder.includes('номер')) input.placeholder = 'Numarayı girin...';
-                    if (input.placeholder.includes('Моск')) input.placeholder = 'Örn: Moskova, Merkez, Ural...';
-                    if (input.placeholder.includes('2022')) input.placeholder = 'Örn: 2022';
-                    if (input.placeholder.includes('123456')) input.placeholder = 'Örn: 12345678';
+                    if (input.placeholder.includes('Иван')) input.placeholder = 'Adınız...';
+                    if (input.placeholder.includes('Опишите')) input.placeholder = 'Anlaşmazlık nedenlerini, tutanak numaralarını belirtin...';
                 } else {
                     input.placeholder = input.getAttribute('data-ph-ru');
                 }
@@ -1116,11 +1086,10 @@
                     const tgUser = "@isket_group";
                     let msgText = encodeURIComponent(`🔔 Новая заявка İSKET GROUP!\n📌 Услуга: ${formTypeName}\n🎟 Токен: ${token}`);
                     fetch(`https://api.callmebot.com/text.php?user=${tgUser}&text=${msgText}`);
-
                 } else {
                     alert("Произошла ошибка при отправке. Попробуйте еще раз.");
                 }
-            }).catch(error => {
+            }).catch(() => {
                 alert("Ошибка соединения. Проверьте интернет-соединение.");
             });
         }
@@ -1150,18 +1119,18 @@
                         <p><b>Компания:</b> ${data.clientName}</p>
                         <p><b>Услуга:</b> ${data.service}</p>
                         <p><b>Дата создания:</b> ${data.date}</p>
-                        <p style="margin-top: 10px; padding: 10px; background: #e8f8f5; border-radius: 6px; color: #0f3822;"><b>Текущий статус:</b> ${data.currentStep}</p>
+                        <p style="margin-top: 10px; padding: 10px; background: #e3f2ea; border-radius: 6px; color: #0a2918;"><b>Текущий статус:</b> ${data.currentStep}</p>
                     `;
                 } else {
                     trackerContent.innerHTML = `
                         <h5>Заявка не найдена</h5>
-                        <p style="color: #e31e24;">Номер «${token}» не зарегистрирован в базе или указан с ошибкой. Проверьте правильность ввода.</p>
+                        <p style="color: #d91e26;">Номер «${token}» не зарегистрирован в базе или указан с ошибкой.</p>
                     `;
                 }
             } catch (error) {
                 trackerContent.innerHTML = `
                     <h5>Ошибка соединения</h5>
-                    <p style="color: #e31e24;">Не удалось связаться с сервером баз данных. Попробуйте позже.</p>
+                    <p style="color: #d91e26;">Не удалось связаться с сервером баз данных. Попробуйте позже.</p>
                 `;
             }
         }
@@ -1169,7 +1138,6 @@
         function calculatePrice() {
             const retail = document.getElementById('retailTarget').value;
             const supplierCat = document.getElementById('supplierCategory').value;
-            const compCat = document.getElementById('companyCategory').value;
             const entryRole = document.getElementById('entryRole').value;
             const age = document.getElementById('companyAge').value;
             
